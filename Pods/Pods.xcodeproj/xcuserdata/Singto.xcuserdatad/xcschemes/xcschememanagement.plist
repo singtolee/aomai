@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SVProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SnapKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>743B2BEBF97584F9E84FB74E47F7299F</key>
+		<key>DA279DDC5151F6FC702A67152527E04B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DA8EF273D46EDD5E4F87DF4DB5D6B5E0</key>
+		<key>DC3479E5A8423B99BAFE7260BE5012B0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FDF41265D0CE9128180D86E23594120A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

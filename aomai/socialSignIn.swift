@@ -12,6 +12,7 @@ import Firebase
 import FirebaseAuth
 import FBSDKCoreKit
 import FBSDKLoginKit
+import SVProgressHUD
 
 class socialSignIn: UIViewController {
     
@@ -213,19 +214,24 @@ class socialSignIn: UIViewController {
     }
     
     func loginFB() {
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.Dark)
+        SVProgressHUD.showWithStatus("Logging in...")
         let login: FBSDKLoginManager = FBSDKLoginManager()
         login .logInWithReadPermissions(["public_profile", "email"], fromViewController: self, handler: { (result, error) -> Void in
                     if error != nil {
                        // print("Process error")
+                        SVProgressHUD.dismiss()
                     }
                     else if result.isCancelled {
                         //print("Cancelled")
+                        SVProgressHUD.dismiss()
                     }
                     else {
                        // print("Logged in")
                         let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
                         FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
                            // print("I am in Firebase now")
+                            SVProgressHUD.dismiss()
                             self.dismissViewControllerAnimated(true, completion: nil)
                             
                         }
