@@ -8,13 +8,15 @@
 
 import UIKit
 import SnapKit
+import Firebase
+import FirebaseAuth
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class socialSignIn: UIViewController {
     
-    //facebook login button
-    let fbLoginBtn = UIButton()
-    //cancek kogin button
-    let cancelLoginBtn = UIButton()
+    let fbLoginBtn = UIButton()        //facebook login button
+    let cancelLoginBtn = UIButton()    //cancek kogin button
     //name and password text field
     let emailTF = UITextField()
     let pswd = UITextField()
@@ -188,6 +190,8 @@ class socialSignIn: UIViewController {
             make.right.equalTo(self.view).offset(-40)
             make.height.equalTo(36)
         }
+        
+        self.fbLoginBtn.addTarget(self, action: #selector(loginFB), forControlEvents: .TouchUpInside)
 
     }
     
@@ -206,6 +210,30 @@ class socialSignIn: UIViewController {
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent;
+    }
+    
+    func loginFB() {
+        let login: FBSDKLoginManager = FBSDKLoginManager()
+        login .logInWithReadPermissions(["public_profile", "email"], fromViewController: self, handler: { (result, error) -> Void in
+                    if error != nil {
+                       // print("Process error")
+                    }
+                    else if result.isCancelled {
+                        //print("Cancelled")
+                    }
+                    else {
+                       // print("Logged in")
+                        let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
+                        FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
+                           // print("I am in Firebase now")
+                            self.dismissViewControllerAnimated(true, completion: nil)
+                            
+                        }
+        
+                    }
+                    
+                })
+
     }
     
 }
