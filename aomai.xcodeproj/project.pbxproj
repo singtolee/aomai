@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0916CD5F1D3FC65300167988 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0916CD5E1D3FC65300167988 /* Tools.swift */; };
 		09232ECC1D3BD7F500CF0C0A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09232EC91D3BD7F500CF0C0A /* FBSDKCoreKit.framework */; };
 		09232ECD1D3BD7F500CF0C0A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09232ECA1D3BD7F500CF0C0A /* FBSDKLoginKit.framework */; };
 		09232ECE1D3BD7F500CF0C0A /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09232ECB1D3BD7F500CF0C0A /* FBSDKShareKit.framework */; };
@@ -20,10 +21,12 @@
 		0955E4FC1D36F6340060B47E /* meTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955E4FB1D36F6340060B47E /* meTab.swift */; };
 		0955E4FE1D36F64E0060B47E /* tabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955E4FD1D36F64E0060B47E /* tabbar.swift */; };
 		0955E5001D3700810060B47E /* socialSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955E4FF1D3700810060B47E /* socialSignIn.swift */; };
+		09B7E8441D3DDF4000479035 /* registerWithEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7E8431D3DDF4000479035 /* registerWithEmail.swift */; };
 		0C6F72DF964B3A8BFE3CC86F /* Pods_aomai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6270E9424D0A8DFF1F1ECF7 /* Pods_aomai.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0916CD5E1D3FC65300167988 /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		09232EC91D3BD7F500CF0C0A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../Documents/FacebookSDKs/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		09232ECA1D3BD7F500CF0C0A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDKs/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		09232ECB1D3BD7F500CF0C0A /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../Documents/FacebookSDKs/FBSDKShareKit.framework; sourceTree = "<group>"; };
@@ -39,6 +42,7 @@
 		0955E4FB1D36F6340060B47E /* meTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = meTab.swift; sourceTree = "<group>"; };
 		0955E4FD1D36F64E0060B47E /* tabbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tabbar.swift; sourceTree = "<group>"; };
 		0955E4FF1D3700810060B47E /* socialSignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = socialSignIn.swift; sourceTree = "<group>"; };
+		09B7E8431D3DDF4000479035 /* registerWithEmail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = registerWithEmail.swift; sourceTree = "<group>"; };
 		49ECF41FECF2F06D027E7A71 /* Pods-aomai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomai.release.xcconfig"; path = "Pods/Target Support Files/Pods-aomai/Pods-aomai.release.xcconfig"; sourceTree = "<group>"; };
 		C022D0FB85189C919AAEA95E /* Pods-aomai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomai.debug.xcconfig"; path = "Pods/Target Support Files/Pods-aomai/Pods-aomai.debug.xcconfig"; sourceTree = "<group>"; };
 		D6270E9424D0A8DFF1F1ECF7 /* Pods_aomai.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_aomai.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +95,8 @@
 				0955E4FB1D36F6340060B47E /* meTab.swift */,
 				0955E4FD1D36F64E0060B47E /* tabbar.swift */,
 				0955E4FF1D3700810060B47E /* socialSignIn.swift */,
+				09B7E8431D3DDF4000479035 /* registerWithEmail.swift */,
+				0916CD5E1D3FC65300167988 /* Tools.swift */,
 			);
 			path = aomai;
 			sourceTree = "<group>";
@@ -241,8 +247,10 @@
 				0955E4E61D36F4EE0060B47E /* ViewController.swift in Sources */,
 				0955E4FE1D36F64E0060B47E /* tabbar.swift in Sources */,
 				0955E4E41D36F4EE0060B47E /* AppDelegate.swift in Sources */,
+				09B7E8441D3DDF4000479035 /* registerWithEmail.swift in Sources */,
 				0955E4FA1D36F6230060B47E /* cartTabViewController.swift in Sources */,
 				0955E5001D3700810060B47E /* socialSignIn.swift in Sources */,
+				0916CD5F1D3FC65300167988 /* Tools.swift in Sources */,
 				0955E4FC1D36F6340060B47E /* meTab.swift in Sources */,
 				0955E4F81D36F6070060B47E /* storeTab.swift in Sources */,
 			);

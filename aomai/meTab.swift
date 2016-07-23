@@ -40,12 +40,14 @@ class meTab: UIViewController {
                 self.goToSignInBtn.hidden = true
                 self.signOutFBBtn.hidden = false
                 self.userName.hidden = false
+                print(user)
                 
                 let name = user.displayName
                 if name != nil {
                     self.userName.text = name
                 }else{
-                    self.userName.text = "Your name is a secret."
+                    //self.userName.text = "Your name is a secret."
+                    self.userName.text = user.email
                 }
                 let imageUrl = user.photoURL
                 

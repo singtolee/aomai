@@ -14,7 +14,7 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import SVProgressHUD
 
-class socialSignIn: UIViewController {
+class socialSignIn: UIViewController, UITextFieldDelegate {
     
     let fbLoginBtn = UIButton()        //facebook login button
     let cancelLoginBtn = UIButton()    //cancek kogin button
@@ -38,7 +38,7 @@ class socialSignIn: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(red:21/255, green:67/255, blue:96/255, alpha:1.0) //#154360
+        self.view.backgroundColor = Tools.bgColor //#154360
         self.view.addSubview(fbLoginBtn)
         self.view.addSubview(cancelLoginBtn)
         self.view.addSubview(emailTF)
@@ -50,6 +50,8 @@ class socialSignIn: UIViewController {
         self.view.addSubview(eLine)
         self.view.addSubview(pswdLine)
         self.view.addSubview(forgetPasswordBtn)
+        self.emailTF.delegate = self
+        self.pswd.delegate = self
         setupFacebookSignInBtn()
         setupCancelLogInBtn()
         setUpWelcomeLable()
@@ -93,6 +95,8 @@ class socialSignIn: UIViewController {
     func setUpEmailTF() {
         self.emailTF.attributedPlaceholder = NSAttributedString(string: "Email Address", attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
         self.emailTF.textColor = UIColor.whiteColor()
+        self.emailTF.returnKeyType = .Next
+        self.emailTF.clearButtonMode = .WhileEditing
         //add left icon
         let imageView = UIImageView()
         imageView.image = UIImage(named: "email")
@@ -121,6 +125,9 @@ class socialSignIn: UIViewController {
     func setUpPasswordTF() {
         self.pswd.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
         self.pswd.textColor = UIColor.whiteColor()
+        self.pswd.clearButtonMode = .WhileEditing
+        self.pswd.secureTextEntry = true
+        self.pswd.returnKeyType = .Done
         
         //add left icon
         let imageView = UIImageView()
@@ -150,12 +157,33 @@ class socialSignIn: UIViewController {
         self.emailLoginBtn.layer.cornerRadius = 4
         self.emailLoginBtn.backgroundColor = UIColor(red:0.80, green:0.36, blue:0.36, alpha:1.0) //Indian red
         self.emailLoginBtn.setTitle("LOGIN", forState: .Normal)
+        self.emailLoginBtn.enabled = false
+        self.emailLoginBtn.setTitleColor(Tools.bgColor, forState: .Disabled)
         self.emailLoginBtn.snp_makeConstraints { (make) in
             make.top.equalTo(self.pswdLine.snp_bottom).offset(25)
             make.left.equalTo(self.view).offset(40)
             make.right.equalTo(self.view).offset(-40)
             make.height.equalTo(36)
         }
+        self.emailLoginBtn.addTarget(self, action: #selector(loginWithEmail), forControlEvents: .TouchUpInside)
+        
+    }
+    
+    func loginWithEmail() {
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.Dark)
+        SVProgressHUD.showWithStatus("Logging in...")
+        guard let email = self.emailTF.text, psd = self.pswd.text
+            else {return}
+        FIRAuth.auth()?.signInWithEmail(Tools.trim(email), password: Tools.trim(psd), completion: {(user, error) in
+            if error != nil {
+                SVProgressHUD.dismiss()
+                print(error?.localizedDescription)
+                return
+            }
+            SVProgressHUD.dismiss()
+            self.dismissViewControllerAnimated(true, completion: nil)
+            
+        })
         
     }
     
@@ -203,6 +231,7 @@ class socialSignIn: UIViewController {
             make.left.equalTo(self.view)
             make.right.equalTo(self.view)
         }
+        self.registerBtn.addTarget(self, action: #selector(goToRegisterPage), forControlEvents: .TouchUpInside)
     }
     
     func disMisSignInVc(){
@@ -212,7 +241,7 @@ class socialSignIn: UIViewController {
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent;
     }
-    
+    // called when Facebook login button clicked.
     func loginFB() {
         SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.Dark)
         SVProgressHUD.showWithStatus("Logging in...")
@@ -224,13 +253,15 @@ class socialSignIn: UIViewController {
                     }
                     else if result.isCancelled {
                         //print("Cancelled")
-                        SVProgressHUD.dismiss()
+                        SVProgressHUD.dismiss() 
                     }
                     else {
                        // print("Logged in")
                         let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
                         FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
                            // print("I am in Firebase now")
+                            if error != nil{
+                            return}
                             SVProgressHUD.dismiss()
                             self.dismissViewControllerAnimated(true, completion: nil)
                             
@@ -240,6 +271,26 @@ class socialSignIn: UIViewController {
                     
                 })
 
+    }
+    
+    func goToRegisterPage() {
+        let registerPage = registerWithEmail()
+        self.presentViewController(registerPage, animated: true, completion: nil)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == self.emailTF {
+        self.pswd.becomeFirstResponder()}
+        else {
+        self.pswd.resignFirstResponder()}
+        return true
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        if Tools.isEmail(Tools.trim(self.emailTF.text!)) && Tools.trim(self.pswd.text!).characters.count >= 6 {
+            self.emailLoginBtn.enabled = true
+        }else {self.emailLoginBtn.enabled = false}
+        
     }
     
 }
