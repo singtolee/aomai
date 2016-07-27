@@ -226,16 +226,39 @@ class registerWithEmail: UIViewController, UITextFieldDelegate, UIImagePickerCon
         FIRAuth.auth()?.createUserWithEmail(Tools.trim(email), password: Tools.trim(pswd), completion: {(user: FIRUser?, error) in
             if error != nil {
                 SVProgressHUD.dismiss()
-                print(error?.localizedDescription)
+                //display error message
+                let errorEmailAlertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: UIAlertControllerStyle.Alert)
+                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {(result : UIAlertAction) -> Void in
+                    //print("OK")
+                }
+                errorEmailAlertController.addAction(okAction)
+                self.presentViewController(errorEmailAlertController, animated: true, completion: nil)
+               // print(error?.localizedDescription)
                 return}
             guard let uid = user?.uid else {return}
+            
+            //update name
+//            guard let crq = user?.profileChangeRequest() else {return}
+//            crq.displayName = name
+//            crq.commitChangesWithCompletion({ (error1) in
+//                if error1 != nil
+//                {print(error1)
+//                return}
+//            })
             let imageName = NSUUID().UUIDString
             let storeageRef = FIRStorage.storage().reference().child("UserAvatar").child("\(imageName).png")
             if let uploadData = UIImagePNGRepresentation(self.chooesAvatarImageView.image!){
                 storeageRef.putData(uploadData, metadata: nil, completion: {(metadata, error) in
                     if error != nil {
                         SVProgressHUD.dismiss()
-                        print(error)
+                        //display error message
+                        let failedUploadingAvatarAlert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: UIAlertControllerStyle.Alert)
+                        let ok1Action = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {(result : UIAlertAction) -> Void in
+                            //print("OK")
+                        }
+                        failedUploadingAvatarAlert.addAction(ok1Action)
+                        self.presentViewController(failedUploadingAvatarAlert, animated: true, completion: nil)
+                        //print(error)
                         return}
                     if let userAvatarUrl = metadata?.downloadURL()?.absoluteString{
                     let values = ["name": Tools.trim(name), "email": Tools.trim(email), "userAvatarUrl": userAvatarUrl]
@@ -251,11 +274,26 @@ class registerWithEmail: UIViewController, UITextFieldDelegate, UIImagePickerCon
         let userRef = ref.child("users").child(uid)
         userRef.updateChildValues(values, withCompletionBlock: {(err, ref) in
             if err != nil {
-                print(err)
+                //print(err)
+                //display error message, failed write to database
+                let failedWriteDatabaseAlert = UIAlertController(title: "Error", message: err?.localizedDescription, preferredStyle: UIAlertControllerStyle.Alert)
+                let ok2Action = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {(result : UIAlertAction) -> Void in
+                    //print("OK")
+                }
+                failedWriteDatabaseAlert.addAction(ok2Action)
+                self.presentViewController(failedWriteDatabaseAlert, animated: true, completion: nil)
                 SVProgressHUD.dismiss()
                 return}
-            try! FIRAuth.auth()!.signOut()
+            //try! FIRAuth.auth()!.signOut()
             SVProgressHUD.dismiss()
+            //send email verification 
+            FIRAuth.auth()?.currentUser?.sendEmailVerificationWithCompletion({(error) in
+                if error != nil {
+                    print(error?.localizedDescription)
+                    return
+                }
+                print("email is sent")
+            })
             self.dismissViewControllerAnimated(true, completion: nil)
         })
     }
@@ -279,7 +317,7 @@ class registerWithEmail: UIViewController, UITextFieldDelegate, UIImagePickerCon
         }else {
         self.registerAccountBtn.enabled = false}
     }
-    
+    //touch on view, resign keyboard
     func allTextFieldsResignFirstResponder() {
         self.inputNameTF.resignFirstResponder()
         self.inputEmailTF.resignFirstResponder()

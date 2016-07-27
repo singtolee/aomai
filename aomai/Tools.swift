@@ -25,5 +25,4 @@ class Tools {
         return emailTest.evaluateWithObject(email)
     }
     
-    
 }

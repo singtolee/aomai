@@ -63,6 +63,9 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
         addEmailTFBottomLine()
         addPasswordTFBottomLine()
         setUpForgetPasswordButton()
+        //resign keyboard when touch outside textfields
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(allTextFieldsResignFirstResponder)))
+        self.view.userInteractionEnabled = true
         
     }
     
@@ -177,7 +180,11 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
         FIRAuth.auth()?.signInWithEmail(Tools.trim(email), password: Tools.trim(psd), completion: {(user, error) in
             if error != nil {
                 SVProgressHUD.dismiss()
-                print(error?.localizedDescription)
+                let loginErrorAlert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .Alert)
+                let action = UIAlertAction(title: "OK", style: .Default) {(_: UIAlertAction) -> Void in}
+                loginErrorAlert.addAction(action)
+                self.presentViewController(loginErrorAlert, animated: true, completion: nil)
+                //print(error?.localizedDescription)
                 return
             }
             SVProgressHUD.dismiss()
@@ -207,6 +214,46 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
             make.left.equalTo(self.view)
             make.right.equalTo(self.view)
         }
+        self.forgetPasswordBtn.addTarget(self, action: #selector(popUpResetPasswordAlert), forControlEvents: .TouchUpInside)
+    }
+    func popUpResetPasswordAlert() {
+        var resetEmailTF: UITextField?
+        let resetPasswordAlert = UIAlertController(title: "Tell me your Email", message: nil, preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "Reset Password", style: .Default) {(result: UIAlertAction) -> Void in
+            //send email to reset password
+            //print(resetEmailTF?.text)
+            SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.Dark)
+            SVProgressHUD.showWithStatus("Please wait...")
+            FIRAuth.auth()?.sendPasswordResetWithEmail((resetEmailTF?.text)!) {error in
+                if error != nil {
+                    //display error
+                    SVProgressHUD.dismiss()
+                    //print(error?.localizedDescription)
+                    let sendEmailFailed = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: UIAlertControllerStyle.Alert)
+                    let ok1Action = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {(_: UIAlertAction) -> Void in                    }
+                    sendEmailFailed.addAction(ok1Action)
+                    self.presentViewController(sendEmailFailed, animated: true, completion: nil)
+                    return
+                }else {
+                    //tell user check email, reset password link was sent
+                    SVProgressHUD.dismiss()
+                    let sendEmailSuccess = UIAlertController(title: "Check you Inbox", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                    let ok2Action = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {(_: UIAlertAction) -> Void in                    }
+                    sendEmailSuccess.addAction(ok2Action)
+                    self.presentViewController(sendEmailSuccess, animated: true, completion: nil)
+                }
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Default) {(_: UIAlertAction) -> Void in}
+        resetPasswordAlert.addAction(okAction)
+        resetPasswordAlert.addAction(cancelAction)
+        resetPasswordAlert.addTextFieldWithConfigurationHandler { (tf) -> Void in
+            //textfield customization code
+            resetEmailTF = tf
+            resetEmailTF!.placeholder = "Enter your Email"
+        }
+        self.presentViewController(resetPasswordAlert, animated: true, completion: nil)
+        
     }
     
     func setupFacebookSignInBtn() {
@@ -262,6 +309,10 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
                            // print("I am in Firebase now")
                             if error != nil{
                             return}
+                            //save user name, email and avatar to Database
+                            guard let uid = user?.uid, name = user?.displayName, email = user?.email else {return}
+                            let values = ["name": name, "email": email]
+                            self.registerUserIntoDatabaseWithUID(uid, values: values)
                             SVProgressHUD.dismiss()
                             self.dismissViewControllerAnimated(true, completion: nil)
                             
@@ -272,6 +323,17 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
                 })
 
     }
+    
+    private func registerUserIntoDatabaseWithUID(uid: String, values: [String: AnyObject]) {
+        let ref = FIRDatabase.database().reference()
+        let userRef = ref.child("users").child(uid)
+        userRef.updateChildValues(values, withCompletionBlock: {(err, ref) in
+            if err != nil {
+                print(err)
+                return}
+        })
+    }
+
     
     func goToRegisterPage() {
         let registerPage = registerWithEmail()
@@ -292,5 +354,11 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
         }else {self.emailLoginBtn.enabled = false}
         
     }
+    
+    func allTextFieldsResignFirstResponder() {
+        self.emailTF.resignFirstResponder()
+        self.pswd.resignFirstResponder()
+    }
+
     
 }
