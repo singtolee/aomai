@@ -317,8 +317,8 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
                             if error != nil{
                             return}
                             //save user name, email and avatar to Database
-                            guard let uid = user?.uid, name = user?.displayName, email = user?.email else {return}
-                            let values = ["name": name, "email": email]
+                            guard let uid = user?.uid, name = user?.displayName, email = user?.email, url = user?.photoURL?.absoluteString else {return}
+                            let values = ["name": name, "email": email, "userAvatarUrl": url]
                             self.registerUserIntoDatabaseWithUID(uid, values: values)
                             SVProgressHUD.dismiss()
                             self.dismissViewControllerAnimated(true, completion: nil)

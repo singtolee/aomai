@@ -234,7 +234,9 @@ class registerWithEmail: UIViewController, UITextFieldDelegate, UIImagePickerCon
             
             let imageName = NSUUID().UUIDString
             let storeageRef = FIRStorage.storage().reference().child("UserAvatar").child("\(imageName).png")
-            if let uploadData = UIImagePNGRepresentation(self.chooesAvatarImageView.image!){
+            //use JPEG format to compress profile picture
+            if let uploadData = UIImageJPEGRepresentation(self.chooesAvatarImageView.image!, 0.1){
+            //if let uploadData = UIImagePNGRepresentation(self.chooesAvatarImageView.image!){
                 storeageRef.putData(uploadData, metadata: nil, completion: {(metadata, error) in
                     if error != nil {
                         SVProgressHUD.dismiss()
