@@ -40,32 +40,36 @@ class meTab: UIViewController {
                 self.goToSignInBtn.hidden = true
                 self.signOutFBBtn.hidden = false
                 self.userName.hidden = false
-                //print(user)
-                
-                let name = user.displayName
-                if name != nil {
-                    self.userName.text = name
-                }else{
-                    //self.userName.text = "Your name is a secret."
-                    if user.emailVerified {
-                        self.userName.text = "I am verified 5555!!!"
+                //fectch user profile from datebase
+                FIRDatabase.database().reference().child("users").child(user.uid).observeEventType(.Value, withBlock: { (snap) in
+                    if let dict = snap.value as? [String: AnyObject] {
+                        let vser = Vser()
+                        vser.setValuesForKeysWithDictionary(dict)
+                        self.userName.text = vser.name
+                        let url = NSURL(string: vser.userAvatarUrl!)
+                        let imageCache = NSCache()
+                        if let cachedImage = imageCache.objectForKey(url!) as? UIImage {
+                            self.userAva.image = cachedImage
+                            return
+                        }
+                        NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler: { (data, response, error) in
+                            if error != nil {
+                                print(error?.localizedDescription)
+                                return
+                            }
+                            dispatch_async(dispatch_get_main_queue(), {
+                                if let downloadedImage = UIImage(data: data!) {
+                                    imageCache.setObject(downloadedImage, forKey: url!)
+                                    self.userAva.image = downloadedImage
+                                    self.userAva.layer.cornerRadius = self.userAva.frame.size.width/2
+                                    self.userAva.clipsToBounds = true
+                                }
+                            })
+                        }).resume()
+                        
                     }
-                    else { self.userName.text = "I am not verified XXXX!!!"}
-                    //self.userName.text = user.email
-                }
-                let imageUrl = user.photoURL
-                
-                // set round image frame
-                self.userAva.layer.cornerRadius = self.userAva.frame.size.width/2
-                self.userAva.clipsToBounds = true
-                
-                if imageUrl != nil {
-                    let avatar = NSData(contentsOfURL: imageUrl!)
-                    self.userAva.image = UIImage(data: avatar!)
-                }else{
-                    self.userAva.image = UIImage(named: "whiteAva")
-                }
-                
+                    
+                }, withCancelBlock: nil)
             } else {
                 // No user is signed in.
                 //maybe clear Facebook sign in tooken?
@@ -90,6 +94,7 @@ class meTab: UIViewController {
         try! FIRAuth.auth()!.signOut()
         FBSDKAccessToken.setCurrentAccessToken(nil)
         self.userName.hidden = true
+        self.userName.text = ""
         self.goToSignInBtn.hidden = false
         self.signOutFBBtn.hidden = true
         self.userAva.image = UIImage(named: "whiteAva")
@@ -154,6 +159,7 @@ class meTab: UIViewController {
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent;
     }
+    
     
     
     

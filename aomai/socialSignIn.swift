@@ -69,6 +69,13 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
         
     }
     
+    override func viewDidAppear(animated: Bool) {
+        //if user loged in, dismiss this view
+        if FIRAuth.auth()?.currentUser != nil {
+            self.dismissViewControllerAnimated(false, completion: nil)
+        }
+    }
+    
     func setupCancelLogInBtn() {
         self.cancelLoginBtn.setImage(UIImage(named: "cancelLogin"), forState: .Normal)
         self.cancelLoginBtn.snp_makeConstraints { (make) in
