@@ -12,7 +12,12 @@ import Firebase
 import FirebaseAuth
 import FBSDKLoginKit
 
-class meTab: UIViewController {
+class meTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    //populate functions
+    let cellID = "cellID"
+    let funcs = ["Orders", "History", "Address", "Profile", "Settings", "About Us"]
+    let icons = [UIImage(named: "Truck-24"), UIImage(named: "history-24"), UIImage(named: "Location-24"), UIImage(named: "Info-24"), UIImage(named: "Settings-24"), UIImage(named: "About-24")]
     
     let userAva = UIImageView()
     let goToSignInBtn = UIButton()
@@ -109,6 +114,9 @@ class meTab: UIViewController {
             make.left.equalTo(self.view)
             make.right.equalTo(self.view)
         }
+        self.functionsListTableView.delegate = self
+        self.functionsListTableView.dataSource = self
+        self.functionsListTableView.reloadData()
     }
     
     func setUpUserAvatar() {
@@ -160,6 +168,57 @@ class meTab: UIViewController {
         return UIStatusBarStyle.LightContent;
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return icons.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        //let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath)
+        let cell = UITableViewCell(style: .Default, reuseIdentifier: cellID)
+        cell.textLabel?.text = funcs[indexPath.row]
+        cell.imageView?.image = icons[indexPath.row]
+        cell.imageView?.tintColor = UIColor.blueColor()
+        cell.accessoryType = .DisclosureIndicator
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        //check if user signed in
+        if FIRAuth.auth()?.currentUser != nil {
+            if indexPath.row == 0 {
+                let orderView = OrderView()
+                let nav = UINavigationController(rootViewController: orderView)
+                self.presentViewController(nav, animated: true, completion: nil)
+            }
+            else if indexPath.row == 1 {
+                let orderView = OrderView()
+                let nav = UINavigationController(rootViewController: orderView)
+                self.presentViewController(nav, animated: true, completion: nil)
+            }
+            else if indexPath.row == 2 {
+                let vc = MyAddress()
+                let nav = UINavigationController(rootViewController: vc)
+                self.presentViewController(nav, animated: true, completion: nil)
+            }
+            else {
+                let vc = MyAddress()
+                let nav = UINavigationController(rootViewController: vc)
+                self.presentViewController(nav, animated: true, completion: nil)
+            }
+        }
+        else {
+            didplayNeedSignInAlert()
+        }
+    }
+    
+    func didplayNeedSignInAlert() {
+        let needSignIn = UIAlertController(title: "Sorry", message: "Please sign in First", preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "OK", style: .Default) {(_: UIAlertAction) -> Void in}
+        needSignIn.addAction(okAction)
+        self.presentViewController(needSignIn, animated: true, completion: nil)
+        
+    }
     
     
     

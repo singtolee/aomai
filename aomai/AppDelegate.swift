@@ -23,8 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         window?.rootViewController = tabbar()
         //self.window?.tintColor = UIColor.blackColor()
-        self.window?.tintColor = UIColor(red:21/255, green:67/255, blue:96/255, alpha:1.0)
-        
+        //self.window?.tintColor = UIColor(red:21/255, green:67/255, blue:96/255, alpha:1.0)
+        self.window?.tintColor = Tools.bgColor
         //Firebase
         FIRApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
