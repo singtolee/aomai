@@ -25,6 +25,7 @@
 		097469241D4BB052009459EF /* Vser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097469231D4BB052009459EF /* Vser.swift */; };
 		099B9AE31D4FA50F006CC617 /* MyAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099B9AE21D4FA50F006CC617 /* MyAddress.swift */; };
 		09B7E8441D3DDF4000479035 /* registerWithEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7E8431D3DDF4000479035 /* registerWithEmail.swift */; };
+		09D05E441D635CDD0020B70F /* AboutUs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D05E431D635CDD0020B70F /* AboutUs.swift */; };
 		0C6F72DF964B3A8BFE3CC86F /* Pods_aomai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6270E9424D0A8DFF1F1ECF7 /* Pods_aomai.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		097469231D4BB052009459EF /* Vser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vser.swift; sourceTree = "<group>"; };
 		099B9AE21D4FA50F006CC617 /* MyAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAddress.swift; sourceTree = "<group>"; };
 		09B7E8431D3DDF4000479035 /* registerWithEmail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = registerWithEmail.swift; sourceTree = "<group>"; };
+		09D05E431D635CDD0020B70F /* AboutUs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUs.swift; sourceTree = "<group>"; };
 		49ECF41FECF2F06D027E7A71 /* Pods-aomai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomai.release.xcconfig"; path = "Pods/Target Support Files/Pods-aomai/Pods-aomai.release.xcconfig"; sourceTree = "<group>"; };
 		C022D0FB85189C919AAEA95E /* Pods-aomai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomai.debug.xcconfig"; path = "Pods/Target Support Files/Pods-aomai/Pods-aomai.debug.xcconfig"; sourceTree = "<group>"; };
 		D6270E9424D0A8DFF1F1ECF7 /* Pods_aomai.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_aomai.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +116,7 @@
 			children = (
 				099B9AE21D4FA50F006CC617 /* MyAddress.swift */,
 				09107FE71D5B7DA20099E52C /* OrderView.swift */,
+				09D05E431D635CDD0020B70F /* AboutUs.swift */,
 			);
 			name = functions;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				099B9AE31D4FA50F006CC617 /* MyAddress.swift in Sources */,
+				09D05E441D635CDD0020B70F /* AboutUs.swift in Sources */,
 				0955E4E61D36F4EE0060B47E /* ViewController.swift in Sources */,
 				0955E4FE1D36F64E0060B47E /* tabbar.swift in Sources */,
 				0955E4E41D36F4EE0060B47E /* AppDelegate.swift in Sources */,

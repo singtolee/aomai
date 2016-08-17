@@ -201,6 +201,11 @@ class meTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 let nav = UINavigationController(rootViewController: vc)
                 self.presentViewController(nav, animated: true, completion: nil)
             }
+            else if indexPath.row == 5 {
+                let vc = AboutUs()
+                let nav = UINavigationController(rootViewController: vc)
+                self.presentViewController(nav, animated: true, completion: nil)
+            }
             else {
                 let vc = MyAddress()
                 let nav = UINavigationController(rootViewController: vc)
