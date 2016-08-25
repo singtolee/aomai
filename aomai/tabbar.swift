@@ -13,19 +13,24 @@ class tabbar: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //store tab
-        let store = storeTab()
+        let store = StoreTab()
         store.tabBarItem.title = "Store"
         store.tabBarItem.image = UIImage(named: "store")
+        
+        let prd = ProductTab()
+        prd.tabBarItem.title = "Product"
+        prd.tabBarItem.image = UIImage(named: "product")
+        
         //cart tab
-        let cart = cartTabViewController()
+        let cart = CartTab()
         cart.tabBarItem.title = "Cart"
         cart.tabBarItem.image = UIImage(named: "cart")
         //me tab
-        let me = meTab()
+        let me = MeTab()
         me.tabBarItem.title = "Me"
         me.tabBarItem.image = UIImage(named: "me")
         
-        viewControllers = [store, cart, me]
+        viewControllers = [store, prd, cart, me]
     }
 
   }

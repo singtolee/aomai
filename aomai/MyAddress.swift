@@ -27,14 +27,14 @@ class MyAddress: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
         setUpPhoneTextField()
         addressPicker.delegate = self
         addressPicker.dataSource = self
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Return", style: .Plain, target: self, action: #selector(dismissVC))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "backArrow"), style: .Plain, target: self, action: #selector(dismissVC))
         //self.navigationController?.navigationBar.barTintColor = Tools.bgColor
-        self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
+        self.navigationController?.navigationBar.barTintColor = Tools.dancingShoesColor
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController?.navigationBar.barStyle = .Black
 
-        self.title = "My Address"
+        self.title = "EDIE ADDRESS"
         view.backgroundColor = UIColor.whiteColor()
         fetchOFB()
     }

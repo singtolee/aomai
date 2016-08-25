@@ -16,7 +16,12 @@ class AboutUs: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Return", style: .Plain, target: self, action: #selector(dismissVC))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "backArrow"), style: .Plain, target: self, action: #selector(dismissVC))
+        navigationController?.navigationBar.barTintColor = Tools.dancingShoesColor
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        navigationController?.navigationBar.barStyle = .Black
+        self.title = "ABOUT US"
         scrollView.backgroundColor = UIColor.whiteColor()
         scrollView.contentSize = CGSize(width: view.bounds.width, height: view.bounds.height*1.2)
         view.addSubview(scrollView)
@@ -35,5 +40,9 @@ class AboutUs: UIViewController {
     
     func dismissVC() {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent;
     }
 }

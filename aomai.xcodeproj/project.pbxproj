@@ -13,16 +13,17 @@
 		09232ECD1D3BD7F500CF0C0A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09232ECA1D3BD7F500CF0C0A /* FBSDKLoginKit.framework */; };
 		09232ECE1D3BD7F500CF0C0A /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09232ECB1D3BD7F500CF0C0A /* FBSDKShareKit.framework */; };
 		09232ED01D3BDEC600CF0C0A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 09232ECF1D3BDEC600CF0C0A /* GoogleService-Info.plist */; };
+		092629981D675B7B00F3112C /* ProductTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092629971D675B7B00F3112C /* ProductTab.swift */; };
 		0955E4E41D36F4EE0060B47E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955E4E31D36F4EE0060B47E /* AppDelegate.swift */; };
-		0955E4E61D36F4EE0060B47E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955E4E51D36F4EE0060B47E /* ViewController.swift */; };
 		0955E4EB1D36F4EE0060B47E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0955E4EA1D36F4EE0060B47E /* Assets.xcassets */; };
 		0955E4EE1D36F4EE0060B47E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0955E4EC1D36F4EE0060B47E /* LaunchScreen.storyboard */; };
-		0955E4F81D36F6070060B47E /* storeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955E4F71D36F6070060B47E /* storeTab.swift */; };
-		0955E4FA1D36F6230060B47E /* cartTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955E4F91D36F6230060B47E /* cartTabViewController.swift */; };
-		0955E4FC1D36F6340060B47E /* meTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955E4FB1D36F6340060B47E /* meTab.swift */; };
+		0955E4F81D36F6070060B47E /* StoreTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955E4F71D36F6070060B47E /* StoreTab.swift */; };
+		0955E4FA1D36F6230060B47E /* CartTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955E4F91D36F6230060B47E /* CartTab.swift */; };
+		0955E4FC1D36F6340060B47E /* MeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955E4FB1D36F6340060B47E /* MeTab.swift */; };
 		0955E4FE1D36F64E0060B47E /* tabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955E4FD1D36F64E0060B47E /* tabbar.swift */; };
 		0955E5001D3700810060B47E /* socialSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955E4FF1D3700810060B47E /* socialSignIn.swift */; };
 		097469241D4BB052009459EF /* Vser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097469231D4BB052009459EF /* Vser.swift */; };
+		09991E081D6D0E22009B81F9 /* EmptyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09991E071D6D0E22009B81F9 /* EmptyTableView.swift */; };
 		099B9AE31D4FA50F006CC617 /* MyAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099B9AE21D4FA50F006CC617 /* MyAddress.swift */; };
 		09B7E8441D3DDF4000479035 /* registerWithEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7E8431D3DDF4000479035 /* registerWithEmail.swift */; };
 		09D05E441D635CDD0020B70F /* AboutUs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D05E431D635CDD0020B70F /* AboutUs.swift */; };
@@ -36,18 +37,19 @@
 		09232ECA1D3BD7F500CF0C0A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDKs/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		09232ECB1D3BD7F500CF0C0A /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../Documents/FacebookSDKs/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		09232ECF1D3BDEC600CF0C0A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		092629971D675B7B00F3112C /* ProductTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTab.swift; sourceTree = "<group>"; };
 		0955E4E01D36F4EE0060B47E /* aomai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aomai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0955E4E31D36F4EE0060B47E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0955E4E51D36F4EE0060B47E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0955E4EA1D36F4EE0060B47E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0955E4ED1D36F4EE0060B47E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0955E4EF1D36F4EE0060B47E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0955E4F71D36F6070060B47E /* storeTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = storeTab.swift; sourceTree = "<group>"; };
-		0955E4F91D36F6230060B47E /* cartTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cartTabViewController.swift; sourceTree = "<group>"; };
-		0955E4FB1D36F6340060B47E /* meTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = meTab.swift; sourceTree = "<group>"; };
+		0955E4F71D36F6070060B47E /* StoreTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreTab.swift; sourceTree = "<group>"; };
+		0955E4F91D36F6230060B47E /* CartTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartTab.swift; sourceTree = "<group>"; };
+		0955E4FB1D36F6340060B47E /* MeTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeTab.swift; sourceTree = "<group>"; };
 		0955E4FD1D36F64E0060B47E /* tabbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tabbar.swift; sourceTree = "<group>"; };
 		0955E4FF1D3700810060B47E /* socialSignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = socialSignIn.swift; sourceTree = "<group>"; };
 		097469231D4BB052009459EF /* Vser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vser.swift; sourceTree = "<group>"; };
+		09991E071D6D0E22009B81F9 /* EmptyTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyTableView.swift; sourceTree = "<group>"; };
 		099B9AE21D4FA50F006CC617 /* MyAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAddress.swift; sourceTree = "<group>"; };
 		09B7E8431D3DDF4000479035 /* registerWithEmail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = registerWithEmail.swift; sourceTree = "<group>"; };
 		09D05E431D635CDD0020B70F /* AboutUs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUs.swift; sourceTree = "<group>"; };
@@ -92,23 +94,32 @@
 		0955E4E21D36F4EE0060B47E /* aomai */ = {
 			isa = PBXGroup;
 			children = (
+				09991E061D6D0DD7009B81F9 /* Tools */,
 				099B9AE11D4FA4DD006CC617 /* functions */,
 				0955E4E31D36F4EE0060B47E /* AppDelegate.swift */,
-				0955E4E51D36F4EE0060B47E /* ViewController.swift */,
 				0955E4EA1D36F4EE0060B47E /* Assets.xcassets */,
 				0955E4EC1D36F4EE0060B47E /* LaunchScreen.storyboard */,
 				0955E4EF1D36F4EE0060B47E /* Info.plist */,
 				09232ECF1D3BDEC600CF0C0A /* GoogleService-Info.plist */,
-				0955E4F71D36F6070060B47E /* storeTab.swift */,
-				0955E4F91D36F6230060B47E /* cartTabViewController.swift */,
-				0955E4FB1D36F6340060B47E /* meTab.swift */,
+				0955E4F71D36F6070060B47E /* StoreTab.swift */,
+				0955E4F91D36F6230060B47E /* CartTab.swift */,
+				0955E4FB1D36F6340060B47E /* MeTab.swift */,
+				092629971D675B7B00F3112C /* ProductTab.swift */,
 				0955E4FD1D36F64E0060B47E /* tabbar.swift */,
 				0955E4FF1D3700810060B47E /* socialSignIn.swift */,
 				09B7E8431D3DDF4000479035 /* registerWithEmail.swift */,
-				0916CD5E1D3FC65300167988 /* Tools.swift */,
-				097469231D4BB052009459EF /* Vser.swift */,
 			);
 			path = aomai;
+			sourceTree = "<group>";
+		};
+		09991E061D6D0DD7009B81F9 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				0916CD5E1D3FC65300167988 /* Tools.swift */,
+				097469231D4BB052009459EF /* Vser.swift */,
+				09991E071D6D0E22009B81F9 /* EmptyTableView.swift */,
+			);
+			name = Tools;
 			sourceTree = "<group>";
 		};
 		099B9AE11D4FA4DD006CC617 /* functions */ = {
@@ -266,17 +277,18 @@
 			files = (
 				099B9AE31D4FA50F006CC617 /* MyAddress.swift in Sources */,
 				09D05E441D635CDD0020B70F /* AboutUs.swift in Sources */,
-				0955E4E61D36F4EE0060B47E /* ViewController.swift in Sources */,
 				0955E4FE1D36F64E0060B47E /* tabbar.swift in Sources */,
 				0955E4E41D36F4EE0060B47E /* AppDelegate.swift in Sources */,
 				09B7E8441D3DDF4000479035 /* registerWithEmail.swift in Sources */,
-				0955E4FA1D36F6230060B47E /* cartTabViewController.swift in Sources */,
+				0955E4FA1D36F6230060B47E /* CartTab.swift in Sources */,
 				0955E5001D3700810060B47E /* socialSignIn.swift in Sources */,
+				09991E081D6D0E22009B81F9 /* EmptyTableView.swift in Sources */,
 				0916CD5F1D3FC65300167988 /* Tools.swift in Sources */,
-				0955E4FC1D36F6340060B47E /* meTab.swift in Sources */,
+				0955E4FC1D36F6340060B47E /* MeTab.swift in Sources */,
+				092629981D675B7B00F3112C /* ProductTab.swift in Sources */,
 				09107FE81D5B7DA20099E52C /* OrderView.swift in Sources */,
 				097469241D4BB052009459EF /* Vser.swift in Sources */,
-				0955E4F81D36F6070060B47E /* storeTab.swift in Sources */,
+				0955E4F81D36F6070060B47E /* StoreTab.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

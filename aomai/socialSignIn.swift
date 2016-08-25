@@ -38,7 +38,7 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = Tools.bgColor //#154360
+        self.view.backgroundColor = UIColor.whiteColor() //#154360
         self.view.addSubview(fbLoginBtn)
         self.view.addSubview(cancelLoginBtn)
         self.view.addSubview(emailTF)
@@ -66,7 +66,7 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
         //resign keyboard when touch outside textfields
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(allTextFieldsResignFirstResponder)))
         self.view.userInteractionEnabled = true
-        
+        //move up
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -79,7 +79,7 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
     func setupCancelLogInBtn() {
         self.cancelLoginBtn.setImage(UIImage(named: "cancelLogin"), forState: .Normal)
         self.cancelLoginBtn.snp_makeConstraints { (make) in
-            make.top.equalTo(self.view).offset(30)
+            make.top.equalTo(self.view).offset(view.bounds.height/20) //
             make.left.equalTo(self.view).offset(20)
             make.height.equalTo(36)
             make.width.equalTo(36)
@@ -90,12 +90,12 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
     
     func setUpWelcomeLable() {
         self.welcomeLable.text = "welcome to aomai"
-        self.welcomeLable.font = UIFont.boldSystemFontOfSize(30)
+        self.welcomeLable.font = UIFont(name: "ArialRoundedMTBold", size: 26)
         //set to be at center
         self.welcomeLable.textAlignment = .Center
-        self.welcomeLable.textColor = UIColor.whiteColor()
+        self.welcomeLable.textColor = UIColor.lightGrayColor()
         self.welcomeLable.snp_makeConstraints { (make) in
-            make.top.equalTo(self.view).offset(80)
+            make.top.equalTo(self.view).offset(view.bounds.height/8) //80
             make.left.equalTo(self.view)
             make.right.equalTo(self.view)
             make.height.equalTo(36)
@@ -104,9 +104,16 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
     
     func setUpEmailTF() {
         self.emailTF.attributedPlaceholder = NSAttributedString(string: "Email Address", attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
-        self.emailTF.textColor = UIColor.whiteColor()
+        self.emailTF.keyboardType = .EmailAddress
+        self.emailTF.font = UIFont(name: "ArialRoundedMTBold", size: 14)
+        self.emailTF.textColor = UIColor.lightGrayColor()
         self.emailTF.returnKeyType = .Next
         self.emailTF.clearButtonMode = .WhileEditing
+        //get NSUserDefaults EMAIL
+        let getUserDefault = NSUserDefaults.standardUserDefaults()
+        if let savedEmail = getUserDefault.stringForKey("EMAIL") {
+            self.emailTF.text = savedEmail
+        }
         //add left icon
         let imageView = UIImageView()
         imageView.image = UIImage(named: "email")
@@ -115,7 +122,7 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
         emailTF.leftViewMode = UITextFieldViewMode.Always
         
         self.emailTF.snp_makeConstraints { (make) in
-            make.top.equalTo(welcomeLable.snp_bottom).offset(35)
+            make.top.equalTo(welcomeLable.snp_bottom).offset(view.bounds.height/20) //35
             make.left.equalTo(self.view).offset(40)
             make.right.equalTo(self.view).offset(-40)
             make.height.equalTo(36)
@@ -123,7 +130,7 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
         
     }
     func addEmailTFBottomLine(){
-        self.eLine.backgroundColor = UIColor.whiteColor()
+        self.eLine.backgroundColor = UIColor.lightGrayColor()
         self.eLine.snp_makeConstraints { (make) in
             make.top.equalTo(emailTF.snp_bottom)
             make.height.equalTo(1)
@@ -133,12 +140,16 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
     }
     
     func setUpPasswordTF() {
-        self.pswd.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
-        self.pswd.textColor = UIColor.whiteColor()
+        self.pswd.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName : UIColor.lightGrayColor()])
+        self.pswd.textColor = UIColor.lightGrayColor()
         self.pswd.clearButtonMode = .WhileEditing
         self.pswd.secureTextEntry = true
         self.pswd.returnKeyType = .Done
-        
+        //get NSUserDefaults PASSWORD
+        let getUserDefault = NSUserDefaults.standardUserDefaults()
+        if let savedPSD = getUserDefault.stringForKey("PASSWORD") {
+            self.pswd.text = savedPSD
+        }
         //add left icon
         let imageView = UIImageView()
         imageView.image = UIImage(named: "lock")
@@ -154,7 +165,7 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
 
     }
     func addPasswordTFBottomLine(){
-        self.pswdLine.backgroundColor = UIColor.whiteColor()
+        self.pswdLine.backgroundColor = UIColor.lightGrayColor()
         self.pswdLine.snp_makeConstraints { (make) in
             make.top.equalTo(pswd.snp_bottom)
             make.height.equalTo(1)
@@ -165,10 +176,9 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
     
     func setUpEmailLogInBtn() {
         self.emailLoginBtn.layer.cornerRadius = 4
-        self.emailLoginBtn.backgroundColor = UIColor(red:0.80, green:0.36, blue:0.36, alpha:1.0) //Indian red
+        self.emailLoginBtn.backgroundColor = Tools.dancingShoesColor //Indian red
         self.emailLoginBtn.setTitle("LOGIN", forState: .Normal)
-        self.emailLoginBtn.enabled = false
-        self.emailLoginBtn.setTitleColor(Tools.bgColor, forState: .Disabled)
+        self.emailLoginBtn.titleLabel!.font =  UIFont(name: "ArialRoundedMTBold", size: 18)
         self.emailLoginBtn.snp_makeConstraints { (make) in
             make.top.equalTo(self.pswdLine.snp_bottom).offset(25)
             make.left.equalTo(self.view).offset(40)
@@ -180,30 +190,45 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
     }
     
     func loginWithEmail() {
-        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.Dark)
-        SVProgressHUD.showWithStatus("Logging in...")
-        guard let email = self.emailTF.text, psd = self.pswd.text
-            else {return}
-        FIRAuth.auth()?.signInWithEmail(Tools.trim(email), password: Tools.trim(psd), completion: {(user, error) in
-            if error != nil {
-                SVProgressHUD.dismiss()
-                let loginErrorAlert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .Alert)
-                let action = UIAlertAction(title: "OK", style: .Default) {(_: UIAlertAction) -> Void in}
-                loginErrorAlert.addAction(action)
-                self.presentViewController(loginErrorAlert, animated: true, completion: nil)
-                //print(error?.localizedDescription)
-                return
-            }
-            SVProgressHUD.dismiss()
-            self.dismissViewControllerAnimated(true, completion: nil)
+        //check text field filled correctly
+        if Tools.isEmail(Tools.trim(self.emailTF.text!)) && Tools.trim(self.pswd.text!).characters.count >= 6 {
+            //NSUserDefaults
+            let saveEandP = NSUserDefaults.standardUserDefaults()
+            saveEandP.setObject(Tools.trim(self.emailTF.text!), forKey: "EMAIL")
+            saveEandP.setObject(Tools.trim(self.pswd.text!), forKey: "PASSWORD")
             
-        })
+            SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.Dark)
+            SVProgressHUD.showWithStatus("Logging in...")
+            guard let email = self.emailTF.text, psd = self.pswd.text
+                else {return}
+            FIRAuth.auth()?.signInWithEmail(Tools.trim(email), password: Tools.trim(psd), completion: {(user, error) in
+                if error != nil {
+                    SVProgressHUD.dismiss()
+                    let loginErrorAlert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .Alert)
+                    let action = UIAlertAction(title: "OK", style: .Default) {(_: UIAlertAction) -> Void in}
+                    loginErrorAlert.addAction(action)
+                    self.presentViewController(loginErrorAlert, animated: true, completion: nil)
+                    //print(error?.localizedDescription)
+                    return
+                }
+                SVProgressHUD.dismiss()
+                self.dismissViewControllerAnimated(true, completion: nil)
+                
+            })
+        } else {
+            if !Tools.isEmail(Tools.trim(self.emailTF.text!)) {
+                Tools.shakingUIView(emailTF)
+            } else if (Tools.trim(self.pswd.text!).characters.count < 6) {
+                Tools.shakingUIView(pswd)
+            }
+        }
         
     }
     
     func setUpOrLable() {
         self.orLable.text = "OR"
-        self.orLable.textColor = UIColor.whiteColor()
+        self.orLable.font = UIFont(name: "ArialRoundedMTBold", size: 14)
+        self.orLable.textColor = UIColor.lightGrayColor()
         //set to be at center
         self.orLable.textAlignment = .Center
         self.orLable.snp_makeConstraints { (make) in
@@ -215,7 +240,8 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
     
     func setUpForgetPasswordButton() {
         self.forgetPasswordBtn.setTitle("Forget your password?", forState: .Normal)
-        self.forgetPasswordBtn.titleLabel?.font = UIFont(name: "Arial-BoldMT", size: 14)
+        self.forgetPasswordBtn.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
+        self.forgetPasswordBtn.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 14)
         self.forgetPasswordBtn.snp_makeConstraints { (make) in
             make.top.equalTo(self.emailLoginBtn.snp_bottom).offset(10)
             make.left.equalTo(self.view)
@@ -244,7 +270,7 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
                 }else {
                     //tell user check email, reset password link was sent
                     SVProgressHUD.dismiss()
-                    let sendEmailSuccess = UIAlertController(title: "Check you Inbox", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                    let sendEmailSuccess = UIAlertController(title: "Check you Inbox", message: "Reset password email was sent to your Email", preferredStyle: UIAlertControllerStyle.Alert)
                     let ok2Action = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {(_: UIAlertAction) -> Void in                    }
                     sendEmailSuccess.addAction(ok2Action)
                     self.presentViewController(sendEmailSuccess, animated: true, completion: nil)
@@ -258,6 +284,7 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
             //textfield customization code
             resetEmailTF = tf
             resetEmailTF!.placeholder = "Enter your Email"
+            resetEmailTF?.keyboardType = .EmailAddress
         }
         self.presentViewController(resetPasswordAlert, animated: true, completion: nil)
         
@@ -267,6 +294,7 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
         self.fbLoginBtn.layer.cornerRadius = 4
         self.fbLoginBtn.backgroundColor = UIColor(red:59/255, green:89/255, blue:152/255, alpha:1.0) //navy blue
         self.fbLoginBtn.setTitle("Sign In With Facebook", forState: .Normal)
+        self.fbLoginBtn.titleLabel!.font =  UIFont(name: "ArialRoundedMTBold", size: 16)
         self.fbLoginBtn.snp_makeConstraints { (make) in
             make.top.equalTo(self.orLable.snp_bottom).offset(20)
             make.left.equalTo(self.view).offset(40)
@@ -279,7 +307,9 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
     }
     
     func setUpRegisterBtn() {
-        self.registerBtn.setTitle("Register an account", forState: .Normal)
+        self.registerBtn.setTitle("REGISTER AN ACCOUNT", forState: .Normal)
+        self.registerBtn.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
+        self.registerBtn.titleLabel!.font =  UIFont(name: "ArialRoundedMTBold", size: 12)
         self.registerBtn.snp_makeConstraints { (make) in
             make.top.equalTo(self.fbLoginBtn.snp_bottom).offset(25)
             make.left.equalTo(self.view)
@@ -293,7 +323,7 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent;
+        return UIStatusBarStyle.Default;
     }
     // called when Facebook login button clicked.
     func loginFB() {
@@ -353,13 +383,6 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
         else {
         self.pswd.resignFirstResponder()}
         return true
-    }
-    
-    func textFieldDidEndEditing(textField: UITextField) {
-        if Tools.isEmail(Tools.trim(self.emailTF.text!)) && Tools.trim(self.pswd.text!).characters.count >= 6 {
-            self.emailLoginBtn.enabled = true
-        }else {self.emailLoginBtn.enabled = false}
-        
     }
     
     func allTextFieldsResignFirstResponder() {
