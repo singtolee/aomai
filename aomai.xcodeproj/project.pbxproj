@@ -94,6 +94,7 @@
 		0955E4E21D36F4EE0060B47E /* aomai */ = {
 			isa = PBXGroup;
 			children = (
+				09A5BEE21D6F4AF900714DF4 /* VIEWCONTROLLERS */,
 				09991E061D6D0DD7009B81F9 /* Tools */,
 				099B9AE11D4FA4DD006CC617 /* functions */,
 				0955E4E31D36F4EE0060B47E /* AppDelegate.swift */,
@@ -101,13 +102,6 @@
 				0955E4EC1D36F4EE0060B47E /* LaunchScreen.storyboard */,
 				0955E4EF1D36F4EE0060B47E /* Info.plist */,
 				09232ECF1D3BDEC600CF0C0A /* GoogleService-Info.plist */,
-				0955E4F71D36F6070060B47E /* StoreTab.swift */,
-				0955E4F91D36F6230060B47E /* CartTab.swift */,
-				0955E4FB1D36F6340060B47E /* MeTab.swift */,
-				092629971D675B7B00F3112C /* ProductTab.swift */,
-				0955E4FD1D36F64E0060B47E /* tabbar.swift */,
-				0955E4FF1D3700810060B47E /* socialSignIn.swift */,
-				09B7E8431D3DDF4000479035 /* registerWithEmail.swift */,
 			);
 			path = aomai;
 			sourceTree = "<group>";
@@ -130,6 +124,20 @@
 				09D05E431D635CDD0020B70F /* AboutUs.swift */,
 			);
 			name = functions;
+			sourceTree = "<group>";
+		};
+		09A5BEE21D6F4AF900714DF4 /* VIEWCONTROLLERS */ = {
+			isa = PBXGroup;
+			children = (
+				0955E4F71D36F6070060B47E /* StoreTab.swift */,
+				0955E4F91D36F6230060B47E /* CartTab.swift */,
+				0955E4FB1D36F6340060B47E /* MeTab.swift */,
+				092629971D675B7B00F3112C /* ProductTab.swift */,
+				0955E4FD1D36F64E0060B47E /* tabbar.swift */,
+				0955E4FF1D3700810060B47E /* socialSignIn.swift */,
+				09B7E8431D3DDF4000479035 /* registerWithEmail.swift */,
+			);
+			name = VIEWCONTROLLERS;
 			sourceTree = "<group>";
 		};
 		B1A53F096CC4BD512797BEE5 /* Pods */ = {

@@ -105,6 +105,7 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
     func setUpEmailTF() {
         self.emailTF.attributedPlaceholder = NSAttributedString(string: "Email Address", attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
         self.emailTF.keyboardType = .EmailAddress
+        self.emailTF.autocorrectionType = .No
         self.emailTF.font = UIFont(name: "ArialRoundedMTBold", size: 14)
         self.emailTF.textColor = UIColor.lightGrayColor()
         self.emailTF.returnKeyType = .Next
@@ -349,7 +350,7 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
                             //save user name, email and avatar to Database
                             guard let uid = user?.uid, name = user?.displayName, email = user?.email, url = user?.photoURL?.absoluteString else {return}
                             let values = ["name": name, "email": email, "userAvatarUrl": url]
-                            self.registerUserIntoDatabaseWithUID(uid, values: values)
+                            Tools.registerUserIntoDatabaseWithUID(uid, values: values)
                             SVProgressHUD.dismiss()
                             self.dismissViewControllerAnimated(true, completion: nil)
                             
@@ -360,18 +361,6 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
                 })
 
     }
-    
-    private func registerUserIntoDatabaseWithUID(uid: String, values: [String: AnyObject]) {
-        let ref = FIRDatabase.database().reference()
-        let userRef = ref.child("users").child(uid)
-        userRef.updateChildValues(values, withCompletionBlock: {(err, ref) in
-            if err != nil {
-                print(err)
-                return}
-        })
-    }
-
-    
     func goToRegisterPage() {
         let registerPage = registerWithEmail()
         self.presentViewController(registerPage, animated: true, completion: nil)

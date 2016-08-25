@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class Tools {
     
@@ -34,6 +35,15 @@ class Tools {
         animation.fromValue = NSValue(CGPoint: CGPointMake(textField.center.x - 10, textField.center.y))
         animation.toValue = NSValue(CGPoint: CGPointMake(textField.center.x + 10, textField.center.y))
         textField.layer.addAnimation(animation, forKey: "position")
+    }
+    
+    static func registerUserIntoDatabaseWithUID(uid: String, values: [String: AnyObject]) {
+        let ref = FIRDatabase.database().reference().child("users").child(uid)
+        ref.updateChildValues(values, withCompletionBlock: {(err, ref) in
+            if err != nil {
+                print(err)
+                return}
+        })
     }
 
     

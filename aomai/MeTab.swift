@@ -73,12 +73,17 @@ class MeTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
                             })
                         }).resume()
                         
+                    } else {
+                        self.userAva.image = UIImage(named: "whiteAva")
+                        self.userName.text = user.email
+                        self.userName.font = UIFont(name: "ArialRoundedMTBold", size: 14)
                     }
                     
                 }, withCancelBlock: nil)
             } else {
                 // No user is signed in.
                 //maybe clear Facebook sign in tooken?
+                self.userAva.image = UIImage(named: "whiteAva")
             }
         }
 
