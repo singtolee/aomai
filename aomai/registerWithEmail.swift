@@ -61,6 +61,7 @@ class registerWithEmail: UIViewController, UITextFieldDelegate {
         self.inputEmailTF.autocorrectionType = .No
         self.inputEmailTF.attributedPlaceholder = NSAttributedString(string: "Email Address", attributes: [NSForegroundColorAttributeName : UIColor.lightGrayColor()])
         self.inputEmailTF.textColor = UIColor.lightGrayColor()
+        self.inputEmailTF.font = UIFont(name: "ArialRoundedMTBold", size: 14)
         self.inputEmailTF.returnKeyType = .Next
         let imageView = UIImageView()
         imageView.image = UIImage(named: "email")
@@ -89,8 +90,9 @@ class registerWithEmail: UIViewController, UITextFieldDelegate {
     func setUpInputPasswordTextField() {
         self.view.addSubview(inputPasswordTF)
         self.inputPasswordTF.secureTextEntry = true
-        self.inputPasswordTF.attributedPlaceholder = NSAttributedString(string: "Password(at least 6 digits)", attributes: [NSForegroundColorAttributeName : UIColor.lightGrayColor()])
+        self.inputPasswordTF.attributedPlaceholder = NSAttributedString(string: "Password(at least 6 chars)", attributes: [NSForegroundColorAttributeName : UIColor.lightGrayColor()])
         self.inputPasswordTF.textColor = UIColor.lightGrayColor()
+        self.inputPasswordTF.font = UIFont(name: "ArialRoundedMTBold", size: 14)
         self.inputPasswordTF.returnKeyType = .Done
         let imageView = UIImageView()
         imageView.image = UIImage(named: "lock")
@@ -119,6 +121,7 @@ class registerWithEmail: UIViewController, UITextFieldDelegate {
     func setUpRegisterButton() {
         self.view.addSubview(registerAccountBtn)
         self.registerAccountBtn.setTitle("REGISTER", forState: .Normal)
+        self.registerAccountBtn.titleLabel!.font =  UIFont(name: "ArialRoundedMTBold", size: 18)
         self.registerAccountBtn.setTitleColor(Tools.bgColor, forState: .Disabled)
         self.registerAccountBtn.layer.cornerRadius = 4
         self.registerAccountBtn.backgroundColor = Tools.dancingShoesColor //Indian red

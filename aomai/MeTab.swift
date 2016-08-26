@@ -28,7 +28,8 @@ class MeTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Tools.dancingShoesColor
+        addBG()
+        view.backgroundColor = UIColor.whiteColor()
         setUpGoToSignInBtn()
         setUpUserAvatar()
         setUpFunctionsListTableView()
@@ -48,41 +49,47 @@ class MeTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 //fectch user profile from datebase
                 FIRDatabase.database().reference().child("users").child(user.uid).observeEventType(.Value, withBlock: { (snap) in
                     if let dict = snap.value as? [String: AnyObject] {
-                        let vser = Vser()
-                        vser.setValuesForKeysWithDictionary(dict)
-                        self.userName.text = vser.name
-                        self.userName.font = UIFont(name: "ArialRoundedMTBold", size: 14)
-                        let url = NSURL(string: vser.userAvatarUrl!)
-                        let imageCache = NSCache()
-                        if let cachedImage = imageCache.objectForKey(url!) as? UIImage {
-                            self.userAva.image = cachedImage
-                            return
+                        if let uname = dict["name"] {
+                            self.userName.text = (uname as! String)
+                            self.userName.font = UIFont(name: "ArialRoundedMTBold", size: 14)
+                        } else {
+                            self.userName.text = "Tap to edit name"
+                            self.userName.font = UIFont(name: "ArialRoundedMTBold", size: 14)
                         }
-                        NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler: { (data, response, error) in
-                            if error != nil {
-                                print(error?.localizedDescription)
+                        if let uUrl = dict["userAvatarUrl"] {
+                            let url = NSURL(string: uUrl as! String)
+                            let imageCache = NSCache()
+                            if let cachedImage = imageCache.objectForKey(url!) as? UIImage {
+                                self.userAva.image = cachedImage
                                 return
                             }
-                            dispatch_async(dispatch_get_main_queue(), {
-                                if let downloadedImage = UIImage(data: data!) {
-                                    imageCache.setObject(downloadedImage, forKey: url!)
-                                    self.userAva.image = downloadedImage
-                                    self.userAva.layer.cornerRadius = self.userAva.frame.size.width/2
-                                    self.userAva.clipsToBounds = true
+                            NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler: { (data, response, error) in
+                                if error != nil {
+                                    print(error?.localizedDescription)
+                                    return
                                 }
-                            })
-                        }).resume()
-                        
+                                dispatch_async(dispatch_get_main_queue(), {
+                                    if let downloadedImage = UIImage(data: data!) {
+                                        imageCache.setObject(downloadedImage, forKey: url!)
+                                        self.userAva.image = downloadedImage
+                                        self.userAva.layer.cornerRadius = self.userAva.frame.size.width/2
+                                        self.userAva.clipsToBounds = true
+                                    }
+                                })
+                            }).resume()
+
+                        } else {
+                            self.userAva.image = UIImage(named: "whiteAva")
+                        }
                     } else {
                         self.userAva.image = UIImage(named: "whiteAva")
-                        self.userName.text = user.email
+                        self.userName.text = "Tap to edit name"
                         self.userName.font = UIFont(name: "ArialRoundedMTBold", size: 14)
                     }
                     
                 }, withCancelBlock: nil)
             } else {
                 // No user is signed in.
-                //maybe clear Facebook sign in tooken?
                 self.userAva.image = UIImage(named: "whiteAva")
             }
         }
@@ -118,7 +125,7 @@ class MeTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.functionsListTableView.backgroundColor = UIColor.whiteColor()
         self.functionsListTableView.snp_makeConstraints { (make) in
             make.top.equalTo(self.view).offset(180)
-            make.bottom.equalTo(self.view)
+            make.bottom.equalTo(self.view).offset(-49)
             make.left.equalTo(self.view)
             make.right.equalTo(self.view)
         }
@@ -235,6 +242,17 @@ class MeTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    func addBG() {
+        let bgView = UIView()
+        bgView.backgroundColor = Tools.dancingShoesColor
+        self.view.addSubview(bgView)
+        bgView.snp_makeConstraints { (make) in
+            make.top.equalTo(view)
+            make.left.equalTo(self.view)
+            make.right.equalTo(self.view)
+            make.height.equalTo(180)
+        }
+    }
     
     
     

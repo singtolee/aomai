@@ -103,7 +103,7 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
     }
     
     func setUpEmailTF() {
-        self.emailTF.attributedPlaceholder = NSAttributedString(string: "Email Address", attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
+        self.emailTF.attributedPlaceholder = NSAttributedString(string: "Email Address", attributes: [NSForegroundColorAttributeName : UIColor.lightGrayColor()])
         self.emailTF.keyboardType = .EmailAddress
         self.emailTF.autocorrectionType = .No
         self.emailTF.font = UIFont(name: "ArialRoundedMTBold", size: 14)
@@ -143,6 +143,7 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
     func setUpPasswordTF() {
         self.pswd.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName : UIColor.lightGrayColor()])
         self.pswd.textColor = UIColor.lightGrayColor()
+        self.pswd.font = UIFont(name: "ArialRoundedMTBold", size: 14)
         self.pswd.clearButtonMode = .WhileEditing
         self.pswd.secureTextEntry = true
         self.pswd.returnKeyType = .Done
@@ -344,16 +345,29 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
                        // print("Logged in")
                         let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
                         FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
-                           // print("I am in Firebase now")
+                            var values: Dictionary = [String: String]()
                             if error != nil{
+                                //report error then return
+                                SVProgressHUD.dismiss()
                             return}
                             //save user name, email and avatar to Database
-                            guard let uid = user?.uid, name = user?.displayName, email = user?.email, url = user?.photoURL?.absoluteString else {return}
-                            let values = ["name": name, "email": email, "userAvatarUrl": url]
-                            Tools.registerUserIntoDatabaseWithUID(uid, values: values)
-                            SVProgressHUD.dismiss()
-                            self.dismissViewControllerAnimated(true, completion: nil)
-                            
+                            if let uid = user?.uid {
+                                if let name = user?.displayName {
+                                    values["name"] = name
+                                }
+                                if let email = user?.email {
+                                    values["email"] = email
+                                }
+                                if let url = user?.photoURL?.absoluteString {
+                                    values["userAvatarUrl"] = url
+                                }
+                                Tools.registerUserIntoDatabaseWithUID(uid, values: values)
+                                SVProgressHUD.dismiss()
+                                self.dismissViewControllerAnimated(true, completion: nil)
+                            } else {
+                                //report facebook account error message
+                                SVProgressHUD.dismiss() 
+                            }
                         }
         
                     }
