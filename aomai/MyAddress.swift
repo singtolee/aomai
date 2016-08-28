@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
 import SnapKit
 
 class MyAddress: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
@@ -27,11 +28,8 @@ class MyAddress: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
         setUpPhoneTextField()
         addressPicker.delegate = self
         addressPicker.dataSource = self
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "backArrow"), style: .Plain, target: self, action: #selector(dismissVC))
-        //self.navigationController?.navigationBar.barTintColor = Tools.bgColor
         self.navigationController?.navigationBar.barTintColor = Tools.dancingShoesColor
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController?.navigationBar.barStyle = .Black
 
         self.title = "EDIE ADDRESS"
@@ -113,9 +111,6 @@ class MyAddress: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
             make.height.equalTo(36)
         }
     }
-//    func textFieldDidEndEditing(textField: UITextField) {
-//        self.detailAddressTextField.resignFirstResponder()
-//    }
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.detailAddressTextField.resignFirstResponder()
         return true
@@ -123,10 +118,6 @@ class MyAddress: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
     
     func doneButtonForPicker() {
         self.addressTextField.resignFirstResponder()
-    }
-    
-    func dismissVC() {
-        dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

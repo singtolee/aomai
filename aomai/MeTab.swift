@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import Firebase
+import FirebaseDatabase
 import FirebaseAuth
 import FBSDKLoginKit
 
@@ -25,7 +26,15 @@ class MeTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let functionsListTableView = UITableView()
     //sign out button, add to top right corner first, later move to tableview list
     let signOutFBBtn = UIButton()
-
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        navigationController?.navigationBarHidden = false
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         addBG()
@@ -136,6 +145,8 @@ class MeTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func setUpUserAvatar() {
         self.view.addSubview(userAva)
+        self.userAva.userInteractionEnabled = true
+        self.userAva.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goToProfilePage)))
         self.userAva.image = UIImage(named: "whiteAva")
         self.userAva.snp_makeConstraints { (make) in
             make.size.equalTo(80)
@@ -146,6 +157,8 @@ class MeTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     func setUpUserName() {
         self.view.addSubview(userName)
+        self.userName.userInteractionEnabled = true
+        self.userName.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goToProfilePage)))
         self.userName.textColor = UIColor.whiteColor()
         //set to be at center
         self.userName.textAlignment = .Center
@@ -176,7 +189,7 @@ class MeTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
     }
     func goToSignInPage() {
-        let signInPage = socialSignIn()
+        let signInPage = SocialSignIn()
         presentViewController(signInPage, animated: true, completion: nil)
     }
     
@@ -205,28 +218,29 @@ class MeTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if FIRAuth.auth()?.currentUser != nil {
             if indexPath.row == 0 {
                 let orderView = OrderView()
-                let nav = UINavigationController(rootViewController: orderView)
-                self.presentViewController(nav, animated: true, completion: nil)
+                navigationController?.pushViewController(orderView, animated: true)
             }
             else if indexPath.row == 1 {
                 let addressView = MyAddress()
-                let nav = UINavigationController(rootViewController: addressView)
-                self.presentViewController(nav, animated: true, completion: nil)
+                navigationController?.pushViewController(addressView, animated: true)
             }
             else if indexPath.row == 2 {
                 let vc = MyAddress()
-                let nav = UINavigationController(rootViewController: vc)
-                self.presentViewController(nav, animated: true, completion: nil)
+                navigationController?.pushViewController(vc, animated: true)
+                
+            }
+            else if indexPath.row == 3 {
+                let editProfile = EditProfileTableViewController()
+                navigationController?.pushViewController(editProfile, animated: true)
             }
             else if indexPath.row == 5 {
                 let vc = AboutUs()
-                let nav = UINavigationController(rootViewController: vc)
-                self.presentViewController(nav, animated: true, completion: nil)
+                navigationController?.pushViewController(vc, animated: true)
+                
             }
             else {
                 let vc = MyAddress()
-                let nav = UINavigationController(rootViewController: vc)
-                self.presentViewController(nav, animated: true, completion: nil)
+                navigationController?.pushViewController(vc, animated: true)
             }
         }
         else {
@@ -251,6 +265,14 @@ class MeTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
             make.left.equalTo(self.view)
             make.right.equalTo(self.view)
             make.height.equalTo(180)
+        }
+    }
+    
+    func goToProfilePage() {
+        //handel user profile
+        if FIRAuth.auth()?.currentUser != nil {
+            let editProfile = EditProfileTableViewController()
+            navigationController?.pushViewController(editProfile, animated: true)
         }
     }
     

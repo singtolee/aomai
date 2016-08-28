@@ -8,7 +8,7 @@
 
 import UIKit
 
-class tabbar: UITabBarController {
+class Tabbar: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +29,10 @@ class tabbar: UITabBarController {
         let me = MeTab()
         me.tabBarItem.title = "Me"
         me.tabBarItem.image = UIImage(named: "me")
-        
-        viewControllers = [store, prd, cart, me]
+        //test if I can put this view controller inside Navigation controller,
+        let nav = UINavigationController()
+        nav.viewControllers = [me]
+        viewControllers = [store, prd, cart, nav]
     }
 
   }

@@ -14,7 +14,7 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import SVProgressHUD
 
-class socialSignIn: UIViewController, UITextFieldDelegate {
+class SocialSignIn: UIViewController, UITextFieldDelegate {
     
     let fbLoginBtn = UIButton()        //facebook login button
     let cancelLoginBtn = UIButton()    //cancek kogin button
@@ -35,7 +35,6 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
     //forget password button
     let forgetPasswordBtn = UIButton()
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor() //#154360
@@ -118,7 +117,7 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
         //add left icon
         let imageView = UIImageView()
         imageView.image = UIImage(named: "email")
-        imageView.frame = CGRect(x: 0, y: 0, width: 30, height: 24)
+        imageView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         emailTF.leftView = imageView
         emailTF.leftViewMode = UITextFieldViewMode.Always
         
@@ -155,7 +154,7 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
         //add left icon
         let imageView = UIImageView()
         imageView.image = UIImage(named: "lock")
-        imageView.frame = CGRect(x: 0, y: 0, width: 30, height: 24)
+        imageView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         pswd.leftView = imageView
         pswd.leftViewMode = UITextFieldViewMode.Always
         self.pswd.snp_makeConstraints { (make) in
@@ -376,7 +375,7 @@ class socialSignIn: UIViewController, UITextFieldDelegate {
 
     }
     func goToRegisterPage() {
-        let registerPage = registerWithEmail()
+        let registerPage = RegisterWithEmail()
         self.presentViewController(registerPage, animated: true, completion: nil)
     }
     

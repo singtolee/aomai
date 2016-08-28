@@ -14,18 +14,21 @@
 		09232ECE1D3BD7F500CF0C0A /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09232ECB1D3BD7F500CF0C0A /* FBSDKShareKit.framework */; };
 		09232ED01D3BDEC600CF0C0A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 09232ECF1D3BDEC600CF0C0A /* GoogleService-Info.plist */; };
 		092629981D675B7B00F3112C /* ProductTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092629971D675B7B00F3112C /* ProductTab.swift */; };
+		094CDC381D72590C00D03A5B /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094CDC371D72590C00D03A5B /* EditProfileTableViewController.swift */; };
+		094CDC5D1D72F10E00D03A5B /* EidtUserName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094CDC5C1D72F10E00D03A5B /* EidtUserName.swift */; };
+		094CDC5F1D733F1B00D03A5B /* EditPhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094CDC5E1D733F1B00D03A5B /* EditPhoneNumber.swift */; };
 		0955E4E41D36F4EE0060B47E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955E4E31D36F4EE0060B47E /* AppDelegate.swift */; };
 		0955E4EB1D36F4EE0060B47E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0955E4EA1D36F4EE0060B47E /* Assets.xcassets */; };
 		0955E4EE1D36F4EE0060B47E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0955E4EC1D36F4EE0060B47E /* LaunchScreen.storyboard */; };
 		0955E4F81D36F6070060B47E /* StoreTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955E4F71D36F6070060B47E /* StoreTab.swift */; };
 		0955E4FA1D36F6230060B47E /* CartTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955E4F91D36F6230060B47E /* CartTab.swift */; };
 		0955E4FC1D36F6340060B47E /* MeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955E4FB1D36F6340060B47E /* MeTab.swift */; };
-		0955E4FE1D36F64E0060B47E /* tabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955E4FD1D36F64E0060B47E /* tabbar.swift */; };
-		0955E5001D3700810060B47E /* socialSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955E4FF1D3700810060B47E /* socialSignIn.swift */; };
+		0955E4FE1D36F64E0060B47E /* Tabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955E4FD1D36F64E0060B47E /* Tabbar.swift */; };
+		0955E5001D3700810060B47E /* SocialSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955E4FF1D3700810060B47E /* SocialSignIn.swift */; };
 		097469241D4BB052009459EF /* Vser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097469231D4BB052009459EF /* Vser.swift */; };
 		09991E081D6D0E22009B81F9 /* EmptyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09991E071D6D0E22009B81F9 /* EmptyTableView.swift */; };
 		099B9AE31D4FA50F006CC617 /* MyAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099B9AE21D4FA50F006CC617 /* MyAddress.swift */; };
-		09B7E8441D3DDF4000479035 /* registerWithEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7E8431D3DDF4000479035 /* registerWithEmail.swift */; };
+		09B7E8441D3DDF4000479035 /* RegisterWithEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7E8431D3DDF4000479035 /* RegisterWithEmail.swift */; };
 		09D05E441D635CDD0020B70F /* AboutUs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D05E431D635CDD0020B70F /* AboutUs.swift */; };
 		0C6F72DF964B3A8BFE3CC86F /* Pods_aomai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6270E9424D0A8DFF1F1ECF7 /* Pods_aomai.framework */; };
 /* End PBXBuildFile section */
@@ -38,6 +41,9 @@
 		09232ECB1D3BD7F500CF0C0A /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../Documents/FacebookSDKs/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		09232ECF1D3BDEC600CF0C0A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		092629971D675B7B00F3112C /* ProductTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTab.swift; sourceTree = "<group>"; };
+		094CDC371D72590C00D03A5B /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
+		094CDC5C1D72F10E00D03A5B /* EidtUserName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EidtUserName.swift; sourceTree = "<group>"; };
+		094CDC5E1D733F1B00D03A5B /* EditPhoneNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPhoneNumber.swift; sourceTree = "<group>"; };
 		0955E4E01D36F4EE0060B47E /* aomai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aomai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0955E4E31D36F4EE0060B47E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0955E4EA1D36F4EE0060B47E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -46,12 +52,12 @@
 		0955E4F71D36F6070060B47E /* StoreTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreTab.swift; sourceTree = "<group>"; };
 		0955E4F91D36F6230060B47E /* CartTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartTab.swift; sourceTree = "<group>"; };
 		0955E4FB1D36F6340060B47E /* MeTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeTab.swift; sourceTree = "<group>"; };
-		0955E4FD1D36F64E0060B47E /* tabbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tabbar.swift; sourceTree = "<group>"; };
-		0955E4FF1D3700810060B47E /* socialSignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = socialSignIn.swift; sourceTree = "<group>"; };
+		0955E4FD1D36F64E0060B47E /* Tabbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tabbar.swift; sourceTree = "<group>"; };
+		0955E4FF1D3700810060B47E /* SocialSignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialSignIn.swift; sourceTree = "<group>"; };
 		097469231D4BB052009459EF /* Vser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vser.swift; sourceTree = "<group>"; };
 		09991E071D6D0E22009B81F9 /* EmptyTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyTableView.swift; sourceTree = "<group>"; };
 		099B9AE21D4FA50F006CC617 /* MyAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAddress.swift; sourceTree = "<group>"; };
-		09B7E8431D3DDF4000479035 /* registerWithEmail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = registerWithEmail.swift; sourceTree = "<group>"; };
+		09B7E8431D3DDF4000479035 /* RegisterWithEmail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterWithEmail.swift; sourceTree = "<group>"; };
 		09D05E431D635CDD0020B70F /* AboutUs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUs.swift; sourceTree = "<group>"; };
 		49ECF41FECF2F06D027E7A71 /* Pods-aomai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomai.release.xcconfig"; path = "Pods/Target Support Files/Pods-aomai/Pods-aomai.release.xcconfig"; sourceTree = "<group>"; };
 		C022D0FB85189C919AAEA95E /* Pods-aomai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomai.debug.xcconfig"; path = "Pods/Target Support Files/Pods-aomai/Pods-aomai.debug.xcconfig"; sourceTree = "<group>"; };
@@ -73,6 +79,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		094CDC5B1D72F0D500D03A5B /* VIEWOFEDITPROFILE */ = {
+			isa = PBXGroup;
+			children = (
+				094CDC5C1D72F10E00D03A5B /* EidtUserName.swift */,
+				094CDC5E1D733F1B00D03A5B /* EditPhoneNumber.swift */,
+			);
+			name = VIEWOFEDITPROFILE;
+			sourceTree = "<group>";
+		};
 		0955E4D71D36F4EE0060B47E = {
 			isa = PBXGroup;
 			children = (
@@ -119,9 +134,11 @@
 		099B9AE11D4FA4DD006CC617 /* functions */ = {
 			isa = PBXGroup;
 			children = (
+				094CDC5B1D72F0D500D03A5B /* VIEWOFEDITPROFILE */,
 				099B9AE21D4FA50F006CC617 /* MyAddress.swift */,
 				09107FE71D5B7DA20099E52C /* OrderView.swift */,
 				09D05E431D635CDD0020B70F /* AboutUs.swift */,
+				094CDC371D72590C00D03A5B /* EditProfileTableViewController.swift */,
 			);
 			name = functions;
 			sourceTree = "<group>";
@@ -133,9 +150,9 @@
 				0955E4F91D36F6230060B47E /* CartTab.swift */,
 				0955E4FB1D36F6340060B47E /* MeTab.swift */,
 				092629971D675B7B00F3112C /* ProductTab.swift */,
-				0955E4FD1D36F64E0060B47E /* tabbar.swift */,
-				0955E4FF1D3700810060B47E /* socialSignIn.swift */,
-				09B7E8431D3DDF4000479035 /* registerWithEmail.swift */,
+				0955E4FD1D36F64E0060B47E /* Tabbar.swift */,
+				0955E4FF1D3700810060B47E /* SocialSignIn.swift */,
+				09B7E8431D3DDF4000479035 /* RegisterWithEmail.swift */,
 			);
 			name = VIEWCONTROLLERS;
 			sourceTree = "<group>";
@@ -285,14 +302,17 @@
 			files = (
 				099B9AE31D4FA50F006CC617 /* MyAddress.swift in Sources */,
 				09D05E441D635CDD0020B70F /* AboutUs.swift in Sources */,
-				0955E4FE1D36F64E0060B47E /* tabbar.swift in Sources */,
+				0955E4FE1D36F64E0060B47E /* Tabbar.swift in Sources */,
+				094CDC5D1D72F10E00D03A5B /* EidtUserName.swift in Sources */,
 				0955E4E41D36F4EE0060B47E /* AppDelegate.swift in Sources */,
-				09B7E8441D3DDF4000479035 /* registerWithEmail.swift in Sources */,
+				09B7E8441D3DDF4000479035 /* RegisterWithEmail.swift in Sources */,
 				0955E4FA1D36F6230060B47E /* CartTab.swift in Sources */,
-				0955E5001D3700810060B47E /* socialSignIn.swift in Sources */,
+				0955E5001D3700810060B47E /* SocialSignIn.swift in Sources */,
 				09991E081D6D0E22009B81F9 /* EmptyTableView.swift in Sources */,
+				094CDC381D72590C00D03A5B /* EditProfileTableViewController.swift in Sources */,
 				0916CD5F1D3FC65300167988 /* Tools.swift in Sources */,
 				0955E4FC1D36F6340060B47E /* MeTab.swift in Sources */,
+				094CDC5F1D733F1B00D03A5B /* EditPhoneNumber.swift in Sources */,
 				092629981D675B7B00F3112C /* ProductTab.swift in Sources */,
 				09107FE81D5B7DA20099E52C /* OrderView.swift in Sources */,
 				097469241D4BB052009459EF /* Vser.swift in Sources */,

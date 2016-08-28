@@ -11,7 +11,7 @@ import Firebase
 import FirebaseAuth
 import SVProgressHUD
 
-class registerWithEmail: UIViewController, UITextFieldDelegate {
+class RegisterWithEmail: UIViewController, UITextFieldDelegate {
     
     let cancelRegisterBtn = UIButton()
     let inputEmailTF = UITextField()

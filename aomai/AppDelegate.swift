@@ -21,10 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.makeKeyAndVisible()
-        window?.rootViewController = tabbar()
-        //self.window?.tintColor = UIColor.blackColor()
-        //self.window?.tintColor = UIColor(red:21/255, green:67/255, blue:96/255, alpha:1.0)
-        //self.window?.tintColor = Tools.bgColor
+        window?.rootViewController = Tabbar()
         self.window?.tintColor = Tools.dancingShoesColor
         //Firebase
         FIRApp.configure()
