@@ -14,6 +14,7 @@
 		09232ECE1D3BD7F500CF0C0A /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09232ECB1D3BD7F500CF0C0A /* FBSDKShareKit.framework */; };
 		09232ED01D3BDEC600CF0C0A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 09232ECF1D3BDEC600CF0C0A /* GoogleService-Info.plist */; };
 		092629981D675B7B00F3112C /* ProductTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092629971D675B7B00F3112C /* ProductTab.swift */; };
+		092856B91D76470200B81D6F /* EditProfilePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092856B81D76470200B81D6F /* EditProfilePhoto.swift */; };
 		094CDC381D72590C00D03A5B /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094CDC371D72590C00D03A5B /* EditProfileTableViewController.swift */; };
 		094CDC5D1D72F10E00D03A5B /* EidtUserName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094CDC5C1D72F10E00D03A5B /* EidtUserName.swift */; };
 		094CDC5F1D733F1B00D03A5B /* EditPhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094CDC5E1D733F1B00D03A5B /* EditPhoneNumber.swift */; };
@@ -41,6 +42,7 @@
 		09232ECB1D3BD7F500CF0C0A /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../Documents/FacebookSDKs/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		09232ECF1D3BDEC600CF0C0A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		092629971D675B7B00F3112C /* ProductTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTab.swift; sourceTree = "<group>"; };
+		092856B81D76470200B81D6F /* EditProfilePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfilePhoto.swift; sourceTree = "<group>"; };
 		094CDC371D72590C00D03A5B /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
 		094CDC5C1D72F10E00D03A5B /* EidtUserName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EidtUserName.swift; sourceTree = "<group>"; };
 		094CDC5E1D733F1B00D03A5B /* EditPhoneNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPhoneNumber.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			children = (
 				094CDC5C1D72F10E00D03A5B /* EidtUserName.swift */,
 				094CDC5E1D733F1B00D03A5B /* EditPhoneNumber.swift */,
+				092856B81D76470200B81D6F /* EditProfilePhoto.swift */,
 			);
 			name = VIEWOFEDITPROFILE;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				0955E4FC1D36F6340060B47E /* MeTab.swift in Sources */,
 				094CDC5F1D733F1B00D03A5B /* EditPhoneNumber.swift in Sources */,
 				092629981D675B7B00F3112C /* ProductTab.swift in Sources */,
+				092856B91D76470200B81D6F /* EditProfilePhoto.swift in Sources */,
 				09107FE81D5B7DA20099E52C /* OrderView.swift in Sources */,
 				097469241D4BB052009459EF /* Vser.swift in Sources */,
 				0955E4F81D36F6070060B47E /* StoreTab.swift in Sources */,

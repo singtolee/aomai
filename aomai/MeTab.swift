@@ -280,7 +280,7 @@ class MeTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func changeNewAvatar() {
         if FIRAuth.auth()?.currentUser != nil {
-            let changeAvatarAlertView: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+            let changeAvatarAlertView: UIAlertController = UIAlertController(title: "Change Profile Photo", message: nil, preferredStyle: .ActionSheet)
             
             let cancelActionButton: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
                 self.dismissViewControllerAnimated(true, completion: nil)

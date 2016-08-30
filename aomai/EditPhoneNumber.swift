@@ -76,11 +76,12 @@ class EditPhoneNumber: UIViewController, UITextFieldDelegate {
     }
     
     func updateUserName() {
-        self.indicator.startAnimating()
         let newPhone = Tools.trim(phoneTF.text!)
         if (newPhone.characters.count == 10) {
+            self.indicator.startAnimating()
             FIRDatabase.database().reference().child("users").child(uid!).updateChildValues(["phone": newPhone]) { (error, ref) in
                 if error != nil {
+                    self.indicator.stopAnimating()
                     return
                 }
                 self.indicator.stopAnimating()
