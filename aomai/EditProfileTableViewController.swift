@@ -13,15 +13,18 @@ import FirebaseDatabase
 
 class EditProfileTableViewController: UITableViewController {
     let cellID1 = "cellID1"
-    let items = ["PROFILE PHOTO", "NAME", "PHONE NUMBER", "RESET PASSWORD"]
-    var userInfo = ["", "", "", ""]
+    let items = ["NAME", "PHONE NUMBER"]
+    var userInfo = ["", ""]
+    //let coolView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: 1))
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView(frame: CGRectMake(0, 0, tableView.frame.size.width, 1))
         self.fetchUserInfo()
         self.title = "PROFILE"
         navigationController?.navigationBar.barTintColor = Tools.dancingShoesColor
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         navigationController?.navigationBar.barStyle = .Black
+        self.navigationController?.navigationBar.translucent = false
 
 
     }
@@ -50,15 +53,15 @@ class EditProfileTableViewController: UITableViewController {
         return cell
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == 0 {}
-        if indexPath.row == 1 {
+        //if indexPath.row == 0 {}
+        if indexPath.row == 0 {
             let vc = EidtUserName()
-            vc.nameTF.text = userInfo[1]
+            vc.nameTF.text = userInfo[0]
             navigationController?.pushViewController(vc, animated: true)
         }
-        if indexPath.row == 2 {
+        if indexPath.row == 1 {
             let vc = EditPhoneNumber()
-            vc.phoneTF.text = userInfo[2]
+            vc.phoneTF.text = userInfo[1]
             navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -69,10 +72,10 @@ class EditProfileTableViewController: UITableViewController {
         FIRDatabase.database().reference().child("users").child(uid!).observeEventType(.Value, withBlock: { (snap) in
             if let dict = snap.value as? [String: AnyObject] {
                 if let uname = dict["name"] {
-                    self.userInfo[1] = uname as! String
+                    self.userInfo[0] = uname as! String
                 }
                 if let uPhone = dict["phone"] {
-                    self.userInfo[2] = uPhone as! String
+                    self.userInfo[1] = uPhone as! String
                 }
             }
             dispatch_async(dispatch_get_main_queue(), {

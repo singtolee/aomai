@@ -31,6 +31,7 @@ class MyAddress: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
         self.navigationController?.navigationBar.barTintColor = Tools.dancingShoesColor
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.barStyle = .Black
+        self.navigationController?.navigationBar.translucent = false
 
         self.title = "EDIE ADDRESS"
         view.backgroundColor = UIColor.whiteColor()

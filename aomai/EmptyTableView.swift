@@ -27,7 +27,6 @@ class EmptyTableView: UIView {
         self.lable.text = lableText
         addSubview(imageView)
         addSubview(lable)
-        
     }
 
 }

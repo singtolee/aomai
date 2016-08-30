@@ -19,6 +19,7 @@ class AboutUs: UIViewController {
         navigationController?.navigationBar.barTintColor = Tools.dancingShoesColor
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         navigationController?.navigationBar.barStyle = .Black
+        self.navigationController?.navigationBar.translucent = false
         self.title = "ABOUT US"
         scrollView.backgroundColor = UIColor.whiteColor()
         scrollView.contentSize = CGSize(width: view.bounds.width, height: view.bounds.height*1.2)

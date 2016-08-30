@@ -17,6 +17,7 @@ class EidtUserName: UIViewController, UITextFieldDelegate {
     let nameTF = UITextField()
     let doneBTN = UIButton()
     let uid = FIRAuth.auth()?.currentUser?.uid
+    let indicator = UIActivityIndicatorView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +25,11 @@ class EidtUserName: UIViewController, UITextFieldDelegate {
         self.navigationController?.navigationBar.barTintColor = Tools.dancingShoesColor
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.barStyle = .Black
+        self.navigationController?.navigationBar.translucent = false
         self.title = "EDIT NAME"
         setUpNameTF()
         setUpDoneBTN()
+        setUpActivityIndicator()
         
 
         // Do any additional setup after loading the view.
@@ -48,6 +51,16 @@ class EidtUserName: UIViewController, UITextFieldDelegate {
         
     }
     
+    func setUpActivityIndicator() {
+        view.addSubview(indicator)
+        indicator.hidesWhenStopped = true
+        indicator.activityIndicatorViewStyle = .Gray
+        indicator.snp_makeConstraints { (make) in
+            make.bottom.equalTo(nameTF.snp_top).offset(-10)
+            make.centerX.equalTo(view.snp_centerX)
+        }
+    }
+    
     func setUpDoneBTN() {
         view.addSubview(doneBTN)
         doneBTN.snp_makeConstraints { (make) in
@@ -63,12 +76,18 @@ class EidtUserName: UIViewController, UITextFieldDelegate {
     }
     
     func updateUserName() {
-        //FIRDatabase.database().reference().child("users").child(uid!).updateChildValues(["name": Tools.trim(nameTF.text!)])
-        FIRDatabase.database().reference().child("users").child(uid!).updateChildValues(["name": Tools.trim(nameTF.text!)]) { (error, ref) in
-            if error != nil {
-                return
+        self.indicator.startAnimating()
+        let newName = Tools.trim(nameTF.text!)
+        if (newName.characters.count > 0) {
+            FIRDatabase.database().reference().child("users").child(uid!).updateChildValues(["name": newName]) { (error, ref) in
+                if error != nil {
+                    return
+                }
+                self.indicator.stopAnimating()
+                self.navigationController?.popViewControllerAnimated(true)
             }
-            self.navigationController?.popViewControllerAnimated(true)
+        } else {
+            Tools.shakingUIView(nameTF)
         }
     }
 

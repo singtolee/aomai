@@ -9,10 +9,12 @@
 import Foundation
 import UIKit
 import Firebase
+import FirebaseDatabase
 
 class Tools {
     
-    static let bgColor: UIColor = UIColor(red:21/255, green:67/255, blue:96/255, alpha:1.0)
+    static let bgColor: UIColor = UIColor(red:251/255, green:252/255, blue:252/255, alpha:1.0)
+    static let veryLightColor: UIColor = UIColor(red:21/255, green:67/255, blue:96/255, alpha:1.0)
     static let dancingShoesColor = UIColor(red:255/255, green:56/255, blue:69/255, alpha:1.0)
     
     static func trim(str: String) -> String{

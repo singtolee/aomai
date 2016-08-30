@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import Firebase
 import FirebaseAuth
+import FirebaseDatabase
 import FBSDKCoreKit
 import FBSDKLoginKit
 import SVProgressHUD
@@ -344,33 +345,41 @@ class SocialSignIn: UIViewController, UITextFieldDelegate {
                        // print("Logged in")
                         let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
                         FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
-                            var values: Dictionary = [String: String]()
                             if error != nil{
                                 //report error then return
                                 SVProgressHUD.dismiss()
                             return}
-                            //save user name, email and avatar to Database
                             if let uid = user?.uid {
-                                if let name = user?.displayName {
-                                    values["name"] = name
-                                }
-                                if let email = user?.email {
-                                    values["email"] = email
-                                }
-                                if let url = user?.photoURL?.absoluteString {
-                                    values["userAvatarUrl"] = url
-                                }
-                                Tools.registerUserIntoDatabaseWithUID(uid, values: values)
-                                SVProgressHUD.dismiss()
-                                self.dismissViewControllerAnimated(true, completion: nil)
+                                //check if this user exists or not
+                                let ref = FIRDatabase.database().reference().child("users")
+                                ref.observeSingleEventOfType(FIRDataEventType.Value, withBlock: { (snapshot) in
+                                    if snapshot.hasChild(uid) {
+                                        //user exists
+                                        SVProgressHUD.dismiss()
+                                        self.dismissViewControllerAnimated(true, completion: nil)
+                                    } else {
+                                        //user not exists
+                                        var values: Dictionary = [String: String]()
+                                        if let name = user?.displayName {
+                                            values["name"] = name
+                                        }
+                                        if let email = user?.email {
+                                            values["email"] = email
+                                        }
+                                        if let url = user?.photoURL?.absoluteString {
+                                            values["userAvatarUrl"] = url
+                                        }
+                                        Tools.registerUserIntoDatabaseWithUID(uid, values: values)
+                                        SVProgressHUD.dismiss()
+                                        self.dismissViewControllerAnimated(true, completion: nil)
+                                    }
+                                })
                             } else {
-                                //report facebook account error message
-                                SVProgressHUD.dismiss() 
+                                //no uid find
+                                SVProgressHUD.dismiss()
                             }
                         }
-        
                     }
-                    
                 })
 
     }
@@ -391,6 +400,18 @@ class SocialSignIn: UIViewController, UITextFieldDelegate {
         self.emailTF.resignFirstResponder()
         self.pswd.resignFirstResponder()
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     
 }

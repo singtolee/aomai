@@ -26,6 +26,7 @@ class MeTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let functionsListTableView = UITableView()
     //sign out button, add to top right corner first, later move to tableview list
     let signOutFBBtn = UIButton()
+    //let coolView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: 1))
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -44,6 +45,7 @@ class MeTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
         setUpFunctionsListTableView()
         setUpUserName()
         setUpFBSignOutBtn() //to be removed later as this bottun will be in the tableview list
+        functionsListTableView.tableFooterView = UIView(frame: CGRectMake(0, 0, functionsListTableView.frame.size.width, 1))
         //default hidden and visiable
         self.goToSignInBtn.hidden = false
         self.signOutFBBtn.hidden = true
@@ -146,7 +148,7 @@ class MeTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func setUpUserAvatar() {
         self.view.addSubview(userAva)
         self.userAva.userInteractionEnabled = true
-        self.userAva.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goToProfilePage)))
+        self.userAva.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeNewAvatar)))
         self.userAva.image = UIImage(named: "whiteAva")
         self.userAva.snp_makeConstraints { (make) in
             make.size.equalTo(80)
@@ -275,6 +277,31 @@ class MeTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(editProfile, animated: true)
         }
     }
+    
+    func changeNewAvatar() {
+        if FIRAuth.auth()?.currentUser != nil {
+            let changeAvatarAlertView: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+            
+            let cancelActionButton: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+            changeAvatarAlertView.addAction(cancelActionButton)
+            
+            let fromLib: UIAlertAction = UIAlertAction(title: "Library", style: .Default)
+            { action -> Void in
+                //choose from album
+            }
+            changeAvatarAlertView.addAction(fromLib)
+            
+            let takeNewPhoto: UIAlertAction = UIAlertAction(title: "Take Photo", style: .Default)
+            { action -> Void in
+                //take new photo
+            }
+            changeAvatarAlertView.addAction(takeNewPhoto)
+            self.presentViewController(changeAvatarAlertView, animated: true, completion: nil)
+        }
+    }
+
     
     
     
