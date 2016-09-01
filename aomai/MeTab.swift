@@ -117,7 +117,7 @@ class MeTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
             make.right.equalTo(self.view).offset(-20)
             make.height.equalTo(36)
         }
-        self.signOutFBBtn.addTarget(self, action: #selector(signOutFromAll), forControlEvents: .TouchUpInside)
+        self.signOutFBBtn.addTarget(self, action: #selector(signOutActionList), forControlEvents: .TouchUpInside)
     }
     
     //sign out from firebase and Facebook
@@ -148,7 +148,7 @@ class MeTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func setUpUserAvatar() {
         self.view.addSubview(userAva)
         self.userAva.userInteractionEnabled = true
-        self.userAva.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeNewAvatar)))
+        self.userAva.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goToProfilePage)))
         self.userAva.image = UIImage(named: "whiteAva")
         self.userAva.snp_makeConstraints { (make) in
             make.size.equalTo(80)
@@ -278,26 +278,27 @@ class MeTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func changeNewAvatar() {
+    func signOutActionList() {
         if FIRAuth.auth()?.currentUser != nil {
-            let changeAvatarAlertView: UIAlertController = UIAlertController(title: "Change Profile Photo", message: nil, preferredStyle: .ActionSheet)
+            let changeAvatarAlertView: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
             
             let cancelActionButton: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
             changeAvatarAlertView.addAction(cancelActionButton)
             
-            let fromLib: UIAlertAction = UIAlertAction(title: "Library", style: .Default)
+            let fromLib: UIAlertAction = UIAlertAction(title: "SIGN OUT", style: .Default)
             { action -> Void in
                 //choose from album
+                self.signOutFromAll()
             }
             changeAvatarAlertView.addAction(fromLib)
             
-            let takeNewPhoto: UIAlertAction = UIAlertAction(title: "Take Photo", style: .Default)
-            { action -> Void in
-                //take new photo
-            }
-            changeAvatarAlertView.addAction(takeNewPhoto)
+//            let takeNewPhoto: UIAlertAction = UIAlertAction(title: "Take Photo", style: .Default)
+//            { action -> Void in
+//                //take new photo
+//            }
+//            changeAvatarAlertView.addAction(takeNewPhoto)
             self.presentViewController(changeAvatarAlertView, animated: true, completion: nil)
         }
     }

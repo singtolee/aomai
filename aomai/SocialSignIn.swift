@@ -35,6 +35,7 @@ class SocialSignIn: UIViewController, UITextFieldDelegate {
     let pswdLine = UIView()
     //forget password button
     let forgetPasswordBtn = UIButton()
+    let offset = 24
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -124,8 +125,8 @@ class SocialSignIn: UIViewController, UITextFieldDelegate {
         
         self.emailTF.snp_makeConstraints { (make) in
             make.top.equalTo(welcomeLable.snp_bottom).offset(view.bounds.height/20) //35
-            make.left.equalTo(self.view).offset(40)
-            make.right.equalTo(self.view).offset(-40)
+            make.left.equalTo(self.view).offset(offset)
+            make.right.equalTo(self.view).offset(-offset)
             make.height.equalTo(36)
         }
         
@@ -160,8 +161,8 @@ class SocialSignIn: UIViewController, UITextFieldDelegate {
         pswd.leftViewMode = UITextFieldViewMode.Always
         self.pswd.snp_makeConstraints { (make) in
             make.top.equalTo(emailTF.snp_bottom).offset(10)
-            make.left.equalTo(self.view).offset(40)
-            make.right.equalTo(self.view).offset(-40)
+            make.left.equalTo(self.view).offset(offset)
+            make.right.equalTo(self.view).offset(-offset)
             make.height.equalTo(36)
         }
 
@@ -183,8 +184,8 @@ class SocialSignIn: UIViewController, UITextFieldDelegate {
         self.emailLoginBtn.titleLabel!.font =  UIFont(name: "ArialRoundedMTBold", size: 18)
         self.emailLoginBtn.snp_makeConstraints { (make) in
             make.top.equalTo(self.pswdLine.snp_bottom).offset(25)
-            make.left.equalTo(self.view).offset(40)
-            make.right.equalTo(self.view).offset(-40)
+            make.left.equalTo(self.view).offset(offset)
+            make.right.equalTo(self.view).offset(-offset)
             make.height.equalTo(36)
         }
         self.emailLoginBtn.addTarget(self, action: #selector(loginWithEmail), forControlEvents: .TouchUpInside)
@@ -299,8 +300,8 @@ class SocialSignIn: UIViewController, UITextFieldDelegate {
         self.fbLoginBtn.titleLabel!.font =  UIFont(name: "ArialRoundedMTBold", size: 16)
         self.fbLoginBtn.snp_makeConstraints { (make) in
             make.top.equalTo(self.orLable.snp_bottom).offset(20)
-            make.left.equalTo(self.view).offset(40)
-            make.right.equalTo(self.view).offset(-40)
+            make.left.equalTo(self.view).offset(offset)
+            make.right.equalTo(self.view).offset(-offset)
             make.height.equalTo(36)
         }
         
@@ -400,18 +401,4 @@ class SocialSignIn: UIViewController, UITextFieldDelegate {
         self.emailTF.resignFirstResponder()
         self.pswd.resignFirstResponder()
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
 }

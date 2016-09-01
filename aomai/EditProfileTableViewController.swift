@@ -14,7 +14,7 @@ import FirebaseDatabase
 class EditProfileTableViewController: UITableViewController {
     let cellID1 = "cellID1"
     let items = ["PROFILE PHOTO", "NAME", "PHONE NUMBER"]
-    var userInfo = ["", "", "", ""]
+    var userInfo = ["", "", ""]
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView(frame: CGRectMake(0, 0, tableView.frame.size.width, 1))
@@ -54,7 +54,7 @@ class EditProfileTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == 0 {
             let vc = EditProfilePhoto()
-            vc.photoUrl = userInfo[3]
+            //vc.photoUrl = userInfo[3]
             navigationController?.pushViewController(vc, animated: true)
         }
         if indexPath.row == 1 {
@@ -79,9 +79,9 @@ class EditProfileTableViewController: UITableViewController {
                 if let uPhone = dict["phone"] {
                     self.userInfo[2] = uPhone as! String
                 }
-                if let uUrl = dict["userAvatarUrl"] {
-                    self.userInfo[3] = uUrl as! String
-                }
+//                if let uUrl = dict["userAvatarUrl"] {
+//                    self.userInfo[3] = uUrl as! String
+//                }
             }
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadData()

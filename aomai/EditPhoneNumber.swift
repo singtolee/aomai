@@ -12,7 +12,7 @@ import FirebaseDatabase
 import FirebaseAuth
 
 class EditPhoneNumber: UIViewController, UITextFieldDelegate {
-    let phoneTF = UITextField()
+    let phoneTF = MYTextField()
     let doneBTN = UIButton()
     let uid = FIRAuth.auth()?.currentUser?.uid
     let indicator = UIActivityIndicatorView()

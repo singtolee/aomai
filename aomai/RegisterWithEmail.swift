@@ -16,9 +16,10 @@ class RegisterWithEmail: UIViewController, UITextFieldDelegate {
     let cancelRegisterBtn = UIButton()
     let inputEmailTF = UITextField()
     let emailBottomLine = UIView()
-    let inputPasswordTF = UITextField()
+    let inputPasswordTF = MYTextField()
     let passwordBottomLine = UIView()
     let registerAccountBtn = UIButton()
+    let offset = 24.0
     override func viewDidLoad() {
         super.viewDidLoad()
         //set delegate
@@ -70,8 +71,8 @@ class RegisterWithEmail: UIViewController, UITextFieldDelegate {
         inputEmailTF.leftViewMode = UITextFieldViewMode.Always
         self.inputEmailTF.snp_remakeConstraints { (make) in
             make.top.equalTo(self.view).offset(100)
-            make.left.equalTo(self.view).offset(40)
-            make.right.equalTo(self.view).offset(-40)
+            make.left.equalTo(self.view).offset(offset)
+            make.right.equalTo(self.view).offset(-offset)
             make.height.equalTo(36)
         }
 
@@ -101,8 +102,8 @@ class RegisterWithEmail: UIViewController, UITextFieldDelegate {
         inputPasswordTF.leftViewMode = UITextFieldViewMode.Always
         self.inputPasswordTF.snp_remakeConstraints { (make) in
             make.top.equalTo(inputEmailTF.snp_bottom).offset(10)
-            make.left.equalTo(self.view).offset(40)
-            make.right.equalTo(self.view).offset(-40)
+            make.left.equalTo(self.view).offset(offset)
+            make.right.equalTo(self.view).offset(-offset)
             make.height.equalTo(36)
         }
 
@@ -128,8 +129,8 @@ class RegisterWithEmail: UIViewController, UITextFieldDelegate {
         self.registerAccountBtn.snp_remakeConstraints { (make) in
             make.top.equalTo(inputPasswordTF.snp_bottom).offset(20)
             make.height.equalTo(36)
-            make.left.equalTo(self.view).offset(40)
-            make.right.equalTo(self.view).offset(-40)
+            make.left.equalTo(self.view).offset(offset)
+            make.right.equalTo(self.view).offset(-offset)
         }
         self.registerAccountBtn.addTarget(self, action: #selector(onRegisterBtnClicked), forControlEvents: .TouchUpInside)
     }
