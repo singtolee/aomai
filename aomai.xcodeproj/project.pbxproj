@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		09107FE81D5B7DA20099E52C /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09107FE71D5B7DA20099E52C /* OrderView.swift */; };
 		0916CD5F1D3FC65300167988 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0916CD5E1D3FC65300167988 /* Tools.swift */; };
+		091AE1441D7AE6A1002CB33F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091AE1431D7AE6A1002CB33F /* Extensions.swift */; };
 		09232ECC1D3BD7F500CF0C0A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09232EC91D3BD7F500CF0C0A /* FBSDKCoreKit.framework */; };
 		09232ECD1D3BD7F500CF0C0A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09232ECA1D3BD7F500CF0C0A /* FBSDKLoginKit.framework */; };
 		09232ECE1D3BD7F500CF0C0A /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09232ECB1D3BD7F500CF0C0A /* FBSDKShareKit.framework */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		09107FE71D5B7DA20099E52C /* OrderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
 		0916CD5E1D3FC65300167988 /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
+		091AE1431D7AE6A1002CB33F /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		09232EC91D3BD7F500CF0C0A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../Documents/FacebookSDKs/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		09232ECA1D3BD7F500CF0C0A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDKs/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		09232ECB1D3BD7F500CF0C0A /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../Documents/FacebookSDKs/FBSDKShareKit.framework; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				0916CD5E1D3FC65300167988 /* Tools.swift */,
 				097469231D4BB052009459EF /* Vser.swift */,
 				09991E071D6D0E22009B81F9 /* EmptyTableView.swift */,
+				091AE1431D7AE6A1002CB33F /* Extensions.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				0955E4FC1D36F6340060B47E /* MeTab.swift in Sources */,
 				094CDC5F1D733F1B00D03A5B /* EditPhoneNumber.swift in Sources */,
 				092629981D675B7B00F3112C /* ProductTab.swift in Sources */,
+				091AE1441D7AE6A1002CB33F /* Extensions.swift in Sources */,
 				092856B91D76470200B81D6F /* EditProfilePhoto.swift in Sources */,
 				09107FE81D5B7DA20099E52C /* OrderView.swift in Sources */,
 				097469241D4BB052009459EF /* Vser.swift in Sources */,

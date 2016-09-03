@@ -34,7 +34,9 @@ class MeTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     override func viewWillDisappear(animated: Bool) {
-        navigationController?.navigationBarHidden = false
+        super.viewWillDisappear(animated)
+        //navigationController?.navigationBarHidden = false
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,27 +70,8 @@ class MeTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
                             self.userName.font = UIFont(name: "ArialRoundedMTBold", size: 14)
                         }
                         if let uUrl = dict["userAvatarUrl"] {
-                            let url = NSURL(string: uUrl as! String)
-                            let imageCache = NSCache()
-                            if let cachedImage = imageCache.objectForKey(url!) as? UIImage {
-                                self.userAva.image = cachedImage
-                                return
-                            }
-                            NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler: { (data, response, error) in
-                                if error != nil {
-                                    print(error?.localizedDescription)
-                                    return
-                                }
-                                dispatch_async(dispatch_get_main_queue(), {
-                                    if let downloadedImage = UIImage(data: data!) {
-                                        imageCache.setObject(downloadedImage, forKey: url!)
-                                        self.userAva.image = downloadedImage
-                                        self.userAva.layer.cornerRadius = self.userAva.frame.size.width/2
-                                        self.userAva.clipsToBounds = true
-                                    }
-                                })
-                            }).resume()
-
+                            let url = uUrl as! String
+                            self.userAva.loadUserAvatar(url)
                         } else {
                             self.userAva.image = UIImage(named: "whiteAva")
                         }
@@ -149,6 +132,8 @@ class MeTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.view.addSubview(userAva)
         self.userAva.userInteractionEnabled = true
         self.userAva.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goToProfilePage)))
+        self.userAva.layer.cornerRadius = self.userAva.frame.size.width/2
+        self.userAva.clipsToBounds = true
         self.userAva.image = UIImage(named: "whiteAva")
         self.userAva.snp_makeConstraints { (make) in
             make.size.equalTo(80)

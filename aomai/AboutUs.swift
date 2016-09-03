@@ -24,7 +24,7 @@ class AboutUs: UIViewController {
         scrollView.backgroundColor = UIColor.whiteColor()
         scrollView.contentSize = CGSize(width: view.bounds.width, height: view.bounds.height*1.2)
         view.addSubview(scrollView)
-        v.backgroundColor = UIColor.greenColor()
+        v.backgroundColor = Tools.dancingShoesColor
         scrollView.addSubview(v)
         v.snp_makeConstraints { (make) in
             make.top.equalTo(scrollView).offset(200)

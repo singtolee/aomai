@@ -59,6 +59,7 @@ class RegisterWithEmail: UIViewController, UITextFieldDelegate {
     func setUpInputEmailTextField() {
         self.view.addSubview(inputEmailTF)
         self.inputEmailTF.keyboardType = .EmailAddress
+        self.inputEmailTF.adjustsFontSizeToFitWidth = true
         self.inputEmailTF.autocorrectionType = .No
         self.inputEmailTF.attributedPlaceholder = NSAttributedString(string: "Email Address", attributes: [NSForegroundColorAttributeName : UIColor.lightGrayColor()])
         self.inputEmailTF.textColor = UIColor.lightGrayColor()

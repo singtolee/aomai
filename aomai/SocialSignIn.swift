@@ -106,6 +106,7 @@ class SocialSignIn: UIViewController, UITextFieldDelegate {
     func setUpEmailTF() {
         self.emailTF.attributedPlaceholder = NSAttributedString(string: "Email Address", attributes: [NSForegroundColorAttributeName : UIColor.lightGrayColor()])
         self.emailTF.keyboardType = .EmailAddress
+        self.emailTF.adjustsFontSizeToFitWidth = true
         self.emailTF.autocorrectionType = .No
         self.emailTF.font = UIFont(name: "ArialRoundedMTBold", size: 14)
         self.emailTF.textColor = UIColor.lightGrayColor()

@@ -38,6 +38,7 @@ class EidtUserName: UIViewController, UITextFieldDelegate {
     func setUpNameTF() {
         view.addSubview(nameTF)
         nameTF.backgroundColor = UIColor.whiteColor()
+        nameTF.adjustsFontSizeToFitWidth = true
         nameTF.delegate = self
         nameTF.clearButtonMode = .WhileEditing
         nameTF.borderStyle = .RoundedRect

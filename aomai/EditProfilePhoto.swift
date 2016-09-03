@@ -32,29 +32,9 @@ class EditProfilePhoto: UIViewController, UIImagePickerControllerDelegate, UINav
         FIRDatabase.database().reference().child("users").child(uid!).observeSingleEventOfType(.Value, withBlock: { (snap) in
             if let dict = snap.value as? [String: AnyObject] {
                 if let uUrl = dict["userAvatarUrl"] {
-                    let url = NSURL(string: uUrl as! String)
-                    let imageCache = NSCache()
-                    if let cachedImage = imageCache.objectForKey(url!) as? UIImage {
-                        self.avatarImageView.image = cachedImage
-                        self.avatarImageView.contentMode = .ScaleAspectFit
-                        return
-                    }
-                    NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler: { (data, response, error) in
-                        if error != nil {
-                            print(error?.localizedDescription)
-                            self.avatarImageView.image = self.placeHolder
-                            self.avatarImageView.contentMode = .ScaleAspectFit
-                            return
-                        }
-                        dispatch_async(dispatch_get_main_queue(), {
-                            if let downloadedImage = UIImage(data: data!) {
-                                imageCache.setObject(downloadedImage, forKey: url!)
-                                self.avatarImageView.image = downloadedImage
-                                self.avatarImageView.contentMode = .ScaleAspectFit
-                            }
-                        })
-                    }).resume()
-                    
+                    //use extension
+                    let url = uUrl as! String
+                    self.avatarImageView.loadImageUsingCacheWithUrlString(url)
                 } else {
                     self.avatarImageView.image = self.placeHolder
                     self.avatarImageView.contentMode = .ScaleAspectFit
@@ -64,8 +44,6 @@ class EditProfilePhoto: UIViewController, UIImagePickerControllerDelegate, UINav
                 self.avatarImageView.contentMode = .ScaleAspectFit
             }
         }, withCancelBlock: nil)
-        
-        
     }
     
     func setUpAvatarView() {
@@ -100,8 +78,6 @@ class EditProfilePhoto: UIViewController, UIImagePickerControllerDelegate, UINav
         
         if let selectedImage = selectedImageFromPicker {
             self.avatarImageView.image = selectedImage
-            //self.avatarImageView.layer.cornerRadius = self.chooesAvatarImageView.frame.size.width/2
-            //self.avatarImageView.clipsToBounds = true
         }
         
         dismissViewControllerAnimated(true, completion: nil)
@@ -148,8 +124,6 @@ class EditProfilePhoto: UIViewController, UIImagePickerControllerDelegate, UINav
                 }
             })
         }
-        
-        
     }
     
     
