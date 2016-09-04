@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		09107FE81D5B7DA20099E52C /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09107FE71D5B7DA20099E52C /* OrderView.swift */; };
+		091615341D7BFE0C00D924D8 /* EditFreeAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091615331D7BFE0C00D924D8 /* EditFreeAddress.swift */; };
+		091615361D7BFE4F00D924D8 /* DancingShoesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091615351D7BFE4F00D924D8 /* DancingShoesViewController.swift */; };
+		091615381D7BFF5700D924D8 /* EditPostAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091615371D7BFF5700D924D8 /* EditPostAddress.swift */; };
+		0916153A1D7C02EC00D924D8 /* FreeAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091615391D7C02EC00D924D8 /* FreeAddress.swift */; };
+		0916153C1D7C040B00D924D8 /* PostAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0916153B1D7C040B00D924D8 /* PostAddress.swift */; };
 		0916CD5F1D3FC65300167988 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0916CD5E1D3FC65300167988 /* Tools.swift */; };
 		091AE1441D7AE6A1002CB33F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091AE1431D7AE6A1002CB33F /* Extensions.swift */; };
 		09232ECC1D3BD7F500CF0C0A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09232EC91D3BD7F500CF0C0A /* FBSDKCoreKit.framework */; };
@@ -16,7 +21,7 @@
 		09232ED01D3BDEC600CF0C0A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 09232ECF1D3BDEC600CF0C0A /* GoogleService-Info.plist */; };
 		092629981D675B7B00F3112C /* ProductTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092629971D675B7B00F3112C /* ProductTab.swift */; };
 		092856B91D76470200B81D6F /* EditProfilePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092856B81D76470200B81D6F /* EditProfilePhoto.swift */; };
-		094CDC381D72590C00D03A5B /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094CDC371D72590C00D03A5B /* EditProfileTableViewController.swift */; };
+		094CDC381D72590C00D03A5B /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094CDC371D72590C00D03A5B /* EditProfile.swift */; };
 		094CDC5D1D72F10E00D03A5B /* EidtUserName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094CDC5C1D72F10E00D03A5B /* EidtUserName.swift */; };
 		094CDC5F1D733F1B00D03A5B /* EditPhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094CDC5E1D733F1B00D03A5B /* EditPhoneNumber.swift */; };
 		0955E4E41D36F4EE0060B47E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955E4E31D36F4EE0060B47E /* AppDelegate.swift */; };
@@ -31,13 +36,18 @@
 		09991E081D6D0E22009B81F9 /* EmptyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09991E071D6D0E22009B81F9 /* EmptyTableView.swift */; };
 		099B9AE31D4FA50F006CC617 /* MyAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099B9AE21D4FA50F006CC617 /* MyAddress.swift */; };
 		099F748A1D78E46100EE84D3 /* MYTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F74891D78E46100EE84D3 /* MYTextField.swift */; };
-		09B7E8441D3DDF4000479035 /* RegisterWithEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7E8431D3DDF4000479035 /* RegisterWithEmail.swift */; };
+		09B7E8441D3DDF4000479035 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7E8431D3DDF4000479035 /* Register.swift */; };
 		09D05E441D635CDD0020B70F /* AboutUs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D05E431D635CDD0020B70F /* AboutUs.swift */; };
 		0C6F72DF964B3A8BFE3CC86F /* Pods_aomai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6270E9424D0A8DFF1F1ECF7 /* Pods_aomai.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		09107FE71D5B7DA20099E52C /* OrderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
+		091615331D7BFE0C00D924D8 /* EditFreeAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditFreeAddress.swift; sourceTree = "<group>"; };
+		091615351D7BFE4F00D924D8 /* DancingShoesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DancingShoesViewController.swift; sourceTree = "<group>"; };
+		091615371D7BFF5700D924D8 /* EditPostAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPostAddress.swift; sourceTree = "<group>"; };
+		091615391D7C02EC00D924D8 /* FreeAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreeAddress.swift; sourceTree = "<group>"; };
+		0916153B1D7C040B00D924D8 /* PostAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostAddress.swift; sourceTree = "<group>"; };
 		0916CD5E1D3FC65300167988 /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		091AE1431D7AE6A1002CB33F /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		09232EC91D3BD7F500CF0C0A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../Documents/FacebookSDKs/FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -46,7 +56,7 @@
 		09232ECF1D3BDEC600CF0C0A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		092629971D675B7B00F3112C /* ProductTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTab.swift; sourceTree = "<group>"; };
 		092856B81D76470200B81D6F /* EditProfilePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfilePhoto.swift; sourceTree = "<group>"; };
-		094CDC371D72590C00D03A5B /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
+		094CDC371D72590C00D03A5B /* EditProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
 		094CDC5C1D72F10E00D03A5B /* EidtUserName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EidtUserName.swift; sourceTree = "<group>"; };
 		094CDC5E1D733F1B00D03A5B /* EditPhoneNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPhoneNumber.swift; sourceTree = "<group>"; };
 		0955E4E01D36F4EE0060B47E /* aomai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aomai.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,7 +73,7 @@
 		09991E071D6D0E22009B81F9 /* EmptyTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyTableView.swift; sourceTree = "<group>"; };
 		099B9AE21D4FA50F006CC617 /* MyAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAddress.swift; sourceTree = "<group>"; };
 		099F74891D78E46100EE84D3 /* MYTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MYTextField.swift; sourceTree = "<group>"; };
-		09B7E8431D3DDF4000479035 /* RegisterWithEmail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterWithEmail.swift; sourceTree = "<group>"; };
+		09B7E8431D3DDF4000479035 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		09D05E431D635CDD0020B70F /* AboutUs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUs.swift; sourceTree = "<group>"; };
 		49ECF41FECF2F06D027E7A71 /* Pods-aomai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomai.release.xcconfig"; path = "Pods/Target Support Files/Pods-aomai/Pods-aomai.release.xcconfig"; sourceTree = "<group>"; };
 		C022D0FB85189C919AAEA95E /* Pods-aomai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomai.debug.xcconfig"; path = "Pods/Target Support Files/Pods-aomai/Pods-aomai.debug.xcconfig"; sourceTree = "<group>"; };
@@ -91,6 +101,8 @@
 				094CDC5C1D72F10E00D03A5B /* EidtUserName.swift */,
 				094CDC5E1D733F1B00D03A5B /* EditPhoneNumber.swift */,
 				092856B81D76470200B81D6F /* EditProfilePhoto.swift */,
+				091615331D7BFE0C00D924D8 /* EditFreeAddress.swift */,
+				091615371D7BFF5700D924D8 /* EditPostAddress.swift */,
 			);
 			name = VIEWOFEDITPROFILE;
 			sourceTree = "<group>";
@@ -136,6 +148,8 @@
 				097469231D4BB052009459EF /* Vser.swift */,
 				09991E071D6D0E22009B81F9 /* EmptyTableView.swift */,
 				091AE1431D7AE6A1002CB33F /* Extensions.swift */,
+				091615391D7C02EC00D924D8 /* FreeAddress.swift */,
+				0916153B1D7C040B00D924D8 /* PostAddress.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -147,7 +161,7 @@
 				099B9AE21D4FA50F006CC617 /* MyAddress.swift */,
 				09107FE71D5B7DA20099E52C /* OrderView.swift */,
 				09D05E431D635CDD0020B70F /* AboutUs.swift */,
-				094CDC371D72590C00D03A5B /* EditProfileTableViewController.swift */,
+				094CDC371D72590C00D03A5B /* EditProfile.swift */,
 			);
 			name = functions;
 			sourceTree = "<group>";
@@ -156,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				099F74891D78E46100EE84D3 /* MYTextField.swift */,
+				091615351D7BFE4F00D924D8 /* DancingShoesViewController.swift */,
 			);
 			name = MYCLASS;
 			sourceTree = "<group>";
@@ -169,7 +184,7 @@
 				092629971D675B7B00F3112C /* ProductTab.swift */,
 				0955E4FD1D36F64E0060B47E /* Tabbar.swift */,
 				0955E4FF1D3700810060B47E /* SocialSignIn.swift */,
-				09B7E8431D3DDF4000479035 /* RegisterWithEmail.swift */,
+				09B7E8431D3DDF4000479035 /* Register.swift */,
 			);
 			name = VIEWCONTROLLERS;
 			sourceTree = "<group>";
@@ -319,17 +334,22 @@
 			files = (
 				099B9AE31D4FA50F006CC617 /* MyAddress.swift in Sources */,
 				09D05E441D635CDD0020B70F /* AboutUs.swift in Sources */,
+				091615341D7BFE0C00D924D8 /* EditFreeAddress.swift in Sources */,
 				0955E4FE1D36F64E0060B47E /* Tabbar.swift in Sources */,
+				0916153A1D7C02EC00D924D8 /* FreeAddress.swift in Sources */,
 				094CDC5D1D72F10E00D03A5B /* EidtUserName.swift in Sources */,
 				0955E4E41D36F4EE0060B47E /* AppDelegate.swift in Sources */,
-				09B7E8441D3DDF4000479035 /* RegisterWithEmail.swift in Sources */,
+				09B7E8441D3DDF4000479035 /* Register.swift in Sources */,
 				0955E4FA1D36F6230060B47E /* CartTab.swift in Sources */,
+				091615361D7BFE4F00D924D8 /* DancingShoesViewController.swift in Sources */,
 				0955E5001D3700810060B47E /* SocialSignIn.swift in Sources */,
 				09991E081D6D0E22009B81F9 /* EmptyTableView.swift in Sources */,
-				094CDC381D72590C00D03A5B /* EditProfileTableViewController.swift in Sources */,
+				0916153C1D7C040B00D924D8 /* PostAddress.swift in Sources */,
+				094CDC381D72590C00D03A5B /* EditProfile.swift in Sources */,
 				099F748A1D78E46100EE84D3 /* MYTextField.swift in Sources */,
 				0916CD5F1D3FC65300167988 /* Tools.swift in Sources */,
 				0955E4FC1D36F6340060B47E /* MeTab.swift in Sources */,
+				091615381D7BFF5700D924D8 /* EditPostAddress.swift in Sources */,
 				094CDC5F1D733F1B00D03A5B /* EditPhoneNumber.swift in Sources */,
 				092629981D675B7B00F3112C /* ProductTab.swift in Sources */,
 				091AE1441D7AE6A1002CB33F /* Extensions.swift in Sources */,

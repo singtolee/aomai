@@ -64,6 +64,7 @@ class EidtUserName: UIViewController, UITextFieldDelegate {
     
     func setUpDoneBTN() {
         view.addSubview(doneBTN)
+        doneBTN.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 18)
         doneBTN.snp_makeConstraints { (make) in
             make.top.equalTo(nameTF.snp_bottom).offset(14)
             make.left.equalTo(view).offset(24)

@@ -71,6 +71,7 @@ class EditPhoneNumber: UIViewController, UITextFieldDelegate {
         }
         doneBTN.layer.cornerRadius = 4
         doneBTN.setTitle("UPDATE", forState: .Normal)
+        doneBTN.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 18)
         doneBTN.backgroundColor = Tools.dancingShoesColor
         doneBTN.addTarget(self, action: #selector(updateUserName), forControlEvents: .TouchUpInside)
     }
