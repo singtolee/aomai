@@ -12,5 +12,5 @@ class FreeAddress: NSObject {
     var room: String = ""
     var recipient: String = ""
     var phone: String = ""
-    var defaultAddress = false
+    //var defaultAddress = false
 }

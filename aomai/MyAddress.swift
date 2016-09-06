@@ -8,13 +8,15 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 import FirebaseDatabase
 import SnapKit
 
 class MyAddress: UITableViewController {
     let addressType = ["Free Delivery Address", "Mailing Address"]
     let free = ["aa", "bb"]
-    let post = ["cc", "dd", "ee", "ff"]
+    var mailingAddresses = [PostAddress]()
+    //let post = ["cc", "dd", "ee", "ff"]
     let freeHeader = UIView()
     let postHeader = UIView()
     
@@ -26,6 +28,28 @@ class MyAddress: UITableViewController {
         self.navigationController?.navigationBar.barStyle = .Black
         self.navigationController?.navigationBar.translucent = false
         self.title = "ADDRESS"
+        loadMailingAddress()
+    }
+    func loadFreeAddress() {
+        
+    }
+    func loadMailingAddress() {
+        if let uid = FIRAuth.auth()?.currentUser?.uid {
+            FIRDatabase.database().reference().child("MailingAddresses").child(uid).observeEventType(.ChildAdded, withBlock: { (snap) in
+                if let dict = snap.value as? [String: AnyObject] {
+                    let address = PostAddress()
+                    address.recipient = dict["recipient"] as! String
+                    address.phone = dict["phone"] as! String
+                    address.postCode = dict["PostCode"] as! String
+                    address.detailAddress = dict["Address"] as! String
+                    address.defaultAddress = dict["defaultAddress"] as! Bool
+                    self.mailingAddresses.append(address)
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.tableView.reloadData()
+                    })
+                }
+                }, withCancelBlock: nil)
+        }
     }
     
     func setUpHeaderFree() -> UIView {
@@ -95,9 +119,6 @@ class MyAddress: UITableViewController {
         return 40
     }
     
-//    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return self.addressType[section]
-//    }
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return addressType.count
     }
@@ -107,7 +128,7 @@ class MyAddress: UITableViewController {
         if section == 0 {
         cc = free.count}
         else {
-        cc = post.count}
+        cc = mailingAddresses.count}
         return cc
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -117,7 +138,8 @@ class MyAddress: UITableViewController {
             cell.textLabel?.text = self.free[indexPath.row]
         }
         else {
-            cell.textLabel?.text = self.post[indexPath.row]
+            cell.textLabel?.text = self.mailingAddresses[indexPath.row].detailAddress
+            //cell.detailTextLabel?.text = self.mailingAddresses[indexPath.row].detailAddress
         }
         
         return cell
