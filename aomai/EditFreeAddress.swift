@@ -7,17 +7,23 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
-class EditFreeAddress: DancingShoesViewController, UITextFieldDelegate {
+class EditFreeAddress: DancingShoesViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     let recipientTF = UITextField()
-    let phoneTF = UITextField()
+    let phoneTF = MYTextField()
     let roomTF = UITextField()
     let buildingTF = MYTextField()
     let defaultAddressSwitch = UISwitch()
     let setDefaultLable = UILabel()
     let saveBTN = UIButton()
     let scrollView = UIScrollView(frame: UIScreen.mainScreen().bounds)
+    let buildingPicker = UIPickerView()
+    var buildings = [String]()
+    let indicator = UIActivityIndicatorView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +35,20 @@ class EditFreeAddress: DancingShoesViewController, UITextFieldDelegate {
         addLable()
         addSwitch()
         addBtn()
+        setupBuildingPicker()
+        setUpActivityIndicator()
+        buildingPicker.delegate = self
+        buildingPicker.dataSource = self
+        self.fetchOFB()
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(allTextFieldsResignFirstResponder)))
         self.view.userInteractionEnabled = true
+    }
+    
+    func setUpActivityIndicator() {
+        view.addSubview(indicator)
+        indicator.hidesWhenStopped = true
+        indicator.activityIndicatorViewStyle = .Gray
+        indicator.center = view.center
     }
     
     func setScrollView() {
@@ -92,6 +110,7 @@ class EditFreeAddress: DancingShoesViewController, UITextFieldDelegate {
     func setUpBuildingTF() {
         scrollView.addSubview(buildingTF)
         buildingTF.delegate = self
+        buildingTF.inputView = buildingPicker
         buildingTF.clearButtonMode = .UnlessEditing
         buildingTF.placeholder = "OFFICE BUILDING"
         buildingTF.borderStyle = .None
@@ -144,7 +163,6 @@ class EditFreeAddress: DancingShoesViewController, UITextFieldDelegate {
         setDefaultLable.translatesAutoresizingMaskIntoConstraints = false
         setDefaultLable.leftAnchor.constraintEqualToAnchor(view.leftAnchor, constant: 24).active = true
         setDefaultLable.centerYAnchor.constraintEqualToAnchor(roomTF.bottomAnchor, constant: 30).active = true
-        //setDefaultLable.heightAnchor.constraintEqualToConstant(20).active = true
     }
     
     func addSwitch() {
@@ -153,7 +171,6 @@ class EditFreeAddress: DancingShoesViewController, UITextFieldDelegate {
         defaultAddressSwitch.translatesAutoresizingMaskIntoConstraints = false
         defaultAddressSwitch.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: -24).active = true
         defaultAddressSwitch.centerYAnchor.constraintEqualToAnchor(roomTF.bottomAnchor, constant: 30).active = true
-        //defaultAddressSwitch.heightAnchor.constraintEqualToConstant(10).active = true
     }
     
     func addBtn() {
@@ -167,17 +184,75 @@ class EditFreeAddress: DancingShoesViewController, UITextFieldDelegate {
         saveBTN.heightAnchor.constraintEqualToConstant(36)
         saveBTN.setTitle("SAVE ADDRESS", forState: .Normal)
         saveBTN.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 18)
+        saveBTN.addTarget(self, action: #selector(checkThenAddtoDB), forControlEvents: .TouchUpInside)
+    }
+    
+    func checkThenAddtoDB() {
+        let recipient = Tools.trim(recipientTF.text!)
+        let mobile = phoneTF.text!
+        let ofb = buildingTF.text
+        let room = Tools.trim(roomTF.text!)
+        var isDefaultAddress: Bool = false
+        if defaultAddressSwitch.on {
+            isDefaultAddress = true
+        }
+        if recipient != "" && mobile.characters.count == 10 && ofb != "" && room != "" {
+            if let uid = FIRAuth.auth()?.currentUser?.uid {
+                indicator.startAnimating()
+                //var values: Dictionary = [String: String]()
+                var values: Dictionary = [String: AnyObject]()
+                values["officeBuilding"] = ofb
+                values["roomNumber"] = room
+                values["recipient"] = recipient
+                values["phone"] = mobile
+                values["defaultAddress"] = isDefaultAddress
+                let ref = FIRDatabase.database().reference().child("FreeDeliveryAddresses").child(uid)
+                ref.updateChildValues(values, withCompletionBlock: {(err, ref) in
+                    if err != nil {
+                        self.indicator.stopAnimating()
+                        //print(err)
+                        return}
+                    self.indicator.stopAnimating()
+                    self.navigationController?.popViewControllerAnimated(true)
+                })
+                //Tools.saveFreeDeliveryAddressIntoDatabaseWithUID(uid, values: values)
+            }
+        } else {
+            if recipient == "" {
+                Tools.shakingUIView(recipientTF)
+            }
+            if mobile.characters.count != 10 {
+                Tools.shakingUIView(phoneTF)
+            }
+            if ofb == "" {
+                Tools.shakingUIView(buildingTF)
+            }
+            if room == "" {
+                Tools.shakingUIView(roomTF)
+            }
+        }
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if textField == self.roomTF {
+            switch UIScreen.mainScreen().bounds.height {
+            case 480:
+                self.scrollView.setContentOffset(CGPoint(x: 0, y: 100), animated: true)
+            case 568:
+                self.scrollView.setContentOffset(CGPoint(x: 0, y: 40), animated: true)
+            default:
+                self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+            }
+        }
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if textField == self.recipientTF {
             self.phoneTF.becomeFirstResponder()
-        } else if (textField == self.phoneTF) {
-            self.buildingTF.becomeFirstResponder()
-        } else if (textField == buildingTF) {
-            self.roomTF.becomeFirstResponder()
-        } else if (textField == roomTF) {
+        }
+        if (textField == roomTF) {
             roomTF.resignFirstResponder()
+            self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         }
         return true
     }
@@ -188,6 +263,64 @@ class EditFreeAddress: DancingShoesViewController, UITextFieldDelegate {
         self.buildingTF.resignFirstResponder()
         self.roomTF.resignFirstResponder()
     }
+    
+    func setupBuildingPicker() {
+        buildingPicker.backgroundColor = UIColor.whiteColor()
+        buildingPicker.showsSelectionIndicator = true
+        buildingPicker.userInteractionEnabled = false
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .Default
+        toolBar.translucent = true
+        toolBar.tintColor = Tools.dancingShoesColor
+        toolBar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: #selector(doneButtonForPicker))
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: #selector(cancelButtonForPicker))
+        toolBar.setItems([cancelButton, doneButton], animated: false)
+        toolBar.userInteractionEnabled = true
+        self.buildingTF.inputAccessoryView = toolBar
+        
+    }
+    
+    func fetchOFB() {
+        FIRDatabase.database().reference().child("OfficeBuildings").observeEventType(.ChildAdded, withBlock: { (snapshot) in
+            let ob = snapshot.value as! String
+            self.buildings.append(ob)
+            dispatch_async(dispatch_get_main_queue(), {
+                self.buildingPicker.userInteractionEnabled = true
+                self.buildingPicker.reloadAllComponents()
+            })
+            }, withCancelBlock: nil)
+    }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return buildings.count
+    }
+    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
+        let lab = UILabel()
+        lab.text = buildings[row]
+        lab.textColor = Tools.dancingShoesColor
+        lab.font = UIFont(name: "ArialHebrew-Light", size: 16)
+        lab.textAlignment = .Center
+        return lab
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        buildingTF.text = buildings[row]
+    }
+    
+    func doneButtonForPicker() {
+        self.buildingTF.resignFirstResponder()
+        self.scrollView.setContentOffset(CGPoint(x:0, y:100), animated: true)
+        self.roomTF.becomeFirstResponder()
+    }
+    
+    func cancelButtonForPicker() {
+        self.buildingTF.resignFirstResponder()
+    }
+
 
     
 }

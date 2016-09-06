@@ -48,6 +48,16 @@ class Tools {
                 return}
         })
     }
+    
+    static func saveFreeDeliveryAddressIntoDatabaseWithUID(uid: String, values: [String: AnyObject]) {
+        let ref = FIRDatabase.database().reference().child("FreeDeliveryAddresses").child(uid)
+        ref.updateChildValues(values, withCompletionBlock: {(err, ref) in
+            if err != nil {
+                print(err)
+                return}
+        })
+    }
+
 
     
 }

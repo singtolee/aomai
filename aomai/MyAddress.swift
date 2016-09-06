@@ -43,7 +43,9 @@ class MyAddress: UITableViewController {
         btn.translatesAutoresizingMaskIntoConstraints = false
         label.leftAnchor.constraintEqualToAnchor(vw.leftAnchor, constant: 12).active = true
         label.centerYAnchor.constraintEqualToAnchor(vw.centerYAnchor).active = true
-        btn.rightAnchor.constraintEqualToAnchor(vw.rightAnchor, constant: -18).active = true
+        btn.rightAnchor.constraintEqualToAnchor(vw.rightAnchor).active = true
+        btn.widthAnchor.constraintEqualToConstant(60).active = true
+        btn.backgroundColor = Tools.headerColor
         btn.centerYAnchor.constraintEqualToAnchor(vw.centerYAnchor).active = true
         return vw
     }
@@ -63,7 +65,9 @@ class MyAddress: UITableViewController {
         btn.translatesAutoresizingMaskIntoConstraints = false
         label.leftAnchor.constraintEqualToAnchor(vw.leftAnchor, constant: 12).active = true
         label.centerYAnchor.constraintEqualToAnchor(vw.centerYAnchor).active = true
-        btn.rightAnchor.constraintEqualToAnchor(vw.rightAnchor, constant: -18).active = true
+        btn.rightAnchor.constraintEqualToAnchor(vw.rightAnchor).active = true
+        btn.widthAnchor.constraintEqualToConstant(60).active = true
+        btn.backgroundColor = Tools.headerColor
         btn.centerYAnchor.constraintEqualToAnchor(vw.centerYAnchor).active = true
         return vw
     }
@@ -118,6 +122,5 @@ class MyAddress: UITableViewController {
         
         return cell
     }
-    
 
 }
