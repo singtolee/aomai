@@ -75,7 +75,6 @@ class EditPostAddress: AddPostAddress {
                     self.indicator.stopAnimating()
                     return
                 }
-                //print("WHY")
                 self.indicator.stopAnimating()
                 self.navigationController?.popViewControllerAnimated(true)
                 

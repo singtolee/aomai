@@ -12,7 +12,7 @@ import FirebaseAuth
 import FirebaseDatabase
 
 class EditFreeAddress: DancingShoesViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
-    
+    var officeAddress: FreeAddress?
     let recipientTF = UITextField()
     let phoneTF = MYTextField()
     let roomTF = UITextField()
@@ -37,6 +37,10 @@ class EditFreeAddress: DancingShoesViewController, UITextFieldDelegate, UIPicker
         setUpActivityIndicator()
         buildingPicker.delegate = self
         buildingPicker.dataSource = self
+        recipientTF.text = officeAddress?.recipient
+        phoneTF.text = officeAddress?.phone
+        roomTF.text = officeAddress?.room
+        buildingTF.text = officeAddress?.building
         self.fetchOFB()
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(allTextFieldsResignFirstResponder)))
         self.view.userInteractionEnabled = true

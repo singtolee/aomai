@@ -197,7 +197,7 @@ class AddPostAddress: DancingShoesViewController, UITextFieldDelegate {
             if let uid = FIRAuth.auth()?.currentUser?.uid {
                 indicator.startAnimating()
                 //var values: Dictionary = [String: String]()
-                var values: Dictionary = [String: AnyObject]()
+                var values: Dictionary = [String: String]()
                 values["Address"] = address
                 values["PostCode"] = postcode
                 values["recipient"] = recipient
@@ -205,7 +205,7 @@ class AddPostAddress: DancingShoesViewController, UITextFieldDelegate {
                 //values["defaultAddress"] = isDefaultAddress
                 let ref = FIRDatabase.database().reference().child("MailingAddresses").child(uid)
                 let addressID = ref.childByAutoId().key
-                values["ID"] = addressID
+                //values["ID"] = addressID
                 ref.child(addressID).updateChildValues(values, withCompletionBlock: {(err, ref) in
                     if err != nil {
                         self.indicator.stopAnimating()
