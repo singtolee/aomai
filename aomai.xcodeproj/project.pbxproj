@@ -10,7 +10,7 @@
 		09107FE81D5B7DA20099E52C /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09107FE71D5B7DA20099E52C /* OrderView.swift */; };
 		091615341D7BFE0C00D924D8 /* EditFreeAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091615331D7BFE0C00D924D8 /* EditFreeAddress.swift */; };
 		091615361D7BFE4F00D924D8 /* DancingShoesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091615351D7BFE4F00D924D8 /* DancingShoesViewController.swift */; };
-		091615381D7BFF5700D924D8 /* EditPostAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091615371D7BFF5700D924D8 /* EditPostAddress.swift */; };
+		091615381D7BFF5700D924D8 /* AddPostAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091615371D7BFF5700D924D8 /* AddPostAddress.swift */; };
 		0916153A1D7C02EC00D924D8 /* FreeAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091615391D7C02EC00D924D8 /* FreeAddress.swift */; };
 		0916153C1D7C040B00D924D8 /* PostAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0916153B1D7C040B00D924D8 /* PostAddress.swift */; };
 		0916CD5F1D3FC65300167988 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0916CD5E1D3FC65300167988 /* Tools.swift */; };
@@ -33,6 +33,7 @@
 		0955E4FE1D36F64E0060B47E /* Tabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955E4FD1D36F64E0060B47E /* Tabbar.swift */; };
 		0955E5001D3700810060B47E /* SocialSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955E4FF1D3700810060B47E /* SocialSignIn.swift */; };
 		097469241D4BB052009459EF /* Vser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097469231D4BB052009459EF /* Vser.swift */; };
+		098E0A8A1D80BC5A0045A9D2 /* EditPostAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E0A891D80BC5A0045A9D2 /* EditPostAddress.swift */; };
 		09991E081D6D0E22009B81F9 /* EmptyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09991E071D6D0E22009B81F9 /* EmptyTableView.swift */; };
 		099B9AE31D4FA50F006CC617 /* MyAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099B9AE21D4FA50F006CC617 /* MyAddress.swift */; };
 		099F748A1D78E46100EE84D3 /* MYTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F74891D78E46100EE84D3 /* MYTextField.swift */; };
@@ -45,7 +46,7 @@
 		09107FE71D5B7DA20099E52C /* OrderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
 		091615331D7BFE0C00D924D8 /* EditFreeAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditFreeAddress.swift; sourceTree = "<group>"; };
 		091615351D7BFE4F00D924D8 /* DancingShoesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DancingShoesViewController.swift; sourceTree = "<group>"; };
-		091615371D7BFF5700D924D8 /* EditPostAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPostAddress.swift; sourceTree = "<group>"; };
+		091615371D7BFF5700D924D8 /* AddPostAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPostAddress.swift; sourceTree = "<group>"; };
 		091615391D7C02EC00D924D8 /* FreeAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreeAddress.swift; sourceTree = "<group>"; };
 		0916153B1D7C040B00D924D8 /* PostAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostAddress.swift; sourceTree = "<group>"; };
 		0916CD5E1D3FC65300167988 /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
@@ -70,6 +71,7 @@
 		0955E4FD1D36F64E0060B47E /* Tabbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tabbar.swift; sourceTree = "<group>"; };
 		0955E4FF1D3700810060B47E /* SocialSignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialSignIn.swift; sourceTree = "<group>"; };
 		097469231D4BB052009459EF /* Vser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vser.swift; sourceTree = "<group>"; };
+		098E0A891D80BC5A0045A9D2 /* EditPostAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPostAddress.swift; sourceTree = "<group>"; };
 		09991E071D6D0E22009B81F9 /* EmptyTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyTableView.swift; sourceTree = "<group>"; };
 		099B9AE21D4FA50F006CC617 /* MyAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAddress.swift; sourceTree = "<group>"; };
 		099F74891D78E46100EE84D3 /* MYTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MYTextField.swift; sourceTree = "<group>"; };
@@ -102,7 +104,8 @@
 				094CDC5E1D733F1B00D03A5B /* EditPhoneNumber.swift */,
 				092856B81D76470200B81D6F /* EditProfilePhoto.swift */,
 				091615331D7BFE0C00D924D8 /* EditFreeAddress.swift */,
-				091615371D7BFF5700D924D8 /* EditPostAddress.swift */,
+				091615371D7BFF5700D924D8 /* AddPostAddress.swift */,
+				098E0A891D80BC5A0045A9D2 /* EditPostAddress.swift */,
 			);
 			name = VIEWOFEDITPROFILE;
 			sourceTree = "<group>";
@@ -349,9 +352,10 @@
 				099F748A1D78E46100EE84D3 /* MYTextField.swift in Sources */,
 				0916CD5F1D3FC65300167988 /* Tools.swift in Sources */,
 				0955E4FC1D36F6340060B47E /* MeTab.swift in Sources */,
-				091615381D7BFF5700D924D8 /* EditPostAddress.swift in Sources */,
+				091615381D7BFF5700D924D8 /* AddPostAddress.swift in Sources */,
 				094CDC5F1D733F1B00D03A5B /* EditPhoneNumber.swift in Sources */,
 				092629981D675B7B00F3112C /* ProductTab.swift in Sources */,
+				098E0A8A1D80BC5A0045A9D2 /* EditPostAddress.swift in Sources */,
 				091AE1441D7AE6A1002CB33F /* Extensions.swift in Sources */,
 				092856B91D76470200B81D6F /* EditProfilePhoto.swift in Sources */,
 				09107FE81D5B7DA20099E52C /* OrderView.swift in Sources */,

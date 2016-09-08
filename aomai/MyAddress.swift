@@ -30,25 +30,34 @@ class MyAddress: UITableViewController {
         self.title = "ADDRESS"
         loadMailingAddress()
     }
+    
     func loadFreeAddress() {
         
     }
     func loadMailingAddress() {
+        //self.mailingAddresses.removeAll()
         if let uid = FIRAuth.auth()?.currentUser?.uid {
-            FIRDatabase.database().reference().child("MailingAddresses").child(uid).observeEventType(.ChildAdded, withBlock: { (snap) in
-                if let dict = snap.value as? [String: AnyObject] {
-                    let address = PostAddress()
-                    address.recipient = dict["recipient"] as! String
-                    address.phone = dict["phone"] as! String
-                    address.postCode = dict["PostCode"] as! String
-                    address.detailAddress = dict["Address"] as! String
-                    address.defaultAddress = dict["defaultAddress"] as! Bool
-                    self.mailingAddresses.append(address)
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.tableView.reloadData()
-                    })
+            FIRDatabase.database().reference().child("MailingAddresses").child(uid).observeEventType(.Value, withBlock: { (snap) in
+                self.mailingAddresses.removeAll()
+                for child in snap.children {
+                    guard let csnap = child as? FIRDataSnapshot else {return}
+                    //let k = csnap.key
+                    //print(k)
+                    //print(csnap)
+                    if let dict = csnap.value as? [String: String] {
+                        let address = PostAddress()
+                        address.recipient = dict["recipient"]!
+                        address.phone = dict["phone"]!
+                        address.postCode = dict["PostCode"]!
+                        address.detailAddress = dict["Address"]!
+                        address.ID = dict["ID"]!
+                        self.mailingAddresses.append(address)
+                    }
                 }
-                }, withCancelBlock: nil)
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.tableView.reloadData()
+                })
+            })
         }
     }
     
@@ -102,7 +111,7 @@ class MyAddress: UITableViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     func addPost() {
-        let vc = EditPostAddress()
+        let vc = AddPostAddress()
         vc.title = "Add Mailing Address"
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -133,16 +142,43 @@ class MyAddress: UITableViewController {
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //let cell = tableView.dequeueReusableCellWithIdentifier("tableCell", forIndexPath: indexPath)
-        let cell = UITableViewCell(style: .Default, reuseIdentifier: "cellID")
+        let cell = UITableViewCell(style: .Value1, reuseIdentifier: "cellID")
+        //let cell = UITableViewCell(style: .Value1, reuseIdentifier: cellID1)
+        //cell.textLabel?.font = UIFont(name: "ArialHebrew-Light", size: 14)
+        //cell.textLabel?.text = items[indexPath.row]
+        //cell.detailTextLabel?.font = UIFont(name: "ArialHebrew-Light", size: 14)
+        //cell.detailTextLabel?.text = userInfo[indexPath.row]
+        //cell.accessoryType = .DisclosureIndicator
+        //cell.selectionStyle = .None
+        //return cell
+
         if indexPath.section == 0 {
             cell.textLabel?.text = self.free[indexPath.row]
         }
         else {
-            cell.textLabel?.text = self.mailingAddresses[indexPath.row].detailAddress
-            //cell.detailTextLabel?.text = self.mailingAddresses[indexPath.row].detailAddress
+            cell.textLabel?.text = self.mailingAddresses[indexPath.row].recipient
+            cell.textLabel?.font = UIFont(name: "ArialHebrew-Light", size: 14)
+            cell.detailTextLabel?.text = self.mailingAddresses[indexPath.row].detailAddress
+            cell.detailTextLabel?.font = UIFont(name: "ArialHebrew-Light", size: 14)
+            cell.accessoryType = .DisclosureIndicator
+            cell.selectionStyle = .None
         }
         
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 1 {
+            let vc = EditPostAddress()
+            vc.address = self.mailingAddresses[indexPath.row]
+//            vc.recipientTF.text = self.mailingAddresses[indexPath.row].recipient
+//            vc.phoneTF.text = self.mailingAddresses[indexPath.row].phone
+//            vc.postCode.text = self.mailingAddresses[indexPath.row].postCode
+//            vc.detailAddressTF.text = self.mailingAddresses[indexPath.row].detailAddress
+            navigationController?.pushViewController(vc, animated: true)
+            
+        }
+        
     }
 
 }

@@ -12,5 +12,6 @@ class PostAddress: NSObject {
     var postCode: String = ""
     var recipient: String = ""
     var phone: String = ""
-    var defaultAddress = false
+    //var defaultAddress = false
+    var ID: String = ""
 }
