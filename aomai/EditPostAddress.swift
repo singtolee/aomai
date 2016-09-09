@@ -22,6 +22,7 @@ class EditPostAddress: AddPostAddress {
         phoneTF.text = address?.phone
         postCode.text = address?.postCode
         detailAddressTF.text = address?.detailAddress
+        placeHolder.hidden = true
         
     }
     override func checkThenAddtoDB() {

@@ -11,11 +11,11 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class AddPostAddress: DancingShoesViewController, UITextFieldDelegate {
+class AddPostAddress: DancingShoesViewController, UITextFieldDelegate, UITextViewDelegate {
     let recipientTF = UITextField()
     let phoneTF = MYTextField()
     let postCode = MYTextField()
-    let detailAddressTF = UITextField()
+    let detailAddressTF = UITextView()
     //let defaultAddressSwitch = UISwitch()
     //let setDefaultLable = UILabel()
     let saveBTN = UIButton()
@@ -23,6 +23,7 @@ class AddPostAddress: DancingShoesViewController, UITextFieldDelegate {
     //let buildingPicker = UIPickerView()
     //var buildings = [String]()
     let indicator = UIActivityIndicatorView()
+    let placeHolder = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +32,24 @@ class AddPostAddress: DancingShoesViewController, UITextFieldDelegate {
         setUpPhoneTF()
         setupPostCodeTF()
         setUpDetailAddressTF()
+        addPlaceHolder()
         //addLable()
         //addSwitch()
         addBtn()
         setUpActivityIndicator()
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(allTextFieldsResignFirstResponder)))
         self.view.userInteractionEnabled = true
+    }
+    
+    func addPlaceHolder() {
+        placeHolder.text = "DETAIL ADDRESS"
+        placeHolder.hidden = false
+        placeHolder.font = UIFont(name: "ArialHebrew-Light", size: 14)
+        placeHolder.textColor = Tools.placeHolderColor
+        detailAddressTF.addSubview(placeHolder)
+        placeHolder.translatesAutoresizingMaskIntoConstraints = false
+        placeHolder.leftAnchor.constraintEqualToAnchor(recipientTF.leftAnchor).active = true
+        placeHolder.centerYAnchor.constraintEqualToAnchor(detailAddressTF.centerYAnchor).active = true
     }
     
     func setUpActivityIndicator() {
@@ -108,17 +121,18 @@ class AddPostAddress: DancingShoesViewController, UITextFieldDelegate {
         scrollView.addSubview(detailAddressTF)
         detailAddressTF.delegate = self
         detailAddressTF.autocorrectionType = .No
-        detailAddressTF.clearButtonMode = .WhileEditing
-        detailAddressTF.placeholder = "DETAIL ADDRESS"
-        detailAddressTF.borderStyle = .None
+        detailAddressTF.scrollEnabled = false
+        //detailAddressTF.clearButtonMode = .WhileEditing
+        //detailAddressTF.placeholder = "DETAIL ADDRESS"
+        //detailAddressTF.borderStyle = .None
         detailAddressTF.returnKeyType = .Done
         detailAddressTF.font = UIFont(name: "ArialHebrew-Light", size: 14)
         detailAddressTF.translatesAutoresizingMaskIntoConstraints = false
         detailAddressTF.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-        detailAddressTF.leftAnchor.constraintEqualToAnchor(view.leftAnchor, constant: 24).active = true
+        detailAddressTF.leftAnchor.constraintEqualToAnchor(view.leftAnchor, constant: 20).active = true
         detailAddressTF.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: -24).active = true
         detailAddressTF.topAnchor.constraintEqualToAnchor(postCode.bottomAnchor, constant: 10).active = true
-        detailAddressTF.heightAnchor.constraintEqualToConstant(36).active = true
+        //detailAddressTF.heightAnchor.constraintEqualToConstant(100).active = true
         let subLine2 = UIView()
         subLine2.backgroundColor = UIColor.lightGrayColor()
         scrollView.addSubview(subLine2)
@@ -232,8 +246,19 @@ class AddPostAddress: DancingShoesViewController, UITextFieldDelegate {
         }
     }
     
+    func textViewDidChange(textView: UITextView) {
+        if Tools.trim(detailAddressTF.text!).isEmpty {
+            //no text entered
+            placeHolder.hidden = false
+            
+        } else {
+            //entered text
+            placeHolder.hidden = true
+        }
+    }
+    
     func textFieldDidBeginEditing(textField: UITextField) {
-        if textField == self.postCode || textField == self.detailAddressTF {
+        if textField == self.postCode {
             switch UIScreen.mainScreen().bounds.height {
             case 480:
                 //self.scrollView.setContentOffset(CGPoint(x: 0, y: 100), animated: true)
@@ -243,7 +268,7 @@ class AddPostAddress: DancingShoesViewController, UITextFieldDelegate {
             case 568:
                 //self.scrollView.setContentOffset(CGPoint(x: 0, y: 40), animated: true)
                 UIView.animateWithDuration(0.5, animations: {() -> Void in
-                    self.scrollView.contentOffset = CGPoint(x: 0, y: 50)
+                    self.scrollView.contentOffset = CGPoint(x: 0, y: 80)
                 })
             default:
                 self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
@@ -251,16 +276,34 @@ class AddPostAddress: DancingShoesViewController, UITextFieldDelegate {
         }
     }
     
+    func textViewDidBeginEditing(textView: UITextView) {
+        switch UIScreen.mainScreen().bounds.height {
+        case 480:
+            //self.scrollView.setContentOffset(CGPoint(x: 0, y: 100), animated: true)
+            UIView.animateWithDuration(0.5, animations: {() -> Void in
+                self.scrollView.contentOffset = CGPoint(x: 0, y: 100)
+            })
+        case 568:
+            //self.scrollView.setContentOffset(CGPoint(x: 0, y: 40), animated: true)
+            UIView.animateWithDuration(0.5, animations: {() -> Void in
+                self.scrollView.contentOffset = CGPoint(x: 0, y: 80)
+            })
+        default:
+            self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+        }
+
+    }
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if textField == self.recipientTF {
             self.phoneTF.becomeFirstResponder()
         }
-        if (textField == detailAddressTF) {
-            detailAddressTF.resignFirstResponder()
-            UIView.animateWithDuration(0.5, animations: {() -> Void in
-                self.scrollView.contentOffset = CGPoint(x: 0, y: 0)
-            })
-        }
+//        if (textField == detailAddressTF) {
+//            detailAddressTF.resignFirstResponder()
+//            UIView.animateWithDuration(0.5, animations: {() -> Void in
+//                self.scrollView.contentOffset = CGPoint(x: 0, y: 0)
+//            })
+//        }
         return true
     }
     
