@@ -13,11 +13,9 @@ import FirebaseDatabase
 import SnapKit
 
 class MyAddress: UITableViewController {
-    let addressType = ["Free Delivery Address", "Mailing Address"]
-    //let free = ["aa", "bb"]
+    let addressType = ["FREE DELIVERY ADDRESS", "POST ADDRESS"]
     var mailingAddresses = [PostAddress]()
     var freeAddress = [FreeAddress]()
-    //let post = ["cc", "dd", "ee", "ff"]
     let freeHeader = UIView()
     let postHeader = UIView()
     let cellID = "cellID"
@@ -26,7 +24,6 @@ class MyAddress: UITableViewController {
         super.viewDidLoad()
         tableView.tableFooterView = UIView(frame: CGRectMake(0, 0, view.frame.size.width, 1))
         tableView.registerClass(AddressCell.self, forCellReuseIdentifier: cellID)
-        //tableView.footerViewForSection(1) = UIView(frame: CGRectMake(0, 0, view.frame.size.width, 1))
         view.backgroundColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.barTintColor = Tools.dancingShoesColor
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()

@@ -12,6 +12,11 @@ class StoreTab: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.barTintColor = Tools.dancingShoesColor
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.barStyle = .Black
+        self.navigationController?.navigationBar.translucent = false
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

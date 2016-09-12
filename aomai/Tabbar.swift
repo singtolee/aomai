@@ -16,10 +16,15 @@ class Tabbar: UITabBarController {
         let store = StoreTab()
         store.tabBarItem.title = "Store"
         store.tabBarItem.image = UIImage(named: "store")
+        let navStore = UINavigationController()
+        navStore.viewControllers = [store]
         
-        let prd = ProductTab()
+        
+        let prd = ProductTab(collectionViewLayout: UICollectionViewFlowLayout())
         prd.tabBarItem.title = "Product"
         prd.tabBarItem.image = UIImage(named: "product")
+        let navPrd = UINavigationController()
+        navPrd.viewControllers = [prd]
         
         //cart tab
         let cart = CartTab()
@@ -32,7 +37,7 @@ class Tabbar: UITabBarController {
         //test if I can put this view controller inside Navigation controller,
         let nav = UINavigationController()
         nav.viewControllers = [me]
-        viewControllers = [store, prd, cart, nav]
+        viewControllers = [navStore, navPrd, cart, nav]
     }
 
   }

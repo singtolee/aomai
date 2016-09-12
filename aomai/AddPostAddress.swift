@@ -207,7 +207,7 @@ class AddPostAddress: DancingShoesViewController, UITextFieldDelegate, UITextVie
 //        if defaultAddressSwitch.on {
 //            isDefaultAddress = true
 //        }
-        if recipient != "" && mobile.characters.count == 10 && address != "" && postcode.characters.count == 5 {
+        if recipient != "" && mobile.characters.count == 10 && address.characters.count > 6 && postcode.characters.count == 5 {
             if let uid = FIRAuth.auth()?.currentUser?.uid {
                 indicator.startAnimating()
                 //var values: Dictionary = [String: String]()
@@ -240,7 +240,7 @@ class AddPostAddress: DancingShoesViewController, UITextFieldDelegate, UITextVie
             if postcode.characters.count != 5 {
                 Tools.shakingUIView(postCode)
             }
-            if address == "" {
+            if address.characters.count <= 6 {
                 Tools.shakingUIView(detailAddressTF)
             }
         }
@@ -292,6 +292,14 @@ class AddPostAddress: DancingShoesViewController, UITextFieldDelegate, UITextVie
             self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         }
 
+    }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+        textView.resignFirstResponder()
+        return false
+        }
+        return true
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {

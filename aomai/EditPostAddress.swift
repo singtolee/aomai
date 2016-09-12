@@ -30,7 +30,7 @@ class EditPostAddress: AddPostAddress {
         let mobile = phoneTF.text!
         let address = detailAddressTF.text
         let postcode = Tools.trim(postCode.text!)
-        if recipient != "" && mobile.characters.count == 10 && address != "" && postcode.characters.count == 5 {
+        if recipient != "" && mobile.characters.count == 10 && address.characters.count > 6 && postcode.characters.count == 5 {
             if let uid = FIRAuth.auth()?.currentUser?.uid {
                 indicator.startAnimating()
                 var values: Dictionary = [String: AnyObject]()
@@ -61,7 +61,7 @@ class EditPostAddress: AddPostAddress {
             if postcode.characters.count != 5 {
                 Tools.shakingUIView(postCode)
             }
-            if address == "" {
+            if address.characters.count <= 6 {
                 Tools.shakingUIView(detailAddressTF)
             }
         }
