@@ -39,6 +39,7 @@
 		099F748A1D78E46100EE84D3 /* MYTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F74891D78E46100EE84D3 /* MYTextField.swift */; };
 		09B7E8441D3DDF4000479035 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7E8431D3DDF4000479035 /* Register.swift */; };
 		09D05E441D635CDD0020B70F /* AboutUs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D05E431D635CDD0020B70F /* AboutUs.swift */; };
+		09D3574C1D8ADB51009E9E49 /* ShortProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D3574B1D8ADB51009E9E49 /* ShortProduct.swift */; };
 		09FC426B1D8759450016937E /* BriefProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC426A1D8759450016937E /* BriefProductCollectionViewCell.swift */; };
 		0C6F72DF964B3A8BFE3CC86F /* Pods_aomai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6270E9424D0A8DFF1F1ECF7 /* Pods_aomai.framework */; };
 /* End PBXBuildFile section */
@@ -78,6 +79,7 @@
 		099F74891D78E46100EE84D3 /* MYTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MYTextField.swift; sourceTree = "<group>"; };
 		09B7E8431D3DDF4000479035 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		09D05E431D635CDD0020B70F /* AboutUs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUs.swift; sourceTree = "<group>"; };
+		09D3574B1D8ADB51009E9E49 /* ShortProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortProduct.swift; sourceTree = "<group>"; };
 		09FC426A1D8759450016937E /* BriefProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BriefProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		49ECF41FECF2F06D027E7A71 /* Pods-aomai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomai.release.xcconfig"; path = "Pods/Target Support Files/Pods-aomai/Pods-aomai.release.xcconfig"; sourceTree = "<group>"; };
 		C022D0FB85189C919AAEA95E /* Pods-aomai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomai.debug.xcconfig"; path = "Pods/Target Support Files/Pods-aomai/Pods-aomai.debug.xcconfig"; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				091AE1431D7AE6A1002CB33F /* Extensions.swift */,
 				091615391D7C02EC00D924D8 /* FreeAddress.swift */,
 				0916153B1D7C040B00D924D8 /* PostAddress.swift */,
+				09D3574B1D8ADB51009E9E49 /* ShortProduct.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				092856B91D76470200B81D6F /* EditProfilePhoto.swift in Sources */,
 				09107FE81D5B7DA20099E52C /* OrderView.swift in Sources */,
 				097469241D4BB052009459EF /* Vser.swift in Sources */,
+				09D3574C1D8ADB51009E9E49 /* ShortProduct.swift in Sources */,
 				0955E4F81D36F6070060B47E /* StoreTab.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

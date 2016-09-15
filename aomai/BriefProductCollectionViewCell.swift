@@ -26,22 +26,22 @@ class PrdCell: UICollectionViewCell {
     }()
     let prdNameLable: UILabel = {
         let lab = UILabel()
-        //lab.font = UIFont(name: "ArialHebrew-Light", size: textSize)
+        lab.font = UIFont(name: "ArialHebrew-Light", size: 14)
         lab.text = "AOMAI PRODUCT"
         return lab
     }()
     let prdSubLable: UILabel = {
         let lab = UILabel()
         lab.numberOfLines = 2
-        //lab.font = UIFont(name: "ArialHebrew-Light", size: textSize)
-        lab.text = "AOMAI PRODUCT,AOMAI PRODUCT,AOMAI PRODUCT"
+        lab.font = UIFont(name: "ArialHebrew-Light", size: 14)
+        //lab.text = "AOMAI PRODUCT,AOMAI PRODUCT,AOMAI PRODUCT"
         return lab
     }()
     
     let prdPriceLable: UILabel = {
         let lab = UILabel()
-        //lab.font = UIFont(name: "ArialHebrew-Light", size: textSize)
-        lab.text = "THB 199"
+        lab.font = UIFont(name: "ArialHebrew-Light", size: 14)
+        //lab.text = "THB 199"
         lab.textColor = UIColor.redColor()
         return lab
     }()

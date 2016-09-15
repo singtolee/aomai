@@ -297,6 +297,7 @@ class AddPostAddress: DancingShoesViewController, UITextFieldDelegate, UITextVie
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if(text == "\n") {
         textView.resignFirstResponder()
+        self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         return false
         }
         return true

@@ -25,6 +25,7 @@ extension UIImageView {
             
             if error != nil {
                 //TODO, report error elgently
+                print(error?.localizedDescription)
                 self.image = UIImage(named: "placeholder48")
                 return
             }

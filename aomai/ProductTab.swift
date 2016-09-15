@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 let cellID = "cellID"
 
 class ProductTab: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    var shortPrd = [ShortProduct]()
+   // let loadingIndicator = UIActivityIndicatorView()
     
 
     override func viewDidLoad() {
@@ -21,7 +25,35 @@ class ProductTab: UICollectionViewController, UICollectionViewDelegateFlowLayout
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.barStyle = .Black
         self.navigationController?.navigationBar.translucent = false
+        
+        loadShortPrd()
 
+    }
+    
+//    func setupIndicator() {
+//        self.view.addSubview(loadingIndicator)
+//        loadingIndicator.hidesWhenStopped = true
+//        loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
+//        loadingIndicator.center = view.center
+//    }
+    
+    func loadShortPrd() {
+        
+        FIRDatabase.database().reference().child("ShortProducts").observeEventType(.ChildAdded, withBlock: { (snap) in
+            if let dict = snap.value as? [String: String] {
+                let prd = ShortProduct()
+                prd.pID = dict["productID"]!
+                prd.pName = dict["productName"]!
+                prd.pSub = dict["productSubDetail"]!
+                prd.pPrice = dict["productPrice"]!
+                prd.pMainImage = dict["productMainImage"]!
+                self.shortPrd.append(prd)
+                
+            }
+            dispatch_async(dispatch_get_main_queue(), {
+                self.collectionView?.reloadData()
+            })
+        })
     }
     
 //    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -29,11 +61,18 @@ class ProductTab: UICollectionViewController, UICollectionViewDelegateFlowLayout
 //    }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 27
+        return shortPrd.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath)
+        let p = shortPrd[indexPath.row]
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! PrdCell
+        cell.prdNameLable.text = p.pName
+        cell.prdSubLable.text = p.pSub
+        cell.prdPriceLable.text = "THB " + p.pPrice!
+        cell.prdImageView.loadImageUsingCacheWithUrlString(p.pMainImage!)
+        
+        return cell
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
