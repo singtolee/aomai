@@ -14,13 +14,18 @@ class PrdCell: UICollectionViewCell {
         setupViews()
     }
     
+//    override func prepareForReuse() {
+//        super.prepareForReuse()
+//        prdImageView.image = nil
+//    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     let prdImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "placeholder48")
+        //imageView.image = UIImage(named: "placeholder48")
         imageView.contentMode = .ScaleAspectFit
         return imageView
     }()

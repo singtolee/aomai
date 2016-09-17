@@ -17,6 +17,7 @@ extension UIImageView {
         //check cache for image first
         if let cachedImage = imageCache.objectForKey(urlString) as? UIImage {
             self.image = cachedImage
+            //print("Cachefd Image")
             return
         }
         //cache is empty, download and save to cache
@@ -25,7 +26,7 @@ extension UIImageView {
             
             if error != nil {
                 //TODO, report error elgently
-                print(error?.localizedDescription)
+                //print(error?.localizedDescription)
                 self.image = UIImage(named: "placeholder48")
                 return
             }
@@ -33,6 +34,7 @@ extension UIImageView {
                 if let downloadedImage = UIImage(data: data!) {
                     imageCache.setObject(downloadedImage, forKey: urlString)
                     self.image = downloadedImage
+                    //print("Downloaded Image")
                 }
             })
         }).resume()

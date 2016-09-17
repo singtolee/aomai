@@ -48,11 +48,10 @@ class ProductTab: UICollectionViewController, UICollectionViewDelegateFlowLayout
                 prd.pPrice = dict["productPrice"]!
                 prd.pMainImage = dict["productMainImage"]!
                 self.shortPrd.append(prd)
-                
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.collectionView?.reloadData()
+                })
             }
-            dispatch_async(dispatch_get_main_queue(), {
-                self.collectionView?.reloadData()
-            })
         })
     }
     
@@ -65,13 +64,14 @@ class ProductTab: UICollectionViewController, UICollectionViewDelegateFlowLayout
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let p = shortPrd[indexPath.row]
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! PrdCell
+        let p = shortPrd[indexPath.row]
         cell.prdNameLable.text = p.pName
         cell.prdSubLable.text = p.pSub
         cell.prdPriceLable.text = "THB " + p.pPrice!
-        cell.prdImageView.loadImageUsingCacheWithUrlString(p.pMainImage!)
-        
+        if let imageUrl = p.pMainImage {
+            cell.prdImageView.loadImageUsingCacheWithUrlString(imageUrl)
+        }
         return cell
     }
     
