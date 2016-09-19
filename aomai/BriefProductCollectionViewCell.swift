@@ -31,21 +31,22 @@ class PrdCell: UICollectionViewCell {
     }()
     let prdNameLable: UILabel = {
         let lab = UILabel()
-        lab.font = UIFont(name: "ArialHebrew-Light", size: 14)
-        lab.text = "AOMAI PRODUCT"
+        //lab.font = UIFont(name: "ArialHebrew-Light", size: 14)
+        //lab.text = "AOMAI PRODUCT"
         return lab
     }()
     let prdSubLable: UILabel = {
         let lab = UILabel()
-        lab.numberOfLines = 2
-        lab.font = UIFont(name: "ArialHebrew-Light", size: 14)
+        //lab.numberOfLines = 0
+        //lab.lineBreakMode = .ByTruncatingTail
+        //lab.font = UIFont(name: "ArialHebrew-Light", size: 14)
         //lab.text = "AOMAI PRODUCT,AOMAI PRODUCT,AOMAI PRODUCT"
         return lab
     }()
     
     let prdPriceLable: UILabel = {
         let lab = UILabel()
-        lab.font = UIFont(name: "ArialHebrew-Light", size: 14)
+        //lab.font = UIFont(name: "ArialHebrew-Light", size: 14)
         //lab.text = "THB 199"
         lab.textColor = UIColor.redColor()
         return lab
@@ -53,7 +54,7 @@ class PrdCell: UICollectionViewCell {
     let nameView = UIView()
     let subNameView = UIView()
     let priceView = UIView()
-    let factor: CGFloat = 0.12
+    let factor: CGFloat = 0.14
     
     
     func setupViews() {
@@ -65,10 +66,8 @@ class PrdCell: UICollectionViewCell {
         addSubview(priceView)
         
         nameView.addSubview(prdNameLable)
-        //nameView.backgroundColor = UIColor.grayColor()
         subNameView.addSubview(prdSubLable)
         priceView.addSubview(prdPriceLable)
-        //priceView.backgroundColor = UIColor.cyanColor()
         
         nameView.translatesAutoresizingMaskIntoConstraints = false
         subNameView.translatesAutoresizingMaskIntoConstraints = false
@@ -92,7 +91,7 @@ class PrdCell: UICollectionViewCell {
         subNameView.topAnchor.constraintEqualToAnchor(nameView.bottomAnchor).active = true
         subNameView.leftAnchor.constraintEqualToAnchor(self.leftAnchor).active = true
         subNameView.rightAnchor.constraintEqualToAnchor(self.rightAnchor).active = true
-        subNameView.heightAnchor.constraintEqualToAnchor(self.widthAnchor, multiplier: factor * 2).active = true
+        subNameView.heightAnchor.constraintEqualToAnchor(self.widthAnchor, multiplier: factor).active = true
         
         priceView.topAnchor.constraintEqualToAnchor(subNameView.bottomAnchor).active = true
         priceView.leftAnchor.constraintEqualToAnchor(self.leftAnchor).active = true
@@ -107,7 +106,7 @@ class PrdCell: UICollectionViewCell {
         prdNameLable.leftAnchor.constraintEqualToAnchor(self.leftAnchor, constant: 4).active = true
         prdNameLable.rightAnchor.constraintEqualToAnchor(self.rightAnchor, constant: -4).active = true
         
-        prdSubLable.centerYAnchor.constraintEqualToAnchor(subNameView.centerYAnchor).active = true
+        prdSubLable.topAnchor.constraintEqualToAnchor(subNameView.topAnchor).active = true
         prdSubLable.leftAnchor.constraintEqualToAnchor(self.leftAnchor, constant: 4).active = true
         prdSubLable.rightAnchor.constraintEqualToAnchor(self.rightAnchor, constant: -4).active = true
         
