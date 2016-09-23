@@ -15,6 +15,7 @@ let cellID = "cellID"
 class CategoryProductView: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     var shortPrd = [ShortProduct]()
     let screenWidth = UIScreen.mainScreen().bounds.width
+    let screenHeight = UIScreen.mainScreen().bounds.height
     var cellSize = CGSizeZero
     var fontSize = CGFloat()
     let loadingIndicator = MyIndicator()
@@ -24,6 +25,7 @@ class CategoryProductView: UICollectionViewController, UICollectionViewDelegateF
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.alwaysBounceVertical = true
+        collectionView?.showsVerticalScrollIndicator = false
         collectionView?.registerClass(PrdCell.self, forCellWithReuseIdentifier: cellID)
         collectionView?.backgroundColor = UIColor(white: 0.95, alpha: 1)
         self.navigationController?.navigationBar.barTintColor = Tools.dancingShoesColor
@@ -35,6 +37,15 @@ class CategoryProductView: UICollectionViewController, UICollectionViewDelegateF
         loadShortPrd()
         
     }
+    
+//    override func viewWillAppear(animated: Bool) {
+//        super.viewWillAppear(animated)
+//        self.view.frame = CGRectMake(0, 34, screenWidth, screenHeight - 83)
+//    }
+//    
+//    override func viewDidAppear(animated: Bool) {
+//        super.viewDidAppear(animated)
+//    }
     
     func setCellSize() {
         let width = (screenWidth - 8) / 2 - 1
