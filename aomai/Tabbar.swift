@@ -20,7 +20,8 @@ class Tabbar: UITabBarController {
         navStore.viewControllers = [store]
         
         
-        let prd = ProductTab(collectionViewLayout: UICollectionViewFlowLayout())
+        //let prd = ProductTab(collectionViewLayout: UICollectionViewFlowLayout())
+        let prd = ProductTab()
         prd.tabBarItem.title = "Product"
         prd.tabBarItem.image = UIImage(named: "product")
         let navPrd = UINavigationController()

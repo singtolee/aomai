@@ -11,7 +11,6 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
-import SnapKit
 import SVProgressHUD
 
 class EditProfilePhoto: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -48,12 +47,11 @@ class EditProfilePhoto: UIViewController, UIImagePickerControllerDelegate, UINav
     
     func setUpAvatarView() {
         view.addSubview(avatarImageView)
-        avatarImageView.snp_makeConstraints { (make) in
-            make.centerY.equalTo(view.snp_centerY).offset(-25)
-            make.left.equalTo(view)
-            make.right.equalTo(view)
-            make.height.equalTo(view.frame.width)
-        }
+        avatarImageView.translatesAutoresizingMaskIntoConstraints = false
+        avatarImageView.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor, constant: -25).active = true
+        avatarImageView.leftAnchor.constraintEqualToAnchor(view.leftAnchor).active = true
+        avatarImageView.rightAnchor.constraintEqualToAnchor(view.rightAnchor).active = true
+        avatarImageView.heightAnchor.constraintEqualToConstant(view.frame.width).active = true
         self.avatarImageView.image = self.placeHolder
         self.avatarImageView.contentMode = .ScaleAspectFit
         
@@ -125,34 +123,4 @@ class EditProfilePhoto: UIViewController, UIImagePickerControllerDelegate, UINav
             })
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
 }

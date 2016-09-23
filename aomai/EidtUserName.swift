@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SnapKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
@@ -39,38 +38,35 @@ class EidtUserName: UIViewController, UITextFieldDelegate {
         view.addSubview(nameTF)
         nameTF.backgroundColor = UIColor.whiteColor()
         nameTF.adjustsFontSizeToFitWidth = true
+        nameTF.placeholder = "Name"
         nameTF.delegate = self
         nameTF.clearButtonMode = .WhileEditing
         nameTF.borderStyle = .RoundedRect
         nameTF.autocorrectionType = .No
-        nameTF.snp_makeConstraints { (make) in
-            make.top.equalTo(view).offset(80)
-            make.left.equalTo(view).offset(24)
-            make.right.equalTo(view).offset(-24)
-            make.height.equalTo(36)
-        }
-        
+        nameTF.translatesAutoresizingMaskIntoConstraints = false
+        nameTF.topAnchor.constraintEqualToAnchor(view.topAnchor, constant: 80).active = true
+        nameTF.leftAnchor.constraintEqualToAnchor(view.leftAnchor, constant: 24).active = true
+        nameTF.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: -24).active = true
+        nameTF.heightAnchor.constraintEqualToConstant(36).active = true
     }
     
     func setUpActivityIndicator() {
         view.addSubview(indicator)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
         indicator.hidesWhenStopped = true
         indicator.activityIndicatorViewStyle = .Gray
-        indicator.snp_makeConstraints { (make) in
-            make.bottom.equalTo(nameTF.snp_top).offset(-10)
-            make.centerX.equalTo(view.snp_centerX)
-        }
+        indicator.bottomAnchor.constraintEqualToAnchor(nameTF.topAnchor, constant: -10).active = true
+        indicator.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
     }
     
     func setUpDoneBTN() {
         view.addSubview(doneBTN)
+        doneBTN.translatesAutoresizingMaskIntoConstraints = false
         doneBTN.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 18)
-        doneBTN.snp_makeConstraints { (make) in
-            make.top.equalTo(nameTF.snp_bottom).offset(14)
-            make.left.equalTo(view).offset(24)
-            make.right.equalTo(view).offset(-24)
-            make.height.equalTo(36)
-        }
+        doneBTN.topAnchor.constraintEqualToAnchor(nameTF.bottomAnchor, constant: 14).active = true
+        doneBTN.leftAnchor.constraintEqualToAnchor(view.leftAnchor, constant: 24).active = true
+        doneBTN.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: -24).active = true
+        doneBTN.heightAnchor.constraintEqualToConstant(36).active = true
         doneBTN.layer.cornerRadius = 4
         doneBTN.setTitle("UPDATE", forState: .Normal)
         doneBTN.backgroundColor = Tools.dancingShoesColor

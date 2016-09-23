@@ -35,6 +35,7 @@ class EditPhoneNumber: UIViewController, UITextFieldDelegate {
     
     func setUpPhoneTF() {
         view.addSubview(phoneTF)
+        phoneTF.translatesAutoresizingMaskIntoConstraints = false
         phoneTF.backgroundColor = UIColor.whiteColor()
         phoneTF.delegate = self
         phoneTF.placeholder = "Mobile Phone"
@@ -42,33 +43,28 @@ class EditPhoneNumber: UIViewController, UITextFieldDelegate {
         phoneTF.clearButtonMode = .WhileEditing
         phoneTF.borderStyle = .RoundedRect
         phoneTF.autocorrectionType = .No
-        phoneTF.snp_makeConstraints { (make) in
-            make.top.equalTo(view).offset(80)
-            make.left.equalTo(view).offset(24)
-            make.right.equalTo(view).offset(-24)
-            make.height.equalTo(36)
-        }
-        
+        phoneTF.topAnchor.constraintEqualToAnchor(view.topAnchor, constant: 80).active = true
+        phoneTF.leftAnchor.constraintEqualToAnchor(view.leftAnchor, constant: 24).active = true
+        phoneTF.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: -24).active = true
+        phoneTF.heightAnchor.constraintEqualToConstant(36).active = true
     }
     
     func setUpActivityIndicator() {
         view.addSubview(indicator)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
         indicator.hidesWhenStopped = true
         indicator.activityIndicatorViewStyle = .Gray
-        indicator.snp_makeConstraints { (make) in
-            make.bottom.equalTo(phoneTF.snp_top).offset(-10)
-            make.centerX.equalTo(view.snp_centerX)
-        }
+        indicator.bottomAnchor.constraintEqualToAnchor(phoneTF.topAnchor, constant: -10).active = true
+        indicator.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
     }
     
     func setUpDoneBTN() {
         view.addSubview(doneBTN)
-        doneBTN.snp_makeConstraints { (make) in
-            make.top.equalTo(phoneTF.snp_bottom).offset(14)
-            make.left.equalTo(view).offset(24)
-            make.right.equalTo(view).offset(-24)
-            make.height.equalTo(36)
-        }
+        doneBTN.translatesAutoresizingMaskIntoConstraints = false
+        doneBTN.topAnchor.constraintEqualToAnchor(phoneTF.bottomAnchor, constant: 14).active = true
+        doneBTN.leftAnchor.constraintEqualToAnchor(view.leftAnchor, constant: 24).active = true
+        doneBTN.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: -24).active = true
+        doneBTN.heightAnchor.constraintEqualToConstant(36).active = true
         doneBTN.layer.cornerRadius = 4
         doneBTN.setTitle("UPDATE", forState: .Normal)
         doneBTN.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 18)

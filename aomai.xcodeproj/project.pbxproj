@@ -33,6 +33,7 @@
 		0955E4FE1D36F64E0060B47E /* Tabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955E4FD1D36F64E0060B47E /* Tabbar.swift */; };
 		0955E5001D3700810060B47E /* SocialSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955E4FF1D3700810060B47E /* SocialSignIn.swift */; };
 		097469241D4BB052009459EF /* Vser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097469231D4BB052009459EF /* Vser.swift */; };
+		097C1C211D92565500011AA7 /* CategoryProductsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097C1C201D92565500011AA7 /* CategoryProductsListView.swift */; };
 		098E0A8A1D80BC5A0045A9D2 /* EditPostAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E0A891D80BC5A0045A9D2 /* EditPostAddress.swift */; };
 		09991E081D6D0E22009B81F9 /* EmptyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09991E071D6D0E22009B81F9 /* EmptyTableView.swift */; };
 		099B9AE31D4FA50F006CC617 /* MyAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099B9AE21D4FA50F006CC617 /* MyAddress.swift */; };
@@ -40,6 +41,8 @@
 		09B7E8441D3DDF4000479035 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7E8431D3DDF4000479035 /* Register.swift */; };
 		09D05E441D635CDD0020B70F /* AboutUs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D05E431D635CDD0020B70F /* AboutUs.swift */; };
 		09D3574C1D8ADB51009E9E49 /* ShortProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D3574B1D8ADB51009E9E49 /* ShortProduct.swift */; };
+		09DA854C1D9420050012D6A6 /* ScrollTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA854B1D9420050012D6A6 /* ScrollTab.swift */; };
+		09DA854E1D9425AA0012D6A6 /* ScrollViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA854D1D9425AA0012D6A6 /* ScrollViewControllers.swift */; };
 		09F550CB1D902F7E00658083 /* MyIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F550CA1D902F7E00658083 /* MyIndicator.swift */; };
 		09FC426B1D8759450016937E /* BriefProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC426A1D8759450016937E /* BriefProductCollectionViewCell.swift */; };
 		0C6F72DF964B3A8BFE3CC86F /* Pods_aomai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6270E9424D0A8DFF1F1ECF7 /* Pods_aomai.framework */; };
@@ -74,6 +77,7 @@
 		0955E4FD1D36F64E0060B47E /* Tabbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tabbar.swift; sourceTree = "<group>"; };
 		0955E4FF1D3700810060B47E /* SocialSignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialSignIn.swift; sourceTree = "<group>"; };
 		097469231D4BB052009459EF /* Vser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vser.swift; sourceTree = "<group>"; };
+		097C1C201D92565500011AA7 /* CategoryProductsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryProductsListView.swift; sourceTree = "<group>"; };
 		098E0A891D80BC5A0045A9D2 /* EditPostAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPostAddress.swift; sourceTree = "<group>"; };
 		09991E071D6D0E22009B81F9 /* EmptyTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyTableView.swift; sourceTree = "<group>"; };
 		099B9AE21D4FA50F006CC617 /* MyAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAddress.swift; sourceTree = "<group>"; };
@@ -81,6 +85,8 @@
 		09B7E8431D3DDF4000479035 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		09D05E431D635CDD0020B70F /* AboutUs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUs.swift; sourceTree = "<group>"; };
 		09D3574B1D8ADB51009E9E49 /* ShortProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortProduct.swift; sourceTree = "<group>"; };
+		09DA854B1D9420050012D6A6 /* ScrollTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollTab.swift; sourceTree = "<group>"; };
+		09DA854D1D9425AA0012D6A6 /* ScrollViewControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewControllers.swift; sourceTree = "<group>"; };
 		09F550CA1D902F7E00658083 /* MyIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyIndicator.swift; sourceTree = "<group>"; };
 		09FC426A1D8759450016937E /* BriefProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BriefProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		49ECF41FECF2F06D027E7A71 /* Pods-aomai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomai.release.xcconfig"; path = "Pods/Target Support Files/Pods-aomai/Pods-aomai.release.xcconfig"; sourceTree = "<group>"; };
@@ -190,6 +196,7 @@
 		09A5BEE21D6F4AF900714DF4 /* VIEWCONTROLLERS */ = {
 			isa = PBXGroup;
 			children = (
+				09DA854A1D941FCA0012D6A6 /* CATEGORY-TAB-VIEWCONTROLLER */,
 				0955E4F71D36F6070060B47E /* StoreTab.swift */,
 				0955E4F91D36F6230060B47E /* CartTab.swift */,
 				0955E4FB1D36F6340060B47E /* MeTab.swift */,
@@ -197,8 +204,18 @@
 				0955E4FD1D36F64E0060B47E /* Tabbar.swift */,
 				0955E4FF1D3700810060B47E /* SocialSignIn.swift */,
 				09B7E8431D3DDF4000479035 /* Register.swift */,
+				097C1C201D92565500011AA7 /* CategoryProductsListView.swift */,
 			);
 			name = VIEWCONTROLLERS;
+			sourceTree = "<group>";
+		};
+		09DA854A1D941FCA0012D6A6 /* CATEGORY-TAB-VIEWCONTROLLER */ = {
+			isa = PBXGroup;
+			children = (
+				09DA854B1D9420050012D6A6 /* ScrollTab.swift */,
+				09DA854D1D9425AA0012D6A6 /* ScrollViewControllers.swift */,
+			);
+			name = "CATEGORY-TAB-VIEWCONTROLLER";
 			sourceTree = "<group>";
 		};
 		09FC42691D8759160016937E /* CELL */ = {
@@ -368,17 +385,20 @@
 				09991E081D6D0E22009B81F9 /* EmptyTableView.swift in Sources */,
 				0916153C1D7C040B00D924D8 /* PostAddress.swift in Sources */,
 				094CDC381D72590C00D03A5B /* EditProfile.swift in Sources */,
+				097C1C211D92565500011AA7 /* CategoryProductsListView.swift in Sources */,
 				099F748A1D78E46100EE84D3 /* MYTextField.swift in Sources */,
 				0916CD5F1D3FC65300167988 /* Tools.swift in Sources */,
 				0955E4FC1D36F6340060B47E /* MeTab.swift in Sources */,
 				091615381D7BFF5700D924D8 /* AddPostAddress.swift in Sources */,
 				094CDC5F1D733F1B00D03A5B /* EditPhoneNumber.swift in Sources */,
 				092629981D675B7B00F3112C /* ProductTab.swift in Sources */,
+				09DA854E1D9425AA0012D6A6 /* ScrollViewControllers.swift in Sources */,
 				098E0A8A1D80BC5A0045A9D2 /* EditPostAddress.swift in Sources */,
 				091AE1441D7AE6A1002CB33F /* Extensions.swift in Sources */,
 				092856B91D76470200B81D6F /* EditProfilePhoto.swift in Sources */,
 				09107FE81D5B7DA20099E52C /* OrderView.swift in Sources */,
 				097469241D4BB052009459EF /* Vser.swift in Sources */,
+				09DA854C1D9420050012D6A6 /* ScrollTab.swift in Sources */,
 				09D3574C1D8ADB51009E9E49 /* ShortProduct.swift in Sources */,
 				0955E4F81D36F6070060B47E /* StoreTab.swift in Sources */,
 			);

@@ -9,101 +9,77 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
-import SDWebImage
 
-let cellID = "cellID"
-
-class ProductTab: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    var shortPrd = [ShortProduct]()
-    let screenWidth = UIScreen.mainScreen().bounds.width
-    var cellSize = CGSizeZero
-    var fontSize = CGFloat()
-    let loadingIndicator = MyIndicator()
+class ProductTab: DancingShoesViewController {
+    var CategoryList = [String]()
+    var viewControllers = [CategoryProductView]()
+    var tabs = [String]()
+    let vc = CategoryProductView()
+    let indicator = MyIndicator()
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView?.alwaysBounceVertical = true
-        collectionView?.registerClass(PrdCell.self, forCellWithReuseIdentifier: cellID)
-        collectionView?.backgroundColor = UIColor(white: 0.95, alpha: 1)
-        self.navigationController?.navigationBar.barTintColor = Tools.dancingShoesColor
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        self.navigationController?.navigationBar.barStyle = .Black
-        self.navigationController?.navigationBar.translucent = false
-        setupIndicator()
-        setCellSize()
-        loadShortPrd()
-
+        self.loadCategory()
+        view.addSubview(indicator)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.widthAnchor.constraintEqualToConstant(42).active = true
+        indicator.heightAnchor.constraintEqualToConstant(24).active = true
+        indicator.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor).active = true
+        indicator.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
     }
     
-    func setCellSize() {
-        let width = (screenWidth - 8) / 2 - 1
-        let height = width * 1.42
-        self.cellSize = CGSize(width: width, height: height)
-        self.fontSize = screenWidth / 25
+    func loadTabandVCs() {
+        for cate in CategoryList {
+            let vc = CategoryProductView(collectionViewLayout: UICollectionViewFlowLayout())
+            //vc.topLayoutGuide.topAnchor.constraintEqualToAnchor(self.view.topAnchor, constant: 34)
+            //vc.view.frame = CGRectMake(0, 100, self.view.frame.width, self.view.frame.height - 149)
+            vc.category = cate
+            self.viewControllers.append(vc)
+            self.tabs.append(cate)
+        }
+        
+        let slidingVC = SlidingContainerViewController(
+            parent: self,
+            contentViewControllers: viewControllers,
+            titles: tabs
+        )
+        view.addSubview(slidingVC.view)
+        slidingVC.sliderView.appearance.outerPadding = 0
+        slidingVC.sliderView.appearance.innerPadding = 25
+        slidingVC.setCurrentViewControllerAtIndex(0)
     }
     
-    func setupIndicator() {
-        self.view.addSubview(loadingIndicator)
-        //loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
-        loadingIndicator.widthAnchor.constraintEqualToConstant(42).active = true
-        loadingIndicator.heightAnchor.constraintEqualToConstant(24).active = true
-        loadingIndicator.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor).active = true
-        loadingIndicator.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
-    }
-    
-    func loadShortPrd() {
-        self.loadingIndicator.startAnimating()
-        FIRDatabase.database().reference().child("ShortProducts").observeEventType(.ChildAdded, withBlock: { (snap) in
-            if let dict = snap.value as? [String: String] {
-                let prd = ShortProduct()
-                prd.pID = dict["productID"]!
-                prd.pName = dict["productName"]!
-                prd.pSub = dict["productSubDetail"]!
-                prd.pPrice = dict["productPrice"]!
-                prd.pMainImage = dict["productMainImage"]!
-                self.shortPrd.append(prd)
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.collectionView?.reloadData()
-                    self.loadingIndicator.stopAnimating()
-                })
+    func loadCategory() {
+        self.indicator.startAnimating()
+        FIRDatabase.database().reference().child("ProductCategory").observeEventType(.Value, withBlock: { (snap) in
+            for child in snap.children {
+                guard let csnap = child as? FIRDataSnapshot else {return}
+                let category = csnap.value as! String
+                self.CategoryList.append(category)
             }
+            dispatch_async(dispatch_get_main_queue(), {
+                self.loadTabandVCs()
+                self.indicator.stopAnimating()
+            })
+            
         })
     }
     
-//    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-//        return 1
-//    }
-    
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return shortPrd.count
-    }
-    
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! PrdCell
-        let p = shortPrd[indexPath.row]
-        cell.prdNameLable.text = p.pName
-        cell.prdNameLable.font = UIFont(name: "AppleSDGothicNeo-Light", size: fontSize)
-        cell.prdSubLable.text = p.pSub
-        cell.prdSubLable.font = UIFont(name: "AppleSDGothicNeo-Thin", size: fontSize)
-        cell.prdPriceLable.text = "THB " + p.pPrice!
-        cell.prdPriceLable.font = UIFont(name: "AppleSDGothicNeo-Light", size: fontSize)
-        if let imageUrl = NSURL(string: p.pMainImage!) {
-            //cell.prdImageView.loadImageUsingCacheWithUrlString(imageUrl)
-            cell.prdImageView.sd_setImageWithURL(imageUrl, placeholderImage: UIImage(named: "placeholder48"))
-        }
-        return cell
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        //return CGSizeMake(view.frame.width/2 - 5, (view.frame.width/2 - 5) * 1.48)
-        return cellSize
-    }
-    
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+    func slidingContainerViewControllerDidShowSliderView(slidingVC: SlidingContainerViewController) {
         
-        collectionView?.collectionViewLayout.invalidateLayout()
     }
+    
+    func slidingContainerViewControllerDidHideSliderView(slidingVC: SlidingContainerViewController) {
+        
+    }
+    
+    func slidingContainerViewControllerDidMoveToViewController(slidingVC: SlidingContainerViewController, viewController: UIViewController) {
+        
+    }
+    
+    func slidingContainerViewControllerDidMoveToViewControllerAtIndex(slidingVC: SlidingContainerViewController, index: Int) {
+        
+    }
+
+
 }

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SnapKit
 import Firebase
 import FirebaseDatabase
 import FirebaseAuth
@@ -20,7 +19,10 @@ class MeTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let funcs = ["ORDERS", "ADDRESS","FAVORITE", "PROFILE", "CONTACT US", "SHARE"]
     let icons = [UIImage(named: "order"), UIImage(named: "address"), UIImage(named: "favorite"), UIImage(named: "profile"), UIImage(named: "contactus"), UIImage(named: "share")]
     
-    let userAva = UIImageView()
+    let userAva: UIImageView = {
+        let imageView = UIImageView()
+        return imageView
+    }()
     let goToSignInBtn = UIButton()
     let userName = UILabel()
     let functionsListTableView = UITableView()
@@ -92,14 +94,11 @@ class MeTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //sign out button
     func setUpFBSignOutBtn() {
         self.view.addSubview(signOutFBBtn)
-        //self.signOutFBBtn.setTitle("SIGN OUT", forState: .Normal)
+        signOutFBBtn.translatesAutoresizingMaskIntoConstraints = false
+        signOutFBBtn.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: -20).active = true
+        signOutFBBtn.topAnchor.constraintEqualToAnchor(view.topAnchor, constant: 40).active = true
+        signOutFBBtn.heightAnchor.constraintEqualToConstant(36).active = true
         self.signOutFBBtn.setImage(UIImage(named: "exit"), forState: .Normal)
-        self.signOutFBBtn.titleLabel!.font =  UIFont(name: "ArialRoundedMTBold", size: 12)
-        self.signOutFBBtn.snp_makeConstraints { (make) in
-            make.top.equalTo(self.view).offset(40)
-            make.right.equalTo(self.view).offset(-20)
-            make.height.equalTo(36)
-        }
         self.signOutFBBtn.addTarget(self, action: #selector(signOutActionList), forControlEvents: .TouchUpInside)
     }
     
@@ -117,12 +116,11 @@ class MeTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func setUpFunctionsListTableView() {
         self.view.addSubview(functionsListTableView)
         self.functionsListTableView.backgroundColor = UIColor.whiteColor()
-        self.functionsListTableView.snp_makeConstraints { (make) in
-            make.top.equalTo(self.view).offset(180)
-            make.bottom.equalTo(self.view).offset(-49)
-            make.left.equalTo(self.view)
-            make.right.equalTo(self.view)
-        }
+        functionsListTableView.translatesAutoresizingMaskIntoConstraints = false
+        functionsListTableView.topAnchor.constraintEqualToAnchor(view.topAnchor, constant: 180).active = true
+        functionsListTableView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor, constant: -49).active = true
+        functionsListTableView.leftAnchor.constraintEqualToAnchor(view.leftAnchor).active = true
+        functionsListTableView.rightAnchor.constraintEqualToAnchor(view.rightAnchor).active = true
         self.functionsListTableView.delegate = self
         self.functionsListTableView.dataSource = self
         self.functionsListTableView.reloadData()
@@ -130,47 +128,41 @@ class MeTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func setUpUserAvatar() {
         self.view.addSubview(userAva)
+        userAva.translatesAutoresizingMaskIntoConstraints = false
         self.userAva.userInteractionEnabled = true
         self.userAva.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goToProfilePage)))
         self.userAva.layer.cornerRadius = self.userAva.frame.size.width/2
         self.userAva.clipsToBounds = true
         self.userAva.image = UIImage(named: "whiteAva")
-        self.userAva.snp_makeConstraints { (make) in
-            make.size.equalTo(80)
-            make.top.equalTo(self.view).offset(40)
-            make.centerX.equalTo(self.view.snp_centerX)
-        }
-        
+        userAva.topAnchor.constraintEqualToAnchor(view.topAnchor, constant: 40).active = true
+        userAva.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
+        userAva.heightAnchor.constraintEqualToConstant(80).active = true
+        userAva.widthAnchor.constraintEqualToConstant(80).active = true
     }
     func setUpUserName() {
         self.view.addSubview(userName)
+        userName.translatesAutoresizingMaskIntoConstraints = false
         self.userName.userInteractionEnabled = true
         self.userName.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goToProfilePage)))
         self.userName.textColor = UIColor.whiteColor()
         //set to be at center
         self.userName.textAlignment = .Center
-        self.userName.snp_makeConstraints { (make) in
-            make.height.equalTo(36)
-            make.top.equalTo(self.view).offset(130)
-            make.left.equalTo(self.view)
-            make.right.equalTo(self.view)
-        }
-
-        
-        
+        userName.topAnchor.constraintEqualToAnchor(view.topAnchor, constant: 130).active = true
+        userName.heightAnchor.constraintEqualToConstant(36).active = true
+        userName.leftAnchor.constraintEqualToAnchor(view.leftAnchor).active = true
+        userName.rightAnchor.constraintEqualToAnchor(view.rightAnchor).active = true
     }
     func setUpGoToSignInBtn() {
         self.view.addSubview(goToSignInBtn)
+        goToSignInBtn.translatesAutoresizingMaskIntoConstraints = false
         self.goToSignInBtn.setTitle("SIGN IN/REGISTER", forState: .Normal)
         self.goToSignInBtn.titleLabel!.font =  UIFont(name: "ArialRoundedMTBold", size: 14)
         self.goToSignInBtn.titleLabel?.textColor = UIColor.whiteColor()
-        self.goToSignInBtn.snp_makeConstraints { (make) in
-            make.height.equalTo(36)
-            make.top.equalTo(self.view).offset(130)
-            make.left.equalTo(self.view).offset(20)
-            make.right.equalTo(self.view).offset(-20)
-        }
-        //self.goToSignInBtn.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        
+        goToSignInBtn.topAnchor.constraintEqualToAnchor(view.topAnchor, constant: 130).active = true
+        goToSignInBtn.heightAnchor.constraintEqualToConstant(36).active = true
+        goToSignInBtn.leftAnchor.constraintEqualToAnchor(view.leftAnchor).active = true
+        goToSignInBtn.rightAnchor.constraintEqualToAnchor(view.rightAnchor).active = true
         self.goToSignInBtn.addTarget(self, action: #selector(goToSignInPage), forControlEvents: .TouchUpInside)
         
         
@@ -247,12 +239,17 @@ class MeTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let bgView = UIView()
         bgView.backgroundColor = Tools.dancingShoesColor
         self.view.addSubview(bgView)
-        bgView.snp_makeConstraints { (make) in
-            make.top.equalTo(view)
-            make.left.equalTo(self.view)
-            make.right.equalTo(self.view)
-            make.height.equalTo(180)
-        }
+        bgView.translatesAutoresizingMaskIntoConstraints = false
+        bgView.topAnchor.constraintEqualToAnchor(view.topAnchor).active = true
+        bgView.leftAnchor.constraintEqualToAnchor(view.leftAnchor).active = true
+        bgView.rightAnchor.constraintEqualToAnchor(view.rightAnchor).active = true
+        bgView.heightAnchor.constraintEqualToConstant(180).active = true
+//        bgView.snp_makeConstraints { (make) in
+//            make.top.equalTo(view)
+//            make.left.equalTo(self.view)
+//            make.right.equalTo(self.view)
+//            make.height.equalTo(180)
+//        }
     }
     
     func goToProfilePage() {
@@ -279,11 +276,6 @@ class MeTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
             changeAvatarAlertView.addAction(fromLib)
             
-//            let takeNewPhoto: UIAlertAction = UIAlertAction(title: "Take Photo", style: .Default)
-//            { action -> Void in
-//                //take new photo
-//            }
-//            changeAvatarAlertView.addAction(takeNewPhoto)
             self.presentViewController(changeAvatarAlertView, animated: true, completion: nil)
         }
     }
