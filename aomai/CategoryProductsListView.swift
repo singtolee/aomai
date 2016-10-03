@@ -38,14 +38,6 @@ class CategoryProductView: UICollectionViewController, UICollectionViewDelegateF
         
     }
     
-//    override func viewWillAppear(animated: Bool) {
-//        super.viewWillAppear(animated)
-//        self.view.frame = CGRectMake(0, 34, screenWidth, screenHeight - 83)
-//    }
-//    
-//    override func viewDidAppear(animated: Bool) {
-//        super.viewDidAppear(animated)
-//    }
     
     func setCellSize() {
         let width = (screenWidth - 8) / 2 - 1
@@ -69,10 +61,10 @@ class CategoryProductView: UICollectionViewController, UICollectionViewDelegateF
         FIRDatabase.database().reference().child(category).observeEventType(.ChildAdded, withBlock: { (snap) in
             if let dict = snap.value as? [String: String] {
                 let prd = ShortProduct()
-                prd.pID = dict["productID"]!
+                prd.pKey = snap.key
                 prd.pName = dict["productName"]!
                 prd.pSub = dict["productSubDetail"]!
-                prd.pPrice = dict["productPrice"]!
+                prd.pPrice = Double(dict["productPrice"]!)
                 prd.pMainImage = dict["productMainImage"]!
                 self.shortPrd.append(prd)
                 dispatch_async(dispatch_get_main_queue(), {
@@ -101,7 +93,7 @@ class CategoryProductView: UICollectionViewController, UICollectionViewDelegateF
         cell.prdNameLable.font = UIFont(name: "AppleSDGothicNeo-Light", size: fontSize)
         cell.prdSubLable.text = p.pSub
         cell.prdSubLable.font = UIFont(name: "AppleSDGothicNeo-Thin", size: fontSize)
-        cell.prdPriceLable.text = "THB " + p.pPrice!
+        cell.prdPriceLable.text = "THB " + String(p.pPrice!)
         cell.prdPriceLable.font = UIFont(name: "AppleSDGothicNeo-Light", size: fontSize)
         if let imageUrl = NSURL(string: p.pMainImage!) {
             //cell.prdImageView.loadImageUsingCacheWithUrlString(imageUrl)
@@ -117,7 +109,7 @@ class CategoryProductView: UICollectionViewController, UICollectionViewDelegateF
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let vc = DetailPrdView()
-        vc.product = shortPrd[indexPath.row]
+        vc.prdKey = shortPrd[indexPath.row].pKey
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

@@ -8,9 +8,9 @@
 
 import Foundation
 class ShortProduct: NSObject {
-    var pID: String?
     var pName: String?
     var pSub: String?
-    var pPrice: String?
+    var pPrice: Double?
     var pMainImage: String?
+    var pKey: String?
 }

@@ -176,7 +176,6 @@
 				091AE1431D7AE6A1002CB33F /* Extensions.swift */,
 				091615391D7C02EC00D924D8 /* FreeAddress.swift */,
 				0916153B1D7C040B00D924D8 /* PostAddress.swift */,
-				09D3574B1D8ADB51009E9E49 /* ShortProduct.swift */,
 				09F550CA1D902F7E00658083 /* MyIndicator.swift */,
 			);
 			name = Tools;
@@ -242,6 +241,7 @@
 		09DEF71C1D99654B00DF3CFE /* Modal */ = {
 			isa = PBXGroup;
 			children = (
+				09D3574B1D8ADB51009E9E49 /* ShortProduct.swift */,
 				09DEF7171D99612200DF3CFE /* DetailProduct.swift */,
 			);
 			name = Modal;
