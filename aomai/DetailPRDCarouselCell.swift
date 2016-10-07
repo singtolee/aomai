@@ -31,7 +31,9 @@ class DetailPrdCarouselCollectionViewCell: UICollectionViewCell {
         prdImageView.topAnchor.constraintEqualToAnchor(self.topAnchor).active = true
         prdImageView.leftAnchor.constraintEqualToAnchor(self.leftAnchor).active = true
         prdImageView.rightAnchor.constraintEqualToAnchor(self.rightAnchor).active = true
-        prdImageView.heightAnchor.constraintEqualToAnchor(self.widthAnchor).active = true
+        //prdImageView.bottomAnchor.constraintEqualToAnchor(self.bottomAnchor).active = true
+        prdImageView.heightAnchor.constraintEqualToConstant(frame.width).active = true
+        //prdImageView.heightAnchor.constraintEqualToAnchor(self.widthAnchor).active = true
     }
 
 

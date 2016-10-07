@@ -13,12 +13,13 @@ import FirebaseDatabase
 import SnapKit
 
 class MyAddress: UITableViewController {
-    let addressType = ["FREE DELIVERY ADDRESS", "POST ADDRESS"]
+    let addressType = ["CASH ON DELIVERY ADDRESS", "POST ADDRESS"]
     var mailingAddresses = [PostAddress]()
     var freeAddress = [FreeAddress]()
     let freeHeader = UIView()
     let postHeader = UIView()
     let cellID = "cellID"
+    let indicator = MyIndicator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,13 @@ class MyAddress: UITableViewController {
         self.navigationController?.navigationBar.barStyle = .Black
         self.navigationController?.navigationBar.translucent = false
         self.title = "ADDRESS"
+        view.addSubview(indicator)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.widthAnchor.constraintEqualToConstant(42).active = true
+        indicator.heightAnchor.constraintEqualToConstant(24).active = true
+        indicator.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
+        indicator.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor, constant: -40).active = true
+        //self.indicator.center = view.center
         loadFreeAddress()
         loadMailingAddress()
     }
@@ -54,6 +62,7 @@ class MyAddress: UITableViewController {
         
     }
     func loadMailingAddress() {
+        self.indicator.startAnimating()
         //self.mailingAddresses.removeAll()
         if let uid = FIRAuth.auth()?.currentUser?.uid {
             FIRDatabase.database().reference().child("MailingAddresses").child(uid).observeEventType(.Value, withBlock: { (snap) in
@@ -73,6 +82,7 @@ class MyAddress: UITableViewController {
                 }
                 dispatch_async(dispatch_get_main_queue(), {
                     self.tableView.reloadData()
+                    self.indicator.stopAnimating()
                 })
             })
         }
@@ -163,7 +173,6 @@ class MyAddress: UITableViewController {
         return rowNumber
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //let cell = UITableViewCell(style: .Value1, reuseIdentifier: "cellID")
         let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! AddressCell
         if indexPath.section == 0 {
             let add = freeAddress[indexPath.row]
@@ -198,10 +207,6 @@ class MyAddress: UITableViewController {
         } else {
             let vc = EditFreeAddress()
             vc.officeAddress = self.freeAddress[indexPath.row]
-            //vc.recipientTF.text = self.freeAddress[indexPath.row].recipient
-            //vc.phoneTF.text = self.freeAddress[indexPath.row].phone
-            //vc.buildingTF.text = self.freeAddress[indexPath.row].building
-            //vc.roomTF.text = self.freeAddress[indexPath.row].room
             navigationController?.pushViewController(vc, animated: true)
         }
         
@@ -211,8 +216,6 @@ class MyAddress: UITableViewController {
         if indexPath.section == 1 {
             if editingStyle == .Delete {
                 self.deleteAddressByID(mailingAddresses[indexPath.row].ID)
-                //mailingAddresses.removeAtIndex(indexPath.row)
-                //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
             }
         } else {
             if editingStyle == .Delete {
@@ -238,43 +241,28 @@ class MyAddress: UITableViewController {
             ref.removeValue()
         }
     }
-    
-    class AddressCell: UITableViewCell {
-        override func layoutSubviews() {
-            super.layoutSubviews()
-            textLabel?.frame = CGRectMake(textLabel!.frame.origin.x, textLabel!.frame.origin.y - 4, self.frame.width - 140, textLabel!.frame.height)
-            detailTextLabel?.frame = CGRectMake(detailTextLabel!.frame.origin.x, detailTextLabel!.frame.origin.y + 4, detailTextLabel!.frame.width, detailTextLabel!.frame.height)
-            phoneLable.frame = CGRectMake(self.frame.width - 120, textLabel!.frame.origin.y - 4, 70, textLabel!.frame.height)
-        }
-        
-        let phoneLable: UILabel = {
-            let lab = UILabel()
-            lab.translatesAutoresizingMaskIntoConstraints = false
-            lab.font = UIFont(name: "ArialHebrew-Light", size: 14)
-            return lab
-        }()
-        
-        override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-            super.init(style: .Subtitle, reuseIdentifier: reuseIdentifier)
-            addSubview(phoneLable)
-            //phoneLable.rightAnchor.constraintEqualToAnchor(self.rightAnchor, constant: -50).active = true
-            //phoneLable.centerYAnchor.constraintEqualToAnchor(self.textLabel?.centerYAnchor).active = true
-            //phoneLable.heightAnchor.constraintEqualToConstant(30).active = true
-        }
-        
-        required init?(coder aDecoder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
+}
+class AddressCell: UITableViewCell {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        textLabel?.frame = CGRectMake(textLabel!.frame.origin.x, textLabel!.frame.origin.y - 4, self.frame.width - 140, textLabel!.frame.height)
+        detailTextLabel?.frame = CGRectMake(detailTextLabel!.frame.origin.x, detailTextLabel!.frame.origin.y + 4, detailTextLabel!.frame.width, detailTextLabel!.frame.height)
+        phoneLable.frame = CGRectMake(self.frame.width - 120, textLabel!.frame.origin.y - 4, 70, textLabel!.frame.height)
     }
     
+    let phoneLable: UILabel = {
+        let lab = UILabel()
+        lab.translatesAutoresizingMaskIntoConstraints = false
+        lab.font = UIFont(name: "ArialHebrew-Light", size: 14)
+        return lab
+    }()
     
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: .Subtitle, reuseIdentifier: reuseIdentifier)
+        addSubview(phoneLable)
+    }
     
-    
-    
-    
-    
-    
-    
-    
-
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }

@@ -17,6 +17,8 @@ class DancingShoesViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.barStyle = .Black
         self.navigationController?.navigationBar.translucent = false
+        //UINavigationBar.appearance().shadowImage = UIImage()
+        //UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
         
     }
 }

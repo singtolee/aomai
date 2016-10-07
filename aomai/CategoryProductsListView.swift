@@ -64,11 +64,17 @@ class CategoryProductView: UICollectionViewController, UICollectionViewDelegateF
                 prd.pKey = snap.key
                 prd.pName = dict["productName"]!
                 prd.pSub = dict["productSubDetail"]!
-                prd.pPrice = Double(dict["productPrice"]!)
+                if (Double(dict["productPrice"]!) != nil) {
+                    prd.pPrice = Double(dict["productPrice"]!)
+                } else {
+                    prd.pPrice = 9999.0
+                }
                 prd.pMainImage = dict["productMainImage"]!
-                self.shortPrd.append(prd)
+                //self.shortPrd.append(prd)
+                self.shortPrd.insert(prd, atIndex: 0)
                 dispatch_async(dispatch_get_main_queue(), {
                     self.collectionView?.reloadData()
+                    //self.collectionView?.reloadItemsAtIndexPaths()
                     self.loadingIndicator.stopAnimating()
                 })
             } else {
@@ -108,7 +114,9 @@ class CategoryProductView: UICollectionViewController, UICollectionViewDelegateF
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let vc = DetailPrdView()
+        let vc = MyPrdView()
+        //let vc = DetailPrdView()
+        //let vc = FullProductView()
         vc.prdKey = shortPrd[indexPath.row].pKey
         self.navigationController?.pushViewController(vc, animated: true)
     }

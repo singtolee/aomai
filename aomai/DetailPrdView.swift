@@ -11,81 +11,104 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class DetailPrdView: DancingShoesViewController {
+class DetailPrdView: DancingShoesViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     var product: DetailProduct?
+    var pImage = [String]()
     var prdKey: String?
-//    let sW = UIScreen.mainScreen().bounds.width
-//    let sH = UIScreen.mainScreen().bounds.height
-//    
-//    private lazy var scrollView: DetailScrollView = {
-//        let scrollView = DetailScrollView()
-//        scrollView.showsHorizontalScrollIndicator = false
-//        scrollView.delegate = self
-//        return scrollView
-//    }()
-
+    let sW = UIScreen.mainScreen().bounds.width
+    let sH = UIScreen.mainScreen().bounds.height
     
+    var imageCarouselCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //print(prdKey)
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        //layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        layout.itemSize = CGSize(width: sW, height: sW)
+        layout.scrollDirection = .Horizontal
+        imageCarouselCollectionView = UICollectionView(frame: CGRectMake(0, 0, sW, sW + 200), collectionViewLayout: layout)
+        imageCarouselCollectionView.dataSource = self
+        imageCarouselCollectionView.delegate = self
+        imageCarouselCollectionView.showsHorizontalScrollIndicator = false
+        imageCarouselCollectionView.pagingEnabled = true
+        imageCarouselCollectionView.backgroundColor = UIColor.lightGrayColor()
+        imageCarouselCollectionView.registerClass(DetailPrdCarouselCollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        self.view.addSubview(imageCarouselCollectionView)
+        imageCarouselCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        imageCarouselCollectionView.topAnchor.constraintEqualToAnchor(view.topAnchor).active = true
+        imageCarouselCollectionView.leftAnchor.constraintEqualToAnchor(view.leftAnchor).active = true
+        imageCarouselCollectionView.rightAnchor.constraintEqualToAnchor(view.rightAnchor).active = true
+        imageCarouselCollectionView.heightAnchor.constraintEqualToConstant(self.sW).active = true
         findPrdbyKey()
-        //setupUI()
     }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return pImage.count
+    }
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSizeMake(sW, sW + 200)
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! DetailPrdCarouselCollectionViewCell
+        let url = pImage[indexPath.item]
+        if let imageUrl = NSURL(string: url) {
+            cell.prdImageView.sd_setImageWithURL(imageUrl, placeholderImage: UIImage(named: "placeholder48"))
+        }
+        return cell
+    }
+
+    
     
     func findPrdbyKey() {
         if (prdKey != nil){
             FIRDatabase.database().reference().child("AllProduct").child(prdKey!).observeSingleEventOfType(.Value, withBlock: { (snap) in
-                //print(snap)
                 if let dict = snap.value as? [String: AnyObject] {
                     let prd = DetailProduct()
-                    prd.prdID = dict["productID"]! as? String
+                    var jg = "0"
+                    var sl = "0"
+                    prd.prdID = dict["productID"] as? String
                     prd.prdName = dict["productName"] as? String
                     prd.prdSub = dict["productSubDetail"] as? String
-                    prd.prdPackageInfo = dict["productPackageInfo"]! as? String
+                    prd.prdPackageInfo = dict["productPackageInfo"] as? String
                     prd.prdSuppler = dict["productSuppler"] as? String
                     prd.prdWarranty = dict["productWarranty"] as? String
-                    prd.prdQty = dict["productQty"] as? Int
-                    prd.prdPrice = dict["productPrice"] as? Double
+                    jg = (dict["productPrice"] as? String)!
+                    sl = (dict["productQty"] as? String)!
+                    if(Int(sl) != nil) {
+                        prd.prdQty = Int(sl)
+                    }else {
+                        prd.prdQty = 0
+                    }
+                    if(Double(jg) != nil) {
+                        prd.prdPrice = Double(jg)
+                    } else {
+                        prd.prdPrice = 9999.0
+                    }
                     prd.isRefundable = dict["productRefundable"] as? Bool
                     prd.isBrand = dict["productBrand"] as? Bool
                     prd.prdImages = dict["productImages"] as? [String]
-                    prd.prdInfoImages = dict["productInfoImages"] as? [String]
-                    
+                    if let info = dict["productInfoImages"] as? [String] {
+                        prd.prdInfoImages = info
+                    }
                     self.product = prd
-                    print(self.product?.isBrand)
-                    
+                    self.pImage = prd.prdImages!
+                    self.imageCarouselCollectionView.reloadData()
+                    print(prd.isBrand)
+                    print(prd.prdPrice)
+                    print(prd.prdQty)
+                    print(prd.prdName)
+                }else {
+                    //no prd with this key, error
                 }
                 
             })
         }
     }
-    
-//    func setupUI() {
-//        
-//        view.addSubview(scrollView)
-//        // 添加底部栏
-//        scrollView.product = product
-//        
-//        scrollView.snp_makeConstraints { (make) in
-//            make.top.left.right.equalTo(view)
-//        }
-//    
-//        
-//        scrollView.contentSize = CGSizeMake(sW, sH - 64 - 45 + 2 + 520)
-//    }
-//    
-    
 
 }
 
-//extension DetailPrdView: UIScrollViewDelegate {
-//    func scrollViewDidScroll(scrollView: UIScrollView) {
-//        var offsetY = scrollView.contentOffset.y
-//        if offsetY >= 465 {
-//            offsetY = CGFloat(465)
-//            scrollView.contentOffset = CGPointMake(0, offsetY)
-//        }
-//    }
-//}
+
 

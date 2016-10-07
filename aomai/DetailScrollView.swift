@@ -9,7 +9,7 @@
 import UIKit
 
 class DetailScrollView: UIScrollView {
-    var product: ShortProduct? {
+    var product: DetailProduct? {
         didSet {
             topScrollView.product = product
         }

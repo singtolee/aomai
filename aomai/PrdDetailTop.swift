@@ -13,15 +13,15 @@ let detailCollectionViewCellID = "detailCollectionViewCellID"
 
 class ProductDetailTopView: UIView {
     var imageURLs = [String]()
-    var product: ShortProduct? {
+    var product: DetailProduct? {
         didSet {
-            imageURLs.append((product?.pMainImage)!)
-            //imageURLs = product!.image_urls!
+            //imageURLs.append((product?.pMainImage)!)
+            imageURLs = product!.prdImages!
             collectionView.reloadData()
             pageControl.numberOfPages = imageURLs.count
-            titleLabel.text = product!.pName
-            priceLabel.text = "THB\(product!.pPrice)"
-            describeLabel.text = product!.pSub
+            titleLabel.text = product!.prdName
+            priceLabel.text = "THB\(product!.prdPrice)"
+            describeLabel.text = product!.prdSub
         }
     }
     

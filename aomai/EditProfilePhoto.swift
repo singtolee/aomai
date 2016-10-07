@@ -33,7 +33,8 @@ class EditProfilePhoto: UIViewController, UIImagePickerControllerDelegate, UINav
                 if let uUrl = dict["userAvatarUrl"] {
                     //use extension
                     let url = uUrl as! String
-                    self.avatarImageView.loadImageUsingCacheWithUrlString(url)
+                    let urlSD = NSURL(string: url)
+                    self.avatarImageView.sd_setImageWithURL(urlSD, placeholderImage: self.placeHolder)
                 } else {
                     self.avatarImageView.image = self.placeHolder
                     self.avatarImageView.contentMode = .ScaleAspectFit
