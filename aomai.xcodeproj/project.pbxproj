@@ -37,8 +37,6 @@
 		096AEBAD1DA7013000D5FC25 /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096AEBAC1DA7013000D5FC25 /* CarouselCell.swift */; };
 		097469241D4BB052009459EF /* Vser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097469231D4BB052009459EF /* Vser.swift */; };
 		097C1C211D92565500011AA7 /* CategoryProductsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097C1C201D92565500011AA7 /* CategoryProductsListView.swift */; };
-		097D4B8A1DA558D100082E41 /* FullPruductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097D4B891DA558D100082E41 /* FullPruductView.swift */; };
-		097D4B8C1DA55FE000082E41 /* CarouselTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097D4B8B1DA55FE000082E41 /* CarouselTableViewCell.swift */; };
 		098E0A8A1D80BC5A0045A9D2 /* EditPostAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E0A891D80BC5A0045A9D2 /* EditPostAddress.swift */; };
 		09991E081D6D0E22009B81F9 /* EmptyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09991E071D6D0E22009B81F9 /* EmptyTableView.swift */; };
 		099B9AE31D4FA50F006CC617 /* MyAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099B9AE21D4FA50F006CC617 /* MyAddress.swift */; };
@@ -48,11 +46,8 @@
 		09D3574C1D8ADB51009E9E49 /* ShortProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D3574B1D8ADB51009E9E49 /* ShortProduct.swift */; };
 		09DA854C1D9420050012D6A6 /* ScrollTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA854B1D9420050012D6A6 /* ScrollTab.swift */; };
 		09DA854E1D9425AA0012D6A6 /* ScrollViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA854D1D9425AA0012D6A6 /* ScrollViewControllers.swift */; };
+		09DBF0A31DA8612C007DF069 /* MiddleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DBF0A21DA8612C007DF069 /* MiddleView.swift */; };
 		09DEF7181D99612200DF3CFE /* DetailProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DEF7171D99612200DF3CFE /* DetailProduct.swift */; };
-		09DEF71A1D9964A600DF3CFE /* DetailPrdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DEF7191D9964A600DF3CFE /* DetailPrdView.swift */; };
-		09DEF7261D99D6BC00DF3CFE /* DetailPRDCarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DEF7251D99D6BC00DF3CFE /* DetailPRDCarouselCell.swift */; };
-		09DEF7281D99DA7500DF3CFE /* PrdDetailTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DEF7271D99DA7500DF3CFE /* PrdDetailTop.swift */; };
-		09DEF72A1D99E28500DF3CFE /* DetailScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DEF7291D99E28500DF3CFE /* DetailScrollView.swift */; };
 		09F550CB1D902F7E00658083 /* MyIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F550CA1D902F7E00658083 /* MyIndicator.swift */; };
 		09FC426B1D8759450016937E /* BriefProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC426A1D8759450016937E /* BriefProductCollectionViewCell.swift */; };
 		0C6F72DF964B3A8BFE3CC86F /* Pods_aomai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6270E9424D0A8DFF1F1ECF7 /* Pods_aomai.framework */; };
@@ -91,8 +86,6 @@
 		096AEBAC1DA7013000D5FC25 /* CarouselCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
 		097469231D4BB052009459EF /* Vser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vser.swift; sourceTree = "<group>"; };
 		097C1C201D92565500011AA7 /* CategoryProductsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryProductsListView.swift; sourceTree = "<group>"; };
-		097D4B891DA558D100082E41 /* FullPruductView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullPruductView.swift; sourceTree = "<group>"; };
-		097D4B8B1DA55FE000082E41 /* CarouselTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselTableViewCell.swift; sourceTree = "<group>"; };
 		098E0A891D80BC5A0045A9D2 /* EditPostAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPostAddress.swift; sourceTree = "<group>"; };
 		09991E071D6D0E22009B81F9 /* EmptyTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyTableView.swift; sourceTree = "<group>"; };
 		099B9AE21D4FA50F006CC617 /* MyAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAddress.swift; sourceTree = "<group>"; };
@@ -102,11 +95,8 @@
 		09D3574B1D8ADB51009E9E49 /* ShortProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortProduct.swift; sourceTree = "<group>"; };
 		09DA854B1D9420050012D6A6 /* ScrollTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollTab.swift; sourceTree = "<group>"; };
 		09DA854D1D9425AA0012D6A6 /* ScrollViewControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewControllers.swift; sourceTree = "<group>"; };
+		09DBF0A21DA8612C007DF069 /* MiddleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiddleView.swift; sourceTree = "<group>"; };
 		09DEF7171D99612200DF3CFE /* DetailProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailProduct.swift; sourceTree = "<group>"; };
-		09DEF7191D9964A600DF3CFE /* DetailPrdView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPrdView.swift; sourceTree = "<group>"; };
-		09DEF7251D99D6BC00DF3CFE /* DetailPRDCarouselCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPRDCarouselCell.swift; sourceTree = "<group>"; };
-		09DEF7271D99DA7500DF3CFE /* PrdDetailTop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrdDetailTop.swift; sourceTree = "<group>"; };
-		09DEF7291D99E28500DF3CFE /* DetailScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailScrollView.swift; sourceTree = "<group>"; };
 		09F550CA1D902F7E00658083 /* MyIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyIndicator.swift; sourceTree = "<group>"; };
 		09FC426A1D8759450016937E /* BriefProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BriefProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		49ECF41FECF2F06D027E7A71 /* Pods-aomai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomai.release.xcconfig"; path = "Pods/Target Support Files/Pods-aomai/Pods-aomai.release.xcconfig"; sourceTree = "<group>"; };
@@ -182,6 +172,7 @@
 			children = (
 				096AEBAA1DA700CC00D5FC25 /* CarouselView.swift */,
 				096AEBAC1DA7013000D5FC25 /* CarouselCell.swift */,
+				09DBF0A21DA8612C007DF069 /* MiddleView.swift */,
 			);
 			name = MyView;
 			sourceTree = "<group>";
@@ -251,7 +242,6 @@
 			isa = PBXGroup;
 			children = (
 				096AEBA91DA700B300D5FC25 /* MyView */,
-				09DEF71E1D99656600DF3CFE /* View */,
 				09DEF71D1D99655B00DF3CFE /* Controller */,
 				09DEF71C1D99654B00DF3CFE /* Modal */,
 			);
@@ -270,22 +260,9 @@
 		09DEF71D1D99655B00DF3CFE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				09DEF7191D9964A600DF3CFE /* DetailPrdView.swift */,
-				097D4B891DA558D100082E41 /* FullPruductView.swift */,
 				096AEBA71DA6FDFC00D5FC25 /* MyPrdView.swift */,
 			);
 			name = Controller;
-			sourceTree = "<group>";
-		};
-		09DEF71E1D99656600DF3CFE /* View */ = {
-			isa = PBXGroup;
-			children = (
-				09DEF7251D99D6BC00DF3CFE /* DetailPRDCarouselCell.swift */,
-				09DEF7271D99DA7500DF3CFE /* PrdDetailTop.swift */,
-				09DEF7291D99E28500DF3CFE /* DetailScrollView.swift */,
-				097D4B8B1DA55FE000082E41 /* CarouselTableViewCell.swift */,
-			);
-			name = View;
 			sourceTree = "<group>";
 		};
 		09FC42691D8759160016937E /* CELL */ = {
@@ -449,26 +426,21 @@
 				094CDC5D1D72F10E00D03A5B /* EidtUserName.swift in Sources */,
 				0955E4E41D36F4EE0060B47E /* AppDelegate.swift in Sources */,
 				096AEBA81DA6FDFC00D5FC25 /* MyPrdView.swift in Sources */,
-				097D4B8A1DA558D100082E41 /* FullPruductView.swift in Sources */,
 				09B7E8441D3DDF4000479035 /* Register.swift in Sources */,
 				0955E4FA1D36F6230060B47E /* CartTab.swift in Sources */,
+				09DBF0A31DA8612C007DF069 /* MiddleView.swift in Sources */,
 				096AEBAB1DA700CC00D5FC25 /* CarouselView.swift in Sources */,
 				091615361D7BFE4F00D924D8 /* DancingShoesViewController.swift in Sources */,
-				09DEF72A1D99E28500DF3CFE /* DetailScrollView.swift in Sources */,
 				0955E5001D3700810060B47E /* SocialSignIn.swift in Sources */,
 				09991E081D6D0E22009B81F9 /* EmptyTableView.swift in Sources */,
 				0916153C1D7C040B00D924D8 /* PostAddress.swift in Sources */,
 				094CDC381D72590C00D03A5B /* EditProfile.swift in Sources */,
-				09DEF7261D99D6BC00DF3CFE /* DetailPRDCarouselCell.swift in Sources */,
 				097C1C211D92565500011AA7 /* CategoryProductsListView.swift in Sources */,
 				099F748A1D78E46100EE84D3 /* MYTextField.swift in Sources */,
-				09DEF71A1D9964A600DF3CFE /* DetailPrdView.swift in Sources */,
-				097D4B8C1DA55FE000082E41 /* CarouselTableViewCell.swift in Sources */,
 				0916CD5F1D3FC65300167988 /* Tools.swift in Sources */,
 				0955E4FC1D36F6340060B47E /* MeTab.swift in Sources */,
 				091615381D7BFF5700D924D8 /* AddPostAddress.swift in Sources */,
 				094CDC5F1D733F1B00D03A5B /* EditPhoneNumber.swift in Sources */,
-				09DEF7281D99DA7500DF3CFE /* PrdDetailTop.swift in Sources */,
 				092629981D675B7B00F3112C /* ProductTab.swift in Sources */,
 				09DA854E1D9425AA0012D6A6 /* ScrollViewControllers.swift in Sources */,
 				098E0A8A1D80BC5A0045A9D2 /* EditPostAddress.swift in Sources */,

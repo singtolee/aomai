@@ -84,10 +84,6 @@ class CategoryProductView: UICollectionViewController, UICollectionViewDelegateF
         })
     }
     
-    //    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-    //        return 1
-    //    }
-    
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return shortPrd.count
     }
@@ -102,21 +98,17 @@ class CategoryProductView: UICollectionViewController, UICollectionViewDelegateF
         cell.prdPriceLable.text = "THB " + String(p.pPrice!)
         cell.prdPriceLable.font = UIFont(name: "AppleSDGothicNeo-Light", size: fontSize)
         if let imageUrl = NSURL(string: p.pMainImage!) {
-            //cell.prdImageView.loadImageUsingCacheWithUrlString(imageUrl)
             cell.prdImageView.sd_setImageWithURL(imageUrl, placeholderImage: UIImage(named: "placeholder48"))
         }
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        //return CGSizeMake(view.frame.width/2 - 5, (view.frame.width/2 - 5) * 1.48)
         return cellSize
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let vc = MyPrdView()
-        //let vc = DetailPrdView()
-        //let vc = FullProductView()
         vc.prdKey = shortPrd[indexPath.row].pKey
         self.navigationController?.pushViewController(vc, animated: true)
     }

@@ -13,20 +13,34 @@ import FirebaseDatabase
 
 class MyPrdView: UIViewController, UIScrollViewDelegate {
     
+    let sw = UIScreen.mainScreen().bounds.width
     var product: DetailProduct?
     
     var prdKey: String?
-    let sW = UIScreen.mainScreen().bounds.width
+    //let sW = UIScreen.mainScreen().bounds.width
     
     let scrollView = UIScrollView()
     let carouselView = Carousel()
+    let middleView = MiddleView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = prdKey
         addScrollView()
         addCarousel()
+        addMiddleView()
         findPrdbyKey()
+        
+    }
+    
+    func addMiddleView() {
+        scrollView.addSubview(middleView)
+        //middleView.backgroundColor = UIColor.brownColor()
+        self.middleView.translatesAutoresizingMaskIntoConstraints = false
+        middleView.topAnchor.constraintEqualToAnchor(self.carouselView.bottomAnchor).active = true
+        middleView.rightAnchor.constraintEqualToAnchor(self.view.rightAnchor).active = true
+        middleView.leftAnchor.constraintEqualToAnchor(self.view.leftAnchor).active = true
+        //middleView.heightAnchor.constraintEqualToConstant(136).active = true
         
     }
     
@@ -86,9 +100,7 @@ class MyPrdView: UIViewController, UIScrollViewDelegate {
                         prd.prdInfoImages = info
                     }
                     self.product = prd
-                    self.carouselView.pageControl.numberOfPages = prd.prdImages!.count
-                    self.carouselView.imageUrls = prd.prdImages!
-                    self.carouselView.collectionView.reloadData()
+                    self.populateView(prd)
                 }else {
                     //no prd with this key, error
                 }
@@ -97,6 +109,26 @@ class MyPrdView: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    func populateView(prd: DetailProduct) {
+        self.carouselView.pageControl.numberOfPages = prd.prdImages!.count
+        self.carouselView.imageUrls = prd.prdImages!
+        self.carouselView.collectionView.reloadData()
+        
+        self.middleView.titleLable.text = prd.prdName! + "\n" + prd.prdSub!
+        self.middleView.titleLable.font = UIFont(name: "AppleSDGothicNeo-Medium", size: sw/25)
+        
+        self.middleView.priceTag.text = "THB " + String(prd.prdPrice!)
+        self.middleView.priceTag.font = UIFont(name: "AppleSDGothicNeo-Medium", size: sw/25)
+        
+        if(prd.prdQty < 1) {
+            self.middleView.priceTag.font = UIFont(name: "AppleSDGothicNeo-Medium", size: sw/30)
+            self.middleView.estimateDT.text = "Estimated Delivery Time :" + "12:00"
+        }else {
+            self.middleView.priceTag.font = UIFont(name: "AppleSDGothicNeo-Medium", size: sw/30
+            )
+            self.middleView.estimateDT.text = "Estimated Delivery Time :" + "NOW"
+        }
+    }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.hidden = true
