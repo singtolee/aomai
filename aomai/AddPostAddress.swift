@@ -16,12 +16,8 @@ class AddPostAddress: DancingShoesViewController, UITextFieldDelegate, UITextVie
     let phoneTF = MYTextField()
     let postCode = MYTextField()
     let detailAddressTF = UITextView()
-    //let defaultAddressSwitch = UISwitch()
-    //let setDefaultLable = UILabel()
     let saveBTN = UIButton()
     let scrollView = UIScrollView(frame: UIScreen.mainScreen().bounds)
-    //let buildingPicker = UIPickerView()
-    //var buildings = [String]()
     let indicator = UIActivityIndicatorView()
     let placeHolder = UILabel()
     
@@ -33,8 +29,6 @@ class AddPostAddress: DancingShoesViewController, UITextFieldDelegate, UITextVie
         setupPostCodeTF()
         setUpDetailAddressTF()
         addPlaceHolder()
-        //addLable()
-        //addSwitch()
         addBtn()
         setUpActivityIndicator()
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(allTextFieldsResignFirstResponder)))
@@ -122,13 +116,10 @@ class AddPostAddress: DancingShoesViewController, UITextFieldDelegate, UITextVie
         detailAddressTF.delegate = self
         detailAddressTF.autocorrectionType = .No
         detailAddressTF.scrollEnabled = false
-        //detailAddressTF.clearButtonMode = .WhileEditing
-        //detailAddressTF.placeholder = "DETAIL ADDRESS"
-        //detailAddressTF.borderStyle = .None
         detailAddressTF.returnKeyType = .Done
         detailAddressTF.font = UIFont(name: "ArialHebrew-Light", size: 14)
         detailAddressTF.translatesAutoresizingMaskIntoConstraints = false
-        detailAddressTF.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
+        //detailAddressTF.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
         detailAddressTF.leftAnchor.constraintEqualToAnchor(view.leftAnchor, constant: 20).active = true
         detailAddressTF.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: -24).active = true
         detailAddressTF.topAnchor.constraintEqualToAnchor(postCode.bottomAnchor, constant: 10).active = true

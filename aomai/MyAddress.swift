@@ -10,7 +10,6 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
-import SnapKit
 
 class MyAddress: UITableViewController {
     let addressType = ["CASH ON DELIVERY ADDRESS", "POST ADDRESS"]

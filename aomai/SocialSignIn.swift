@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SnapKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
@@ -17,29 +16,22 @@ import SVProgressHUD
 
 class SocialSignIn: UIViewController, UITextFieldDelegate {
     
-    let fbLoginBtn = UIButton()        //facebook login button
-    let cancelLoginBtn = UIButton()    //cancek kogin button
-    //name and password text field
+    let fbLoginBtn = UIButton()
+    let cancelLoginBtn = UIButton()
     let emailTF = UITextField()
     let pswd = UITextField()
     let welcomeLable = UILabel()
-    //email login button
     let emailLoginBtn = UIButton()
-    //or lable
     let orLable = UILabel()
-    //register button
     let registerBtn = UIButton()
-    //email text field bottom line
     let eLine = UIView()
-    //password text field bottom line
     let pswdLine = UIView()
-    //forget password button
     let forgetPasswordBtn = UIButton()
-    let offset = 24
+    let offset: CGFloat = 24
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.whiteColor() //#154360
+        self.view.backgroundColor = UIColor.whiteColor()
         self.view.addSubview(fbLoginBtn)
         self.view.addSubview(cancelLoginBtn)
         self.view.addSubview(emailTF)
@@ -64,10 +56,8 @@ class SocialSignIn: UIViewController, UITextFieldDelegate {
         addEmailTFBottomLine()
         addPasswordTFBottomLine()
         setUpForgetPasswordButton()
-        //resign keyboard when touch outside textfields
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(allTextFieldsResignFirstResponder)))
         self.view.userInteractionEnabled = true
-        //move up
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -79,12 +69,12 @@ class SocialSignIn: UIViewController, UITextFieldDelegate {
     
     func setupCancelLogInBtn() {
         self.cancelLoginBtn.setImage(UIImage(named: "cancelLogin"), forState: .Normal)
-        self.cancelLoginBtn.snp_makeConstraints { (make) in
-            make.top.equalTo(self.view).offset(view.bounds.height/20) //
-            make.left.equalTo(self.view).offset(20)
-            make.height.equalTo(36)
-            make.width.equalTo(36)
-        }
+        
+        cancelLoginBtn.translatesAutoresizingMaskIntoConstraints = false
+        cancelLoginBtn.topAnchor.constraintEqualToAnchor(view.topAnchor, constant: view.bounds.height/20).active = true
+        cancelLoginBtn.leftAnchor.constraintEqualToAnchor(view.leftAnchor, constant: 20).active = true
+        cancelLoginBtn.widthAnchor.constraintEqualToConstant(36).active = true
+        cancelLoginBtn.heightAnchor.constraintEqualToConstant(36).active = true
         self.cancelLoginBtn.addTarget(self, action: #selector(disMisSignInVc), forControlEvents: .TouchUpInside)
         
     }
@@ -95,12 +85,12 @@ class SocialSignIn: UIViewController, UITextFieldDelegate {
         //set to be at center
         self.welcomeLable.textAlignment = .Center
         self.welcomeLable.textColor = UIColor.lightGrayColor()
-        self.welcomeLable.snp_makeConstraints { (make) in
-            make.top.equalTo(self.view).offset(view.bounds.height/8) //80
-            make.left.equalTo(self.view)
-            make.right.equalTo(self.view)
-            make.height.equalTo(36)
-        }
+        
+        welcomeLable.translatesAutoresizingMaskIntoConstraints = false
+        welcomeLable.topAnchor.constraintEqualToAnchor(view.topAnchor, constant: view.bounds.height/8).active = true
+        welcomeLable.leftAnchor.constraintEqualToAnchor(view.leftAnchor).active = true
+        welcomeLable.rightAnchor.constraintEqualToAnchor(view.rightAnchor).active = true
+        welcomeLable.heightAnchor.constraintEqualToConstant(36).active = true
     }
     
     func setUpEmailTF() {
@@ -124,22 +114,20 @@ class SocialSignIn: UIViewController, UITextFieldDelegate {
         emailTF.leftView = imageView
         emailTF.leftViewMode = UITextFieldViewMode.Always
         
-        self.emailTF.snp_makeConstraints { (make) in
-            make.top.equalTo(welcomeLable.snp_bottom).offset(view.bounds.height/20) //35
-            make.left.equalTo(self.view).offset(offset)
-            make.right.equalTo(self.view).offset(-offset)
-            make.height.equalTo(36)
-        }
-        
+        emailTF.translatesAutoresizingMaskIntoConstraints = false
+        emailTF.topAnchor.constraintEqualToAnchor(welcomeLable.bottomAnchor, constant: view.bounds.height/20).active = true
+        emailTF.leftAnchor.constraintEqualToAnchor(view.leftAnchor, constant: offset).active = true
+        emailTF.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: -offset).active = true
+        emailTF.heightAnchor.constraintEqualToConstant(36).active = true
     }
     func addEmailTFBottomLine(){
         self.eLine.backgroundColor = UIColor.lightGrayColor()
-        self.eLine.snp_makeConstraints { (make) in
-            make.top.equalTo(emailTF.snp_bottom)
-            make.height.equalTo(1)
-            make.left.equalTo(emailTF.snp_left)
-            make.right.equalTo(emailTF.snp_right)
-        }
+        
+        eLine.translatesAutoresizingMaskIntoConstraints = false
+        eLine.topAnchor.constraintEqualToAnchor(emailTF.bottomAnchor).active = true
+        eLine.leftAnchor.constraintEqualToAnchor(emailTF.leftAnchor).active = true
+        eLine.rightAnchor.constraintEqualToAnchor(emailTF.rightAnchor).active = true
+        eLine.heightAnchor.constraintEqualToConstant(1).active = true
     }
     
     func setUpPasswordTF() {
@@ -160,22 +148,21 @@ class SocialSignIn: UIViewController, UITextFieldDelegate {
         imageView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         pswd.leftView = imageView
         pswd.leftViewMode = UITextFieldViewMode.Always
-        self.pswd.snp_makeConstraints { (make) in
-            make.top.equalTo(emailTF.snp_bottom).offset(10)
-            make.left.equalTo(self.view).offset(offset)
-            make.right.equalTo(self.view).offset(-offset)
-            make.height.equalTo(36)
-        }
-
+        
+        pswd.translatesAutoresizingMaskIntoConstraints = false
+        pswd.topAnchor.constraintEqualToAnchor(emailTF.bottomAnchor, constant: 10).active = true
+        pswd.leftAnchor.constraintEqualToAnchor(view.leftAnchor, constant: offset).active = true
+        pswd.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: -offset).active = true
+        pswd.heightAnchor.constraintEqualToConstant(36).active = true
     }
     func addPasswordTFBottomLine(){
         self.pswdLine.backgroundColor = UIColor.lightGrayColor()
-        self.pswdLine.snp_makeConstraints { (make) in
-            make.top.equalTo(pswd.snp_bottom)
-            make.height.equalTo(1)
-            make.left.equalTo(pswd.snp_left)
-            make.right.equalTo(pswd.snp_right)
-        }
+        
+        pswdLine.translatesAutoresizingMaskIntoConstraints = false
+        pswdLine.topAnchor.constraintEqualToAnchor(pswd.bottomAnchor).active = true
+        pswdLine.leftAnchor.constraintEqualToAnchor(pswd.leftAnchor).active = true
+        pswdLine.rightAnchor.constraintEqualToAnchor(pswd.rightAnchor).active = true
+        pswdLine.heightAnchor.constraintEqualToConstant(1).active = true
     }
     
     func setUpEmailLogInBtn() {
@@ -183,12 +170,12 @@ class SocialSignIn: UIViewController, UITextFieldDelegate {
         self.emailLoginBtn.backgroundColor = Tools.dancingShoesColor //Indian red
         self.emailLoginBtn.setTitle("LOGIN", forState: .Normal)
         self.emailLoginBtn.titleLabel!.font =  UIFont(name: "ArialRoundedMTBold", size: 18)
-        self.emailLoginBtn.snp_makeConstraints { (make) in
-            make.top.equalTo(self.pswdLine.snp_bottom).offset(25)
-            make.left.equalTo(self.view).offset(offset)
-            make.right.equalTo(self.view).offset(-offset)
-            make.height.equalTo(36)
-        }
+        
+        emailLoginBtn.translatesAutoresizingMaskIntoConstraints = false
+        emailLoginBtn.topAnchor.constraintEqualToAnchor(pswdLine.bottomAnchor, constant: 25).active = true
+        emailLoginBtn.leftAnchor.constraintEqualToAnchor(view.leftAnchor, constant: offset).active = true
+        emailLoginBtn.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: -offset).active = true
+        emailLoginBtn.heightAnchor.constraintEqualToConstant(36).active = true
         self.emailLoginBtn.addTarget(self, action: #selector(loginWithEmail), forControlEvents: .TouchUpInside)
         
     }
@@ -235,22 +222,21 @@ class SocialSignIn: UIViewController, UITextFieldDelegate {
         self.orLable.textColor = UIColor.lightGrayColor()
         //set to be at center
         self.orLable.textAlignment = .Center
-        self.orLable.snp_makeConstraints { (make) in
-            make.top.equalTo(self.forgetPasswordBtn.snp_bottom).offset(15)
-            make.left.equalTo(self.view)
-            make.right.equalTo(self.view)
-        }
+        orLable.translatesAutoresizingMaskIntoConstraints = false
+        orLable.topAnchor.constraintEqualToAnchor(forgetPasswordBtn.bottomAnchor, constant: 15).active = true
+        orLable.leftAnchor.constraintEqualToAnchor(view.leftAnchor).active = true
+        orLable.rightAnchor.constraintEqualToAnchor(view.rightAnchor).active = true
     }
     
     func setUpForgetPasswordButton() {
         self.forgetPasswordBtn.setTitle("Forget your password?", forState: .Normal)
         self.forgetPasswordBtn.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
         self.forgetPasswordBtn.titleLabel?.font = UIFont(name: "ArialRoundedMTBold", size: 14)
-        self.forgetPasswordBtn.snp_makeConstraints { (make) in
-            make.top.equalTo(self.emailLoginBtn.snp_bottom).offset(10)
-            make.left.equalTo(self.view)
-            make.right.equalTo(self.view)
-        }
+        
+        forgetPasswordBtn.translatesAutoresizingMaskIntoConstraints = false
+        forgetPasswordBtn.topAnchor.constraintEqualToAnchor(emailLoginBtn.bottomAnchor, constant: 10).active = true
+        forgetPasswordBtn.leftAnchor.constraintEqualToAnchor(view.leftAnchor).active = true
+        forgetPasswordBtn.rightAnchor.constraintEqualToAnchor(view.rightAnchor).active = true
         self.forgetPasswordBtn.addTarget(self, action: #selector(popUpResetPasswordAlert), forControlEvents: .TouchUpInside)
     }
     func popUpResetPasswordAlert() {
@@ -299,13 +285,12 @@ class SocialSignIn: UIViewController, UITextFieldDelegate {
         self.fbLoginBtn.backgroundColor = UIColor(red:59/255, green:89/255, blue:152/255, alpha:1.0) //navy blue
         self.fbLoginBtn.setTitle("Sign In With Facebook", forState: .Normal)
         self.fbLoginBtn.titleLabel!.font =  UIFont(name: "ArialRoundedMTBold", size: 16)
-        self.fbLoginBtn.snp_makeConstraints { (make) in
-            make.top.equalTo(self.orLable.snp_bottom).offset(20)
-            make.left.equalTo(self.view).offset(offset)
-            make.right.equalTo(self.view).offset(-offset)
-            make.height.equalTo(36)
-        }
         
+        fbLoginBtn.translatesAutoresizingMaskIntoConstraints = false
+        fbLoginBtn.topAnchor.constraintEqualToAnchor(orLable.bottomAnchor, constant: 20).active = true
+        fbLoginBtn.leftAnchor.constraintEqualToAnchor(view.leftAnchor, constant: offset).active = true
+        fbLoginBtn.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: -offset).active = true
+        fbLoginBtn.heightAnchor.constraintEqualToConstant(36).active = true
         self.fbLoginBtn.addTarget(self, action: #selector(loginFB), forControlEvents: .TouchUpInside)
 
     }
@@ -314,11 +299,11 @@ class SocialSignIn: UIViewController, UITextFieldDelegate {
         self.registerBtn.setTitle("REGISTER AN ACCOUNT", forState: .Normal)
         self.registerBtn.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
         self.registerBtn.titleLabel!.font =  UIFont(name: "ArialRoundedMTBold", size: 12)
-        self.registerBtn.snp_makeConstraints { (make) in
-            make.top.equalTo(self.fbLoginBtn.snp_bottom).offset(25)
-            make.left.equalTo(self.view)
-            make.right.equalTo(self.view)
-        }
+        
+        registerBtn.translatesAutoresizingMaskIntoConstraints = false
+        registerBtn.topAnchor.constraintEqualToAnchor(fbLoginBtn.bottomAnchor, constant: 25).active = true
+        registerBtn.leftAnchor.constraintEqualToAnchor(view.leftAnchor).active = true
+        registerBtn.rightAnchor.constraintEqualToAnchor(view.rightAnchor).active = true
         self.registerBtn.addTarget(self, action: #selector(goToRegisterPage), forControlEvents: .TouchUpInside)
     }
     
@@ -336,7 +321,7 @@ class SocialSignIn: UIViewController, UITextFieldDelegate {
         let login: FBSDKLoginManager = FBSDKLoginManager()
         login .logInWithReadPermissions(["public_profile", "email"], fromViewController: self, handler: { (result, error) -> Void in
                     if error != nil {
-                       // print("Process error")
+                        //print("Process error")
                         SVProgressHUD.dismiss()
                     }
                     else if result.isCancelled {
@@ -344,15 +329,17 @@ class SocialSignIn: UIViewController, UITextFieldDelegate {
                         SVProgressHUD.dismiss() 
                     }
                     else {
-                       // print("Logged in")
+                        //print("Logged in")
                         let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
                         FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
                             if error != nil{
                                 //report error then return
+                                //print(error)
                                 SVProgressHUD.dismiss()
                             return}
                             if let uid = user?.uid {
                                 //check if this user exists or not
+                                //print(uid)
                                 let ref = FIRDatabase.database().reference().child("users")
                                 ref.observeSingleEventOfType(FIRDataEventType.Value, withBlock: { (snapshot) in
                                     if snapshot.hasChild(uid) {

@@ -19,7 +19,7 @@ class RegisterWithEmail: UIViewController, UITextFieldDelegate {
     let inputPasswordTF = MYTextField()
     let passwordBottomLine = UIView()
     let registerAccountBtn = UIButton()
-    let offset = 24.0
+    let offset: CGFloat = 24.0
     override func viewDidLoad() {
         super.viewDidLoad()
         //set delegate
@@ -45,12 +45,11 @@ class RegisterWithEmail: UIViewController, UITextFieldDelegate {
     func setupCancelRegisterBtn() {
         self.view.addSubview(cancelRegisterBtn)
         self.cancelRegisterBtn.setImage(UIImage(named: "cancelLogin"), forState: .Normal)
-        self.cancelRegisterBtn.snp_makeConstraints { (make) in
-            make.top.equalTo(self.view).offset(30)
-            make.left.equalTo(self.view).offset(20)
-            make.height.equalTo(36)
-            make.width.equalTo(36)
-        }
+        cancelRegisterBtn.translatesAutoresizingMaskIntoConstraints = false
+        cancelRegisterBtn.topAnchor.constraintEqualToAnchor(self.view.topAnchor, constant: 30).active = true
+        cancelRegisterBtn.leftAnchor.constraintEqualToAnchor(self.view.leftAnchor, constant: 20).active = true
+        cancelRegisterBtn.heightAnchor.constraintEqualToConstant(36).active = true
+        cancelRegisterBtn.widthAnchor.constraintEqualToConstant(36).active = true
         self.cancelRegisterBtn.addTarget(self, action: #selector(dismissVC), forControlEvents: .TouchUpInside)
         
     }
@@ -70,23 +69,24 @@ class RegisterWithEmail: UIViewController, UITextFieldDelegate {
         imageView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         inputEmailTF.leftView = imageView
         inputEmailTF.leftViewMode = UITextFieldViewMode.Always
-        self.inputEmailTF.snp_remakeConstraints { (make) in
-            make.top.equalTo(self.view).offset(100)
-            make.left.equalTo(self.view).offset(offset)
-            make.right.equalTo(self.view).offset(-offset)
-            make.height.equalTo(36)
-        }
+        
+        inputEmailTF.translatesAutoresizingMaskIntoConstraints = false
+        inputEmailTF.topAnchor.constraintEqualToAnchor(self.view.topAnchor, constant: 100).active = true
+        inputEmailTF.leftAnchor.constraintEqualToAnchor(self.view.leftAnchor, constant: offset).active = true
+        inputEmailTF.rightAnchor.constraintEqualToAnchor(self.view.rightAnchor, constant: -offset).active = true
+        inputEmailTF.heightAnchor.constraintEqualToConstant(36).active = true
 
     }
     func setUpEmailBottomLine() {
         self.view.addSubview(emailBottomLine)
         self.emailBottomLine.backgroundColor = UIColor.lightGrayColor()
-        self.emailBottomLine.snp_makeConstraints { (make) in
-            make.top.equalTo(inputEmailTF.snp_bottom)
-            make.height.equalTo(1)
-            make.left.equalTo(inputEmailTF.snp_left)
-            make.right.equalTo(inputEmailTF.snp_right)
-        }
+        
+        emailBottomLine.translatesAutoresizingMaskIntoConstraints = false
+        emailBottomLine.topAnchor.constraintEqualToAnchor(inputEmailTF.bottomAnchor).active = true
+        emailBottomLine.leftAnchor.constraintEqualToAnchor(self.inputEmailTF.leftAnchor).active = true
+        emailBottomLine.rightAnchor.constraintEqualToAnchor(self.inputEmailTF.rightAnchor).active = true
+        emailBottomLine.heightAnchor.constraintEqualToConstant(1).active = true
+        
     }
     
     func setUpInputPasswordTextField() {
@@ -101,23 +101,24 @@ class RegisterWithEmail: UIViewController, UITextFieldDelegate {
         imageView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         inputPasswordTF.leftView = imageView
         inputPasswordTF.leftViewMode = UITextFieldViewMode.Always
-        self.inputPasswordTF.snp_remakeConstraints { (make) in
-            make.top.equalTo(inputEmailTF.snp_bottom).offset(10)
-            make.left.equalTo(self.view).offset(offset)
-            make.right.equalTo(self.view).offset(-offset)
-            make.height.equalTo(36)
-        }
+        
+        inputPasswordTF.translatesAutoresizingMaskIntoConstraints = false
+        inputPasswordTF.topAnchor.constraintEqualToAnchor(self.inputEmailTF.bottomAnchor, constant: 10).active = true
+        inputPasswordTF.leftAnchor.constraintEqualToAnchor(self.view.leftAnchor, constant: offset).active = true
+        inputPasswordTF.rightAnchor.constraintEqualToAnchor(self.view.rightAnchor, constant: -offset).active = true
+        inputPasswordTF.heightAnchor.constraintEqualToConstant(36).active = true
 
     }
     func setUpPasswordBottomLine() {
         self.view.addSubview(passwordBottomLine)
         self.passwordBottomLine.backgroundColor = UIColor.lightGrayColor()
-        self.passwordBottomLine.snp_makeConstraints { (make) in
-            make.top.equalTo(inputPasswordTF.snp_bottom)
-            make.height.equalTo(1)
-            make.left.equalTo(inputPasswordTF.snp_left)
-            make.right.equalTo(inputPasswordTF.snp_right)
-        }
+        
+        passwordBottomLine.translatesAutoresizingMaskIntoConstraints = false
+        passwordBottomLine.topAnchor.constraintEqualToAnchor(inputPasswordTF.bottomAnchor).active = true
+        passwordBottomLine.leftAnchor.constraintEqualToAnchor(self.inputPasswordTF.leftAnchor).active = true
+        passwordBottomLine.rightAnchor.constraintEqualToAnchor(self.inputPasswordTF.rightAnchor).active = true
+        passwordBottomLine.heightAnchor.constraintEqualToConstant(1).active = true
+        
     }
     
     func setUpRegisterButton() {
@@ -127,12 +128,11 @@ class RegisterWithEmail: UIViewController, UITextFieldDelegate {
         self.registerAccountBtn.setTitleColor(Tools.bgColor, forState: .Disabled)
         self.registerAccountBtn.layer.cornerRadius = 4
         self.registerAccountBtn.backgroundColor = Tools.dancingShoesColor //Indian red
-        self.registerAccountBtn.snp_remakeConstraints { (make) in
-            make.top.equalTo(inputPasswordTF.snp_bottom).offset(20)
-            make.height.equalTo(36)
-            make.left.equalTo(self.view).offset(offset)
-            make.right.equalTo(self.view).offset(-offset)
-        }
+        
+        registerAccountBtn.translatesAutoresizingMaskIntoConstraints = false
+        registerAccountBtn.topAnchor.constraintEqualToAnchor(self.inputPasswordTF.bottomAnchor, constant: 20).active = true
+        registerAccountBtn.leftAnchor.constraintEqualToAnchor(self.view.leftAnchor, constant: offset).active = true
+        registerAccountBtn.rightAnchor.constraintEqualToAnchor(self.view.rightAnchor, constant: -offset).active = true
         self.registerAccountBtn.addTarget(self, action: #selector(onRegisterBtnClicked), forControlEvents: .TouchUpInside)
     }
     func dismissVC(){
