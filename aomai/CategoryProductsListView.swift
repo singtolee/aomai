@@ -40,7 +40,7 @@ class CategoryProductView: UICollectionViewController, UICollectionViewDelegateF
     
     
     func setCellSize() {
-        let width = (screenWidth - 8) / 2 - 1
+        let width = (screenWidth - 2) / 2 - 1
         let height = width * 1.42
         self.cellSize = CGSize(width: width, height: height)
         self.fontSize = screenWidth / 25
@@ -48,7 +48,6 @@ class CategoryProductView: UICollectionViewController, UICollectionViewDelegateF
     
     func setupIndicator() {
         self.view.addSubview(loadingIndicator)
-        //loadingIndicator.hidesWhenStopped = true
         loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
         loadingIndicator.widthAnchor.constraintEqualToConstant(42).active = true
         loadingIndicator.heightAnchor.constraintEqualToConstant(24).active = true
@@ -117,6 +116,13 @@ class CategoryProductView: UICollectionViewController, UICollectionViewDelegateF
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         
         collectionView?.collectionViewLayout.invalidateLayout()
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 3
+    }
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 2
     }
 }
 

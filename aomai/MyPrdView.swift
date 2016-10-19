@@ -13,6 +13,7 @@ import FirebaseDatabase
 
 class MyPrdView: UIViewController, UIScrollViewDelegate {
     
+    let bottomBar = UIView()
     let sw = UIScreen.mainScreen().bounds.width
     var product: DetailProduct?
     
@@ -23,6 +24,32 @@ class MyPrdView: UIViewController, UIScrollViewDelegate {
     let carouselView = Carousel()
     let middleView = MiddleView()
     
+    //bottomBar button
+    let likeButton: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: "like"), forState: .Highlighted)
+        btn.setImage(UIImage(named: "unlike"), forState: .Normal)
+        return btn
+    }()
+    
+    let addToCartBtn: UIButton = {
+        let addBtn = UIButton()
+        addBtn.setTitle("ADD TO CART", forState: .Normal)
+        addBtn.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-SemiBold", size: 16)
+        addBtn.backgroundColor = Tools.dancingShoesColor
+        addBtn.layer.cornerRadius = 6
+        return addBtn
+    }()
+    
+    let buyBtn: UIButton = {
+        let buy = UIButton()
+        buy.setTitle("BUY NOW", forState: .Normal)
+        buy.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-SemiBold", size: 16)
+        buy.backgroundColor = Tools.dancingShoesColor
+        buy.layer.cornerRadius = 6
+        return buy
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = prdKey
@@ -30,7 +57,40 @@ class MyPrdView: UIViewController, UIScrollViewDelegate {
         addCarousel()
         addMiddleView()
         findPrdbyKey()
+        setUpBottomBar()
         
+    }
+    
+    func setUpBottomBar() {
+        view.addSubview(bottomBar)
+        bottomBar.backgroundColor = UIColor.whiteColor()
+        bottomBar.translatesAutoresizingMaskIntoConstraints = false
+        bottomBar.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
+        bottomBar.leftAnchor.constraintEqualToAnchor(view.leftAnchor).active = true
+        bottomBar.rightAnchor.constraintEqualToAnchor(view.rightAnchor).active = true
+        bottomBar.heightAnchor.constraintEqualToConstant(40).active = true
+        bottomBar.addSubview(likeButton)
+        likeButton.translatesAutoresizingMaskIntoConstraints = false
+        likeButton.topAnchor.constraintEqualToAnchor(bottomBar.topAnchor).active = true
+        likeButton.heightAnchor.constraintEqualToConstant(36).active = true
+        likeButton.widthAnchor.constraintEqualToConstant(36).active = true
+        likeButton.leftAnchor.constraintEqualToAnchor(bottomBar.leftAnchor, constant: 20).active = true
+        
+        bottomBar.addSubview(addToCartBtn)
+        addToCartBtn.translatesAutoresizingMaskIntoConstraints = false
+        addToCartBtn.topAnchor.constraintEqualToAnchor(bottomBar.topAnchor, constant: 2).active = true
+        addToCartBtn.bottomAnchor.constraintEqualToAnchor(bottomBar.bottomAnchor, constant: -2).active = true
+        //addToCartBtn.heightAnchor.constraintEqualToConstant(36).active = true
+        addToCartBtn.widthAnchor.constraintEqualToConstant(140).active = true
+        addToCartBtn.leftAnchor.constraintEqualToAnchor(likeButton.rightAnchor, constant: 14).active = true
+        
+        bottomBar.addSubview(buyBtn)
+        buyBtn.translatesAutoresizingMaskIntoConstraints = false
+        buyBtn.topAnchor.constraintEqualToAnchor(bottomBar.topAnchor, constant: 2).active = true
+        buyBtn.bottomAnchor.constraintEqualToAnchor(bottomBar.bottomAnchor, constant: -2).active = true
+        //addToCartBtn.heightAnchor.constraintEqualToConstant(36).active = true
+        buyBtn.rightAnchor.constraintEqualToAnchor(bottomBar.rightAnchor, constant: -2).active = true
+        buyBtn.leftAnchor.constraintEqualToAnchor(addToCartBtn.rightAnchor, constant: 2).active = true
     }
     
     func addMiddleView() {
@@ -114,18 +174,20 @@ class MyPrdView: UIViewController, UIScrollViewDelegate {
         self.carouselView.imageUrls = prd.prdImages!
         self.carouselView.collectionView.reloadData()
         
-        self.middleView.titleLable.text = prd.prdName! + "\n" + prd.prdSub!
-        self.middleView.titleLable.font = UIFont(name: "AppleSDGothicNeo-Medium", size: sw/25)
+        self.middleView.titleLable.text = prd.prdName!
+        self.middleView.titleLable.font = UIFont(name: "AppleSDGothicNeo-Medium", size: sw/22)
         
         self.middleView.priceTag.text = "THB " + String(prd.prdPrice!)
-        self.middleView.priceTag.font = UIFont(name: "AppleSDGothicNeo-Medium", size: sw/25)
+        self.middleView.priceTag.font = UIFont(name: "AppleSDGothicNeo-SemiBold", size: sw/22)
+        
+        self.middleView.detailTag.text = prd.prdSub!
+        self.middleView.detailTag.font = UIFont(name: "AppleSDGothicNeo-Light", size: sw/25)
         
         if(prd.prdQty < 1) {
-            self.middleView.priceTag.font = UIFont(name: "AppleSDGothicNeo-Medium", size: sw/30)
+            self.middleView.estimateDT.font = UIFont(name: "AppleSDGothicNeo-Medium", size: sw/30)
             self.middleView.estimateDT.text = "Estimated Delivery Time :" + "12:00"
         }else {
-            self.middleView.priceTag.font = UIFont(name: "AppleSDGothicNeo-Medium", size: sw/30
-            )
+            self.middleView.estimateDT.font = UIFont(name: "AppleSDGothicNeo-Medium", size: sw/30)
             self.middleView.estimateDT.text = "Estimated Delivery Time :" + "NOW"
         }
     }

@@ -14,13 +14,14 @@
 		0916153A1D7C02EC00D924D8 /* FreeAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091615391D7C02EC00D924D8 /* FreeAddress.swift */; };
 		0916153C1D7C040B00D924D8 /* PostAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0916153B1D7C040B00D924D8 /* PostAddress.swift */; };
 		0916CD5F1D3FC65300167988 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0916CD5E1D3FC65300167988 /* Tools.swift */; };
-		091AE1441D7AE6A1002CB33F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091AE1431D7AE6A1002CB33F /* Extensions.swift */; };
 		09232ECC1D3BD7F500CF0C0A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09232EC91D3BD7F500CF0C0A /* FBSDKCoreKit.framework */; };
 		09232ECD1D3BD7F500CF0C0A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09232ECA1D3BD7F500CF0C0A /* FBSDKLoginKit.framework */; };
 		09232ECE1D3BD7F500CF0C0A /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09232ECB1D3BD7F500CF0C0A /* FBSDKShareKit.framework */; };
 		09232ED01D3BDEC600CF0C0A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 09232ECF1D3BDEC600CF0C0A /* GoogleService-Info.plist */; };
 		092629981D675B7B00F3112C /* ProductTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092629971D675B7B00F3112C /* ProductTab.swift */; };
 		092856B91D76470200B81D6F /* EditProfilePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092856B81D76470200B81D6F /* EditProfilePhoto.swift */; };
+		094C11DD1DB3447B00BF6D09 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 094C11DC1DB3447B00BF6D09 /* Bolts.framework */; };
+		094C11EC1DB34D8000BF6D09 /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094C11EB1DB34D8000BF6D09 /* AddressCell.swift */; };
 		094CDC381D72590C00D03A5B /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094CDC371D72590C00D03A5B /* EditProfile.swift */; };
 		094CDC5D1D72F10E00D03A5B /* EidtUserName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094CDC5C1D72F10E00D03A5B /* EidtUserName.swift */; };
 		094CDC5F1D733F1B00D03A5B /* EditPhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094CDC5E1D733F1B00D03A5B /* EditPhoneNumber.swift */; };
@@ -61,13 +62,14 @@
 		091615391D7C02EC00D924D8 /* FreeAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreeAddress.swift; sourceTree = "<group>"; };
 		0916153B1D7C040B00D924D8 /* PostAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostAddress.swift; sourceTree = "<group>"; };
 		0916CD5E1D3FC65300167988 /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
-		091AE1431D7AE6A1002CB33F /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		09232EC91D3BD7F500CF0C0A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../Documents/FacebookSDKs/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		09232ECA1D3BD7F500CF0C0A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDKs/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		09232ECB1D3BD7F500CF0C0A /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../Documents/FacebookSDKs/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		09232ECF1D3BDEC600CF0C0A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		092629971D675B7B00F3112C /* ProductTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTab.swift; sourceTree = "<group>"; };
 		092856B81D76470200B81D6F /* EditProfilePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfilePhoto.swift; sourceTree = "<group>"; };
+		094C11DC1DB3447B00BF6D09 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		094C11EB1DB34D8000BF6D09 /* AddressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
 		094CDC371D72590C00D03A5B /* EditProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
 		094CDC5C1D72F10E00D03A5B /* EidtUserName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EidtUserName.swift; sourceTree = "<group>"; };
 		094CDC5E1D733F1B00D03A5B /* EditPhoneNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPhoneNumber.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				094C11DD1DB3447B00BF6D09 /* Bolts.framework in Frameworks */,
 				09232ECE1D3BD7F500CF0C0A /* FBSDKShareKit.framework in Frameworks */,
 				0C6F72DF964B3A8BFE3CC86F /* Pods_aomai.framework in Frameworks */,
 				09232ECC1D3BD7F500CF0C0A /* FBSDKCoreKit.framework in Frameworks */,
@@ -119,17 +122,196 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		094CDC5B1D72F0D500D03A5B /* VIEWOFEDITPROFILE */ = {
+		094C11DE1DB3456B00BF6D09 /* FourTabs */ = {
 			isa = PBXGroup;
 			children = (
+				094C11E31DB345F000BF6D09 /* MeTab */,
+				094C11E21DB345E600BF6D09 /* CartTab */,
+				094C11E11DB345D200BF6D09 /* ProductTab */,
+				094C11E01DB345C000BF6D09 /* StoreTab */,
+				0955E4FD1D36F64E0060B47E /* Tabbar.swift */,
+			);
+			name = FourTabs;
+			sourceTree = "<group>";
+		};
+		094C11DF1DB3459900BF6D09 /* Register&Login */ = {
+			isa = PBXGroup;
+			children = (
+				0955E4FF1D3700810060B47E /* SocialSignIn.swift */,
+				09B7E8431D3DDF4000479035 /* Register.swift */,
+			);
+			name = "Register&Login";
+			sourceTree = "<group>";
+		};
+		094C11E01DB345C000BF6D09 /* StoreTab */ = {
+			isa = PBXGroup;
+			children = (
+				0955E4F71D36F6070060B47E /* StoreTab.swift */,
+			);
+			name = StoreTab;
+			sourceTree = "<group>";
+		};
+		094C11E11DB345D200BF6D09 /* ProductTab */ = {
+			isa = PBXGroup;
+			children = (
+				09DA854A1D941FCA0012D6A6 /* ScrollTab */,
+				094C11F01DB34F2300BF6D09 /* DetailPrd */,
+				094C11EF1DB34E7D00BF6D09 /* Controller */,
+				094C11EE1DB34E7400BF6D09 /* Modal */,
+				094C11ED1DB34E6B00BF6D09 /* View */,
+			);
+			name = ProductTab;
+			sourceTree = "<group>";
+		};
+		094C11E21DB345E600BF6D09 /* CartTab */ = {
+			isa = PBXGroup;
+			children = (
+				0955E4F91D36F6230060B47E /* CartTab.swift */,
+			);
+			name = CartTab;
+			sourceTree = "<group>";
+		};
+		094C11E31DB345F000BF6D09 /* MeTab */ = {
+			isa = PBXGroup;
+			children = (
+				094C11E51DB346AA00BF6D09 /* SubVC */,
+				0955E4FB1D36F6340060B47E /* MeTab.swift */,
+			);
+			name = MeTab;
+			sourceTree = "<group>";
+		};
+		094C11E41DB3461200BF6D09 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				0916CD5E1D3FC65300167988 /* Tools.swift */,
+				091615351D7BFE4F00D924D8 /* DancingShoesViewController.swift */,
+				099F74891D78E46100EE84D3 /* MYTextField.swift */,
+				09F550CA1D902F7E00658083 /* MyIndicator.swift */,
+				09991E071D6D0E22009B81F9 /* EmptyTableView.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		094C11E51DB346AA00BF6D09 /* SubVC */ = {
+			isa = PBXGroup;
+			children = (
+				094C11E71DB3470A00BF6D09 /* Profile */,
+				094C11E61DB3470100BF6D09 /* Address */,
+				09107FE71D5B7DA20099E52C /* OrderView.swift */,
+				09D05E431D635CDD0020B70F /* AboutUs.swift */,
+			);
+			name = SubVC;
+			sourceTree = "<group>";
+		};
+		094C11E61DB3470100BF6D09 /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				094C11EA1DB34D3D00BF6D09 /* Controller */,
+				094C11E91DB34D3400BF6D09 /* View */,
+				094C11E81DB34D2A00BF6D09 /* Modal */,
+			);
+			name = Address;
+			sourceTree = "<group>";
+		};
+		094C11E71DB3470A00BF6D09 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				094CDC371D72590C00D03A5B /* EditProfile.swift */,
 				094CDC5C1D72F10E00D03A5B /* EidtUserName.swift */,
 				094CDC5E1D733F1B00D03A5B /* EditPhoneNumber.swift */,
 				092856B81D76470200B81D6F /* EditProfilePhoto.swift */,
-				091615331D7BFE0C00D924D8 /* EditFreeAddress.swift */,
-				091615371D7BFF5700D924D8 /* AddPostAddress.swift */,
-				098E0A891D80BC5A0045A9D2 /* EditPostAddress.swift */,
+				097469231D4BB052009459EF /* Vser.swift */,
 			);
-			name = VIEWOFEDITPROFILE;
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		094C11E81DB34D2A00BF6D09 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				091615391D7C02EC00D924D8 /* FreeAddress.swift */,
+				0916153B1D7C040B00D924D8 /* PostAddress.swift */,
+			);
+			name = Modal;
+			sourceTree = "<group>";
+		};
+		094C11E91DB34D3400BF6D09 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				094C11EB1DB34D8000BF6D09 /* AddressCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		094C11EA1DB34D3D00BF6D09 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				099B9AE21D4FA50F006CC617 /* MyAddress.swift */,
+				091615331D7BFE0C00D924D8 /* EditFreeAddress.swift */,
+				098E0A891D80BC5A0045A9D2 /* EditPostAddress.swift */,
+				091615371D7BFF5700D924D8 /* AddPostAddress.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		094C11ED1DB34E6B00BF6D09 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				09FC426A1D8759450016937E /* BriefProductCollectionViewCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		094C11EE1DB34E7400BF6D09 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				09D3574B1D8ADB51009E9E49 /* ShortProduct.swift */,
+			);
+			name = Modal;
+			sourceTree = "<group>";
+		};
+		094C11EF1DB34E7D00BF6D09 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				092629971D675B7B00F3112C /* ProductTab.swift */,
+				097C1C201D92565500011AA7 /* CategoryProductsListView.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		094C11F01DB34F2300BF6D09 /* DetailPrd */ = {
+			isa = PBXGroup;
+			children = (
+				094C11F31DB34F4300BF6D09 /* Modal */,
+				094C11F21DB34F3B00BF6D09 /* Controller */,
+				094C11F11DB34F3100BF6D09 /* View */,
+			);
+			name = DetailPrd;
+			sourceTree = "<group>";
+		};
+		094C11F11DB34F3100BF6D09 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				096AEBAA1DA700CC00D5FC25 /* CarouselView.swift */,
+				096AEBAC1DA7013000D5FC25 /* CarouselCell.swift */,
+				09DBF0A21DA8612C007DF069 /* MiddleView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		094C11F21DB34F3B00BF6D09 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				096AEBA71DA6FDFC00D5FC25 /* MyPrdView.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		094C11F31DB34F4300BF6D09 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				09DEF7171D99612200DF3CFE /* DetailProduct.swift */,
+			);
+			name = Modal;
 			sourceTree = "<group>";
 		};
 		0955E4D71D36F4EE0060B47E = {
@@ -153,11 +335,9 @@
 		0955E4E21D36F4EE0060B47E /* aomai */ = {
 			isa = PBXGroup;
 			children = (
-				09DEF71B1D99650700DF3CFE /* DetailProductMVC */,
-				099F74881D78E42300EE84D3 /* MYCLASS */,
-				09A5BEE21D6F4AF900714DF4 /* VIEWCONTROLLERS */,
-				09991E061D6D0DD7009B81F9 /* Tools */,
-				099B9AE11D4FA4DD006CC617 /* functions */,
+				094C11E41DB3461200BF6D09 /* Helper */,
+				094C11DF1DB3459900BF6D09 /* Register&Login */,
+				094C11DE1DB3456B00BF6D09 /* FourTabs */,
 				0955E4E31D36F4EE0060B47E /* AppDelegate.swift */,
 				0955E4EA1D36F4EE0060B47E /* Assets.xcassets */,
 				0955E4EC1D36F4EE0060B47E /* LaunchScreen.storyboard */,
@@ -167,110 +347,13 @@
 			path = aomai;
 			sourceTree = "<group>";
 		};
-		096AEBA91DA700B300D5FC25 /* MyView */ = {
-			isa = PBXGroup;
-			children = (
-				096AEBAA1DA700CC00D5FC25 /* CarouselView.swift */,
-				096AEBAC1DA7013000D5FC25 /* CarouselCell.swift */,
-				09DBF0A21DA8612C007DF069 /* MiddleView.swift */,
-			);
-			name = MyView;
-			sourceTree = "<group>";
-		};
-		09991E061D6D0DD7009B81F9 /* Tools */ = {
-			isa = PBXGroup;
-			children = (
-				0916CD5E1D3FC65300167988 /* Tools.swift */,
-				097469231D4BB052009459EF /* Vser.swift */,
-				09991E071D6D0E22009B81F9 /* EmptyTableView.swift */,
-				091AE1431D7AE6A1002CB33F /* Extensions.swift */,
-				091615391D7C02EC00D924D8 /* FreeAddress.swift */,
-				0916153B1D7C040B00D924D8 /* PostAddress.swift */,
-				09F550CA1D902F7E00658083 /* MyIndicator.swift */,
-			);
-			name = Tools;
-			sourceTree = "<group>";
-		};
-		099B9AE11D4FA4DD006CC617 /* functions */ = {
-			isa = PBXGroup;
-			children = (
-				094CDC5B1D72F0D500D03A5B /* VIEWOFEDITPROFILE */,
-				099B9AE21D4FA50F006CC617 /* MyAddress.swift */,
-				09107FE71D5B7DA20099E52C /* OrderView.swift */,
-				09D05E431D635CDD0020B70F /* AboutUs.swift */,
-				094CDC371D72590C00D03A5B /* EditProfile.swift */,
-			);
-			name = functions;
-			sourceTree = "<group>";
-		};
-		099F74881D78E42300EE84D3 /* MYCLASS */ = {
-			isa = PBXGroup;
-			children = (
-				09FC42691D8759160016937E /* CELL */,
-				099F74891D78E46100EE84D3 /* MYTextField.swift */,
-				091615351D7BFE4F00D924D8 /* DancingShoesViewController.swift */,
-			);
-			name = MYCLASS;
-			sourceTree = "<group>";
-		};
-		09A5BEE21D6F4AF900714DF4 /* VIEWCONTROLLERS */ = {
-			isa = PBXGroup;
-			children = (
-				09DA854A1D941FCA0012D6A6 /* CATEGORY-TAB-VIEWCONTROLLER */,
-				0955E4F71D36F6070060B47E /* StoreTab.swift */,
-				0955E4F91D36F6230060B47E /* CartTab.swift */,
-				0955E4FB1D36F6340060B47E /* MeTab.swift */,
-				092629971D675B7B00F3112C /* ProductTab.swift */,
-				0955E4FD1D36F64E0060B47E /* Tabbar.swift */,
-				0955E4FF1D3700810060B47E /* SocialSignIn.swift */,
-				09B7E8431D3DDF4000479035 /* Register.swift */,
-				097C1C201D92565500011AA7 /* CategoryProductsListView.swift */,
-			);
-			name = VIEWCONTROLLERS;
-			sourceTree = "<group>";
-		};
-		09DA854A1D941FCA0012D6A6 /* CATEGORY-TAB-VIEWCONTROLLER */ = {
+		09DA854A1D941FCA0012D6A6 /* ScrollTab */ = {
 			isa = PBXGroup;
 			children = (
 				09DA854B1D9420050012D6A6 /* ScrollTab.swift */,
 				09DA854D1D9425AA0012D6A6 /* ScrollViewControllers.swift */,
 			);
-			name = "CATEGORY-TAB-VIEWCONTROLLER";
-			sourceTree = "<group>";
-		};
-		09DEF71B1D99650700DF3CFE /* DetailProductMVC */ = {
-			isa = PBXGroup;
-			children = (
-				096AEBA91DA700B300D5FC25 /* MyView */,
-				09DEF71D1D99655B00DF3CFE /* Controller */,
-				09DEF71C1D99654B00DF3CFE /* Modal */,
-			);
-			name = DetailProductMVC;
-			sourceTree = "<group>";
-		};
-		09DEF71C1D99654B00DF3CFE /* Modal */ = {
-			isa = PBXGroup;
-			children = (
-				09D3574B1D8ADB51009E9E49 /* ShortProduct.swift */,
-				09DEF7171D99612200DF3CFE /* DetailProduct.swift */,
-			);
-			name = Modal;
-			sourceTree = "<group>";
-		};
-		09DEF71D1D99655B00DF3CFE /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				096AEBA71DA6FDFC00D5FC25 /* MyPrdView.swift */,
-			);
-			name = Controller;
-			sourceTree = "<group>";
-		};
-		09FC42691D8759160016937E /* CELL */ = {
-			isa = PBXGroup;
-			children = (
-				09FC426A1D8759450016937E /* BriefProductCollectionViewCell.swift */,
-			);
-			name = CELL;
+			name = ScrollTab;
 			sourceTree = "<group>";
 		};
 		B1A53F096CC4BD512797BEE5 /* Pods */ = {
@@ -285,6 +368,7 @@
 		F5EE73F8D8C48778044E2AD9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				094C11DC1DB3447B00BF6D09 /* Bolts.framework */,
 				09232EC91D3BD7F500CF0C0A /* FBSDKCoreKit.framework */,
 				09232ECA1D3BD7F500CF0C0A /* FBSDKLoginKit.framework */,
 				09232ECB1D3BD7F500CF0C0A /* FBSDKShareKit.framework */,
@@ -426,6 +510,7 @@
 				094CDC5D1D72F10E00D03A5B /* EidtUserName.swift in Sources */,
 				0955E4E41D36F4EE0060B47E /* AppDelegate.swift in Sources */,
 				096AEBA81DA6FDFC00D5FC25 /* MyPrdView.swift in Sources */,
+				094C11EC1DB34D8000BF6D09 /* AddressCell.swift in Sources */,
 				09B7E8441D3DDF4000479035 /* Register.swift in Sources */,
 				0955E4FA1D36F6230060B47E /* CartTab.swift in Sources */,
 				09DBF0A31DA8612C007DF069 /* MiddleView.swift in Sources */,
@@ -445,7 +530,6 @@
 				09DA854E1D9425AA0012D6A6 /* ScrollViewControllers.swift in Sources */,
 				098E0A8A1D80BC5A0045A9D2 /* EditPostAddress.swift in Sources */,
 				09DEF7181D99612200DF3CFE /* DetailProduct.swift in Sources */,
-				091AE1441D7AE6A1002CB33F /* Extensions.swift in Sources */,
 				092856B91D76470200B81D6F /* EditProfilePhoto.swift in Sources */,
 				09107FE81D5B7DA20099E52C /* OrderView.swift in Sources */,
 				097469241D4BB052009459EF /* Vser.swift in Sources */,
@@ -560,17 +644,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks/frameworks\"",
-					"\"${PODS_ROOT}/FirebaseAuth/Frameworks/frameworks\"",
-					"\"${PODS_ROOT}/FirebaseDatabase/Frameworks\"",
-					"\"${PODS_ROOT}/FirebaseInstanceID/Frameworks\"",
-					"\"${PODS_ROOT}/FirebaseStorage/Frameworks\"",
-					"\"${PODS_ROOT}/GoogleInterchangeUtilities/Frameworks\"",
-					"\"${PODS_ROOT}/GoogleNetworkingUtilities/Frameworks\"",
-					"\"${PODS_ROOT}/GoogleParsingUtilities/Frameworks\"",
-					"\"${PODS_ROOT}/GoogleSymbolUtilities/Frameworks\"",
-					"\"${PODS_ROOT}/GoogleUtilities/Frameworks\"",
 					/Users/Singto/Documents/FacebookSDKs,
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = aomai/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -587,17 +662,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks/frameworks\"",
-					"\"${PODS_ROOT}/FirebaseAuth/Frameworks/frameworks\"",
-					"\"${PODS_ROOT}/FirebaseDatabase/Frameworks\"",
-					"\"${PODS_ROOT}/FirebaseInstanceID/Frameworks\"",
-					"\"${PODS_ROOT}/FirebaseStorage/Frameworks\"",
-					"\"${PODS_ROOT}/GoogleInterchangeUtilities/Frameworks\"",
-					"\"${PODS_ROOT}/GoogleNetworkingUtilities/Frameworks\"",
-					"\"${PODS_ROOT}/GoogleParsingUtilities/Frameworks\"",
-					"\"${PODS_ROOT}/GoogleSymbolUtilities/Frameworks\"",
-					"\"${PODS_ROOT}/GoogleUtilities/Frameworks\"",
 					/Users/Singto/Documents/FacebookSDKs,
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = aomai/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

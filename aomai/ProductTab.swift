@@ -31,8 +31,6 @@ class ProductTab: DancingShoesViewController {
     func loadTabandVCs() {
         for cate in CategoryList {
             let vc = CategoryProductView(collectionViewLayout: UICollectionViewFlowLayout())
-            //vc.topLayoutGuide.topAnchor.constraintEqualToAnchor(self.view.topAnchor, constant: 34)
-            //vc.view.frame = CGRectMake(0, 100, self.view.frame.width, self.view.frame.height - 149)
             vc.category = cate
             self.viewControllers.append(vc)
             self.tabs.append(cate)

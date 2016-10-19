@@ -50,7 +50,7 @@ class Carousel: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
         pageControl.numberOfPages = imageUrls.count
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         pageControl.centerXAnchor.constraintEqualToAnchor(self.centerXAnchor).active = true
-        pageControl.bottomAnchor.constraintEqualToAnchor(collectionView.bottomAnchor, constant: -10).active = true
+        pageControl.bottomAnchor.constraintEqualToAnchor(collectionView.bottomAnchor).active = true
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -76,7 +76,8 @@ class Carousel: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UI
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let offsetX = scrollView.contentOffset.x
-        let page = offsetX / scrollView.width
+        //let page = offsetX / scrollView.width
+        let page = offsetX / scrollView.frame.width
         pageControl.currentPage = Int(page + 0.5)
     }
     
