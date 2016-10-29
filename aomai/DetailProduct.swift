@@ -12,13 +12,15 @@ class DetailProduct: NSObject {
     var prdName: String?
     var prdSub: String?
     var prdPrice: Double?
-    var prdQty: Int?
+    //var prdQty: Int?
     var prdPackageInfo: String?
     var prdSuppler: String?
-    var prdWarranty: String?
+    //var prdWarranty: String?
     var isRefundable: Bool?
-    var isBrand: Bool?
+    //var isBrand: Bool?
     var prdImages: [String]?
     var prdInfoImages: [String]?
+    var prdCS: [String]?
+    var prdCSQty: [Int]?
     
 }

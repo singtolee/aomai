@@ -18,7 +18,7 @@ class MyPrdView: UIViewController, UIScrollViewDelegate {
     var product: DetailProduct?
     
     var prdKey: String?
-    //let sW = UIScreen.mainScreen().bounds.width
+    let sH = UIScreen.mainScreen().bounds.height
     
     let scrollView = UIScrollView()
     let carouselView = Carousel()
@@ -81,8 +81,8 @@ class MyPrdView: UIViewController, UIScrollViewDelegate {
         addToCartBtn.topAnchor.constraintEqualToAnchor(bottomBar.topAnchor, constant: 2).active = true
         addToCartBtn.bottomAnchor.constraintEqualToAnchor(bottomBar.bottomAnchor, constant: -2).active = true
         //addToCartBtn.heightAnchor.constraintEqualToConstant(36).active = true
-        addToCartBtn.widthAnchor.constraintEqualToConstant(140).active = true
-        addToCartBtn.leftAnchor.constraintEqualToAnchor(likeButton.rightAnchor, constant: 14).active = true
+        addToCartBtn.widthAnchor.constraintEqualToConstant(110).active = true
+        addToCartBtn.leftAnchor.constraintEqualToAnchor(likeButton.rightAnchor, constant: 20).active = true
         
         bottomBar.addSubview(buyBtn)
         buyBtn.translatesAutoresizingMaskIntoConstraints = false
@@ -100,26 +100,26 @@ class MyPrdView: UIViewController, UIScrollViewDelegate {
         middleView.topAnchor.constraintEqualToAnchor(self.carouselView.bottomAnchor).active = true
         middleView.rightAnchor.constraintEqualToAnchor(self.view.rightAnchor).active = true
         middleView.leftAnchor.constraintEqualToAnchor(self.view.leftAnchor).active = true
-        //middleView.heightAnchor.constraintEqualToConstant(136).active = true
+        //middleView.heightAnchor.constraintEqualToConstant(330).active = true
         
     }
     
     func addScrollView() {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.backgroundColor = UIColor(white: 0.95, alpha: 1)
-        scrollView.contentSize = CGSize(width: view.bounds.width, height: view.bounds.height*2)
         scrollView.contentOffset = CGPoint(x: 0, y: 0)
+        scrollView.delegate = self
         view.addSubview(scrollView)
         scrollView.showsVerticalScrollIndicator = false
         scrollView.topAnchor.constraintEqualToAnchor(view.topAnchor).active = true
         scrollView.leftAnchor.constraintEqualToAnchor(view.leftAnchor).active = true
         scrollView.rightAnchor.constraintEqualToAnchor(view.rightAnchor).active = true
-        scrollView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
+        scrollView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor, constant: -40).active = true
         
     }
     
     func addCarousel() {
-        carouselView.backgroundColor = UIColor.redColor()
+        carouselView.backgroundColor = UIColor.whiteColor()
         carouselView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.addSubview(carouselView)
         carouselView.topAnchor.constraintEqualToAnchor(scrollView.topAnchor).active = true
@@ -134,28 +134,21 @@ class MyPrdView: UIViewController, UIScrollViewDelegate {
                 if let dict = snap.value as? [String: AnyObject] {
                     let prd = DetailProduct()
                     var jg = "0"
-                    var sl = "0"
                     prd.prdID = dict["productID"] as? String
                     prd.prdName = dict["productName"] as? String
                     prd.prdSub = dict["productSubDetail"] as? String
                     prd.prdPackageInfo = dict["productPackageInfo"] as? String
                     prd.prdSuppler = dict["productSuppler"] as? String
-                    prd.prdWarranty = dict["productWarranty"] as? String
                     jg = (dict["productPrice"] as? String)!
-                    sl = (dict["productQty"] as? String)!
-                    if(Int(sl) != nil) {
-                        prd.prdQty = Int(sl)
-                    }else {
-                        prd.prdQty = 0
-                    }
                     if(Double(jg) != nil) {
                         prd.prdPrice = Double(jg)
                     } else {
                         prd.prdPrice = 9999.0
                     }
                     prd.isRefundable = dict["productRefundable"] as? Bool
-                    prd.isBrand = dict["productBrand"] as? Bool
                     prd.prdImages = dict["productImages"] as? [String]
+                    prd.prdCS = dict["productCS"] as? [String]
+                    prd.prdCSQty = dict["productCSQty"] as? [Int]
                     if let info = dict["productInfoImages"] as? [String] {
                         prd.prdInfoImages = info
                     }
@@ -183,14 +176,18 @@ class MyPrdView: UIViewController, UIScrollViewDelegate {
         self.middleView.detailTag.text = prd.prdSub!
         self.middleView.detailTag.font = UIFont(name: "AppleSDGothicNeo-Light", size: sw/25)
         
-        if(prd.prdQty < 1) {
-            self.middleView.estimateDT.font = UIFont(name: "AppleSDGothicNeo-Medium", size: sw/30)
-            self.middleView.estimateDT.text = "Estimated Delivery Time :" + "12:00"
-        }else {
-            self.middleView.estimateDT.font = UIFont(name: "AppleSDGothicNeo-Medium", size: sw/30)
-            self.middleView.estimateDT.text = "Estimated Delivery Time :" + "NOW"
+        
+        if(prd.isRefundable!) {
+            self.middleView.refundableLable.hidden = false
+        } else {
+            self.middleView.nonrefundableLable.hidden = false
         }
+        
+        self.middleView.packageTV.text = "PACKAGE INCLUDE: " + prd.prdPackageInfo!.uppercaseString
+        self.middleView.supplerInfoTV.text = "SUPPLER: " + prd.prdSuppler!.uppercaseString
+        
     }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.hidden = true
@@ -201,6 +198,12 @@ class MyPrdView: UIViewController, UIScrollViewDelegate {
         self.tabBarController?.tabBar.hidden = false
         
     }
-
-
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        let y = CGRectGetMaxY(middleView.frame)
+        scrollView.contentSize = CGSize(width: view.bounds.width, height: y)
+        print(y)
+        
+    }
 }

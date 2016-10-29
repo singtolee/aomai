@@ -20,6 +20,8 @@
 		09232ED01D3BDEC600CF0C0A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 09232ECF1D3BDEC600CF0C0A /* GoogleService-Info.plist */; };
 		092629981D675B7B00F3112C /* ProductTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092629971D675B7B00F3112C /* ProductTab.swift */; };
 		092856B91D76470200B81D6F /* EditProfilePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092856B81D76470200B81D6F /* EditProfilePhoto.swift */; };
+		09420F291DB8310C000FC06C /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09420F281DB8310C000FC06C /* BottomView.swift */; };
+		0943B3361DBA8852000FE8AE /* BottomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0943B3351DBA8852000FE8AE /* BottomCollectionView.swift */; };
 		094C11DD1DB3447B00BF6D09 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 094C11DC1DB3447B00BF6D09 /* Bolts.framework */; };
 		094C11EC1DB34D8000BF6D09 /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094C11EB1DB34D8000BF6D09 /* AddressCell.swift */; };
 		094CDC381D72590C00D03A5B /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094CDC371D72590C00D03A5B /* EditProfile.swift */; };
@@ -38,6 +40,7 @@
 		096AEBAD1DA7013000D5FC25 /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096AEBAC1DA7013000D5FC25 /* CarouselCell.swift */; };
 		097469241D4BB052009459EF /* Vser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097469231D4BB052009459EF /* Vser.swift */; };
 		097C1C211D92565500011AA7 /* CategoryProductsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097C1C201D92565500011AA7 /* CategoryProductsListView.swift */; };
+		098835241DB907630086DDC8 /* BottomImagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098835231DB907630086DDC8 /* BottomImagesCell.swift */; };
 		098E0A8A1D80BC5A0045A9D2 /* EditPostAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098E0A891D80BC5A0045A9D2 /* EditPostAddress.swift */; };
 		09991E081D6D0E22009B81F9 /* EmptyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09991E071D6D0E22009B81F9 /* EmptyTableView.swift */; };
 		099B9AE31D4FA50F006CC617 /* MyAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099B9AE21D4FA50F006CC617 /* MyAddress.swift */; };
@@ -68,6 +71,8 @@
 		09232ECF1D3BDEC600CF0C0A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		092629971D675B7B00F3112C /* ProductTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTab.swift; sourceTree = "<group>"; };
 		092856B81D76470200B81D6F /* EditProfilePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfilePhoto.swift; sourceTree = "<group>"; };
+		09420F281DB8310C000FC06C /* BottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
+		0943B3351DBA8852000FE8AE /* BottomCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomCollectionView.swift; sourceTree = "<group>"; };
 		094C11DC1DB3447B00BF6D09 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		094C11EB1DB34D8000BF6D09 /* AddressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
 		094CDC371D72590C00D03A5B /* EditProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
@@ -88,6 +93,7 @@
 		096AEBAC1DA7013000D5FC25 /* CarouselCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
 		097469231D4BB052009459EF /* Vser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vser.swift; sourceTree = "<group>"; };
 		097C1C201D92565500011AA7 /* CategoryProductsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryProductsListView.swift; sourceTree = "<group>"; };
+		098835231DB907630086DDC8 /* BottomImagesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomImagesCell.swift; sourceTree = "<group>"; };
 		098E0A891D80BC5A0045A9D2 /* EditPostAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPostAddress.swift; sourceTree = "<group>"; };
 		09991E071D6D0E22009B81F9 /* EmptyTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyTableView.swift; sourceTree = "<group>"; };
 		099B9AE21D4FA50F006CC617 /* MyAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAddress.swift; sourceTree = "<group>"; };
@@ -294,6 +300,9 @@
 				096AEBAA1DA700CC00D5FC25 /* CarouselView.swift */,
 				096AEBAC1DA7013000D5FC25 /* CarouselCell.swift */,
 				09DBF0A21DA8612C007DF069 /* MiddleView.swift */,
+				09420F281DB8310C000FC06C /* BottomView.swift */,
+				098835231DB907630086DDC8 /* BottomImagesCell.swift */,
+				0943B3351DBA8852000FE8AE /* BottomCollectionView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -508,6 +517,8 @@
 				0955E4FE1D36F64E0060B47E /* Tabbar.swift in Sources */,
 				0916153A1D7C02EC00D924D8 /* FreeAddress.swift in Sources */,
 				094CDC5D1D72F10E00D03A5B /* EidtUserName.swift in Sources */,
+				098835241DB907630086DDC8 /* BottomImagesCell.swift in Sources */,
+				0943B3361DBA8852000FE8AE /* BottomCollectionView.swift in Sources */,
 				0955E4E41D36F4EE0060B47E /* AppDelegate.swift in Sources */,
 				096AEBA81DA6FDFC00D5FC25 /* MyPrdView.swift in Sources */,
 				094C11EC1DB34D8000BF6D09 /* AddressCell.swift in Sources */,
@@ -529,6 +540,7 @@
 				092629981D675B7B00F3112C /* ProductTab.swift in Sources */,
 				09DA854E1D9425AA0012D6A6 /* ScrollViewControllers.swift in Sources */,
 				098E0A8A1D80BC5A0045A9D2 /* EditPostAddress.swift in Sources */,
+				09420F291DB8310C000FC06C /* BottomView.swift in Sources */,
 				09DEF7181D99612200DF3CFE /* DetailProduct.swift in Sources */,
 				092856B91D76470200B81D6F /* EditProfilePhoto.swift in Sources */,
 				09107FE81D5B7DA20099E52C /* OrderView.swift in Sources */,

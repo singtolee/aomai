@@ -57,7 +57,7 @@ class CategoryProductView: UICollectionViewController, UICollectionViewDelegateF
     
     func loadShortPrd() {
         self.loadingIndicator.startAnimating()
-        FIRDatabase.database().reference().child(category).observeEventType(.ChildAdded, withBlock: { (snap) in
+        FIRDatabase.database().reference().child("Each_Category").child(category).observeEventType(.ChildAdded, withBlock: { (snap) in
             if let dict = snap.value as? [String: String] {
                 let prd = ShortProduct()
                 prd.pKey = snap.key
@@ -69,11 +69,9 @@ class CategoryProductView: UICollectionViewController, UICollectionViewDelegateF
                     prd.pPrice = 9999.0
                 }
                 prd.pMainImage = dict["productMainImage"]!
-                //self.shortPrd.append(prd)
                 self.shortPrd.insert(prd, atIndex: 0)
                 dispatch_async(dispatch_get_main_queue(), {
                     self.collectionView?.reloadData()
-                    //self.collectionView?.reloadItemsAtIndexPaths()
                     self.loadingIndicator.stopAnimating()
                 })
             } else {

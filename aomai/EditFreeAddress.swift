@@ -160,22 +160,6 @@ class EditFreeAddress: DancingShoesViewController, UITextFieldDelegate, UIPicker
         subLine3.topAnchor.constraintEqualToAnchor(roomTF.bottomAnchor).active = true
         subLine3.heightAnchor.constraintEqualToConstant(1).active = true
     }
-//    func addLable() {
-//        scrollView.addSubview(setDefaultLable)
-//        setDefaultLable.text = "DEFAULT ADDRESS"
-//        setDefaultLable.font = UIFont(name: "ArialHebrew-Light", size: 14)
-//        setDefaultLable.translatesAutoresizingMaskIntoConstraints = false
-//        setDefaultLable.leftAnchor.constraintEqualToAnchor(view.leftAnchor, constant: 24).active = true
-//        setDefaultLable.centerYAnchor.constraintEqualToAnchor(roomTF.bottomAnchor, constant: 30).active = true
-//    }
-//    
-//    func addSwitch() {
-//        scrollView.addSubview(defaultAddressSwitch)
-//        defaultAddressSwitch.onTintColor = Tools.dancingShoesColor
-//        defaultAddressSwitch.translatesAutoresizingMaskIntoConstraints = false
-//        defaultAddressSwitch.rightAnchor.constraintEqualToAnchor(view.rightAnchor, constant: -24).active = true
-//        defaultAddressSwitch.centerYAnchor.constraintEqualToAnchor(roomTF.bottomAnchor, constant: 30).active = true
-//    }
     
     func addBtn() {
         scrollView.addSubview(saveBTN)
@@ -196,10 +180,6 @@ class EditFreeAddress: DancingShoesViewController, UITextFieldDelegate, UIPicker
         let mobile = phoneTF.text!
         let ofb = buildingTF.text
         let room = Tools.trim(roomTF.text!)
-//        var isDefaultAddress: Bool = false
-//        if defaultAddressSwitch.on {
-//            isDefaultAddress = true
-//        }
         if recipient != "" && mobile.characters.count == 10 && ofb != "" && room != "" {
             if let uid = FIRAuth.auth()?.currentUser?.uid {
                 indicator.startAnimating()
